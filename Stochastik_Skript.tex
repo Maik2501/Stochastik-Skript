@@ -5,13 +5,56 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{amsthm}
-\author{Maik Pickl}
+\author{Maik Pickl und Fred Brockstedt}
 \usepackage{mathrsfs}
 \title{Stochastik}
 \newcommand{\E}{\mathbb{E}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\R}{\mathbb{R}}
 \usepackage[left=4cm,right=3cm,top=4cm,bottom=4cm]{geometry}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Freds usepackages
+\usepackage{color}
+\usepackage{verbatim}
+\usepackage{varioref}
+\usepackage{float}
+\usepackage{amstext}
+\usepackage[unicode=true,
+ bookmarks=true,bookmarksnumbered=false,bookmarksopen=false,
+ breaklinks=true,pdfborder={0 0 0},backref=page,colorlinks=true]
+ {hyperref}
+\usepackage{bbold}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Freds Definitionen, Saetze und Theoreme
+\numberwithin{equation}{section}
+\numberwithin{figure}{section}
+\theoremstyle{plain}
+\newtheorem{thm}{\protect\theoremname}
+  \theoremstyle{definition}
+  \newtheorem{defn}[thm]{\protect\definitionname}
+  \theoremstyle{plain}
+  \newtheorem{prop}[thm]{\protect\propositionname}
+  \theoremstyle{definition}
+  \newtheorem{example}[thm]{\protect\examplename}
+  \theoremstyle{remark}
+  \newtheorem{rem}[thm]{\protect\remarkname}
+  \theoremstyle{plain}
+  \newtheorem{lem}[thm]{\protect\lemmaname}
+
+\makeatother
+
+  \providecommand{\definitionname}{Definition}
+  \providecommand{\examplename}{Beispiel}
+  \providecommand{\lemmaname}{Lemma}
+  \providecommand{\propositionname}{Satz}
+  \providecommand{\remarkname}{Bemerkung}
+\providecommand{\theoremname}{Theorem}
+
+\newcommand{\1}{ \mathbb{1} } %% Indikatorfunktion
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Dokument
 \begin{document}
 \chapter*{Übersicht}
 \textbf{\S 1 \qquad Grundbegriffe}
@@ -1380,4 +1423,365 @@ Dann gilt aber
 &\overset{5)}{=}&\mu(F_k)\\
 &\overset{k \to \infty}{\to}& \mu(F) \qquad \text{ da } F_k \searrow F \qed
 \end{eqnarray*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Freds LaTeX Code Vorlesung vom 29.5.2013
+\part{Unabhängigkeit}
+
+
+\section{Unabhängige Ereignisse}
+\marginpar{Vorlesung 29.5.2013}
+Es sei mit $\left(\Omega,\mathcal{A},\mathbb{P}\right)$ ein Wahrscheinlichkeitsraum
+gegeben.
+\begin{defn}
+Eine Familie $\left(A_{i}\right)_{i\in I}$ von Ereignissen heißt
+\emph{unabhängig} \index{unabhängig}, falls gilt
+\begin{equation}
+P\left(\bigcap_{j\in J}A_{j}\right)=\prod_{i\in I}P\left(A_{i}\right)\ \forall\underset{\left|J\right|<\infty}{J\subseteq I}\label{eq:def1.1}
+\end{equation}
+ Eine Familie $\left(B_{i}\right)_{i\in I}$ von Mengensystemen (z.B.
+$\sigma$-Algebren) heißt \emph{unabhängig}, falls \nameref{eq:def1.1}für
+alle $A_{j}\in B_{j}$ gilt.\end{defn}
+\begin{prop}
+Seien $\left(B_{i}\right)_{i\in I}$ durchschnitts-stabile unabhängige
+Mengensysteme. Dann gilt
+\begin{description}
+\item [{(i)}] Die $\sigma$-Algebren $\sigma\left(B_{i}\right)$ mit $i\in I$
+sind unabhängig.
+\item [{(ii)}] Sind $J_{k}$ $k\in\mathcal{K}$ disjunkte (nicht notwendig
+endliche) Teilmengen von $I$, so sind
+\[
+\sigma\left(\bigcup_{l\in J_{k}}B_{l}\right)\ \left(k\in\mathcal{K}\right)
+\]
+unabhängig. \label{s1.2(ii)}
+\end{description}
+\end{prop}
+\begin{proof}
+\textbf{\emph{(i)}}\textit{ }Seien $A_{j1}\in\sigma\left(B_{j1}\right),\ldots$
+$A_{jn}\in\sigma\left(B_{jn}\right)\ \left(n\in\mathbb{N}\right)$.
+Für $j_{2},\ldots,j_{n}$ sei $A_{jl}\in B_{jl}$. Definiere
+\begin{equation}
+\mathcal{D}_{j1}:=\left\{ A\in\sigma\left(B_{j1}\right):P\left(A\cap B_{j2}\cap\ldots\cap A_{jn}\right)\overset{(***)}{=}P\left(A\right)\prod_{l=2}^{n}P\left(A_{jl}\right)\right\} \label{eq:b1.2**-1}
+\end{equation}
+Nach Voraussetzung gilt
+\begin{equation}
+B_{j1}\subseteq\mathcal{D}_{j1}\label{eq:b1.2**}
+\end{equation}
+Ferner ist $\mathcal{D}_{j1}$ ein Dynkin-System. Da $B_{j1}$ durchschnittsstabil
+gilt
+\[
+\sigma\left(B_{j1}\right)=\mathcal{D}\left(B_{j1}\right)\subseteq D_{j}
+\]
+wegen \nameref{eq:b1.2**}. Also $(***)$ für alle $A\in\sigma\left(B_{j1}\right)$.
+Für $j_{2}$ wende das gleiche Argument an auf
+\[
+\sigma\left(B_{j1}\right),B_{j2},B_{j3},\ldots B_{jn}
+\]
+$\Rightarrow$ ersetze $B_{j2}$ durch $\sigma\left(B_{j2}\right)$
+usw.
+
+\textbf{\emph{(ii)}} langweilig\end{proof}
+\begin{example}
+Es seien $\left(A_{i}\right)_{i\in I}$ unabhängige Ereignisse. Dann
+sind auch 
+\[
+\sigma\left(A_{i}\right)=\left\{ \emptyset,\Omega,A_{i},A_{i}^{c}\right\} 
+\]
+$i\in I$ unabhängig. Insbesondere sind $\left(A_{i}^{c}\right)_{i\in I}$
+unabhängige Ereignisse. In der Regel sind $A_{i}$ und $A_{i}^{c}$
+nicht unabhängig
+\[
+P\left(A_{i}\cap A_{i}^{c}\right)=P\left(A_{i}\right)\left(1-P\left(A_{i}\right)\right)\overset{!}{=}0
+\]
+$\Rightarrow P\left(A_{i}\right)\in\left\{ 0,1\right\} $\end{example}
+\begin{rem}
+Paarweise unabhängig (d.h. für je $2$ Ereignisse) $\not\Rightarrow$
+unabhängig. Zum Beispiel
+\begin{eqnarray*}
+A & = & \left\{ \text{1. Wurf}=3\right\} \\
+B & = & \left\{ \text{2. Wurf}=5\right\} \\
+C & = & \left\{ \text{Summe}=7\right\} 
+\end{eqnarray*}
+$P\left(A\right)=\frac{1}{6}=P\left(B\right)=P\left(C\right)$ $P\left(A\cap B\right)=\frac{1}{36}=P\left(A\cap C\right)=P\left(B\cap C\right)$
+also sind $A,B,C$ paarweise unabhängig. Jedoch $P\left(A\cap B\cap C\right)=P\left(\emptyset\right)=0$.
+
+Seien $B_{n}\left(n\in\mathbb{N}\right)$ unabhängige $\sigma$-Algebren.
+($B_{n}=$die zur Zeit $n$ observierbaren Ereignisse). Die \emph{terminale}
+\index{terminale sigma
+-Algebra@\emph{terminale $\sigma$-Algebra}} $\sigma$-Algebra (,,tail field``) ist gegeben durch
+\[
+\bigcap_{n\in\mathbb{N}}\sigma\left(\bigcup_{m\geq n}B_{m}\right)=:B_{\infty}
+\]
+= ,,Ereignisse, die nicht endlich vielen Realisierungen abhängen``.\\
+Im Münzwurfmodel
+\begin{itemize}
+\item $\left\{ \omega\in\left\{ 0,1\right\} ^{\mathbb{N}}|\lim_{n\to\infty}\frac{1}{n}\sum_{i=1}^{n}X_{i}\left(\omega\right)\text{ existiert}\right\} $
+\item $\limsup_{i\to\infty}\left\{ X_{i}=1\right\} $ ($+1$ kommt unendlich
+oft vor) 
+\end{itemize}
+\end{rem}
+\begin{prop}
+(0-1-Gesetz von Kolmogorov) %
+\begin{comment}
+Eigentlich Satz 1.6
+\end{comment}
+
+
+Für alle $A\in B_{\infty}$ gilt
+\[
+P\left(A\right)\in\left\{ 0,1\right\} 
+\]
+(kein Zufall mehr auf $B_{\infty}$)\end{prop}
+\begin{proof}
+Nach Satz \ref{s1.2(ii)} (ii) sind $B_{1},\ldots,B_{n-1},\sigma\left(\bigcup_{m\geq n}B_{m}\right)$
+unabhängig. Per Definition gilt
+\[
+B_{\infty}\subseteq\sigma\left(\bigcup_{m\geq n}B_{m}\right)\ \forall n\in\mathbb{N}
+\]
+Also sind auch für alle $n$
+\[
+B_{1},\ldots,B_{n-1},B_{\infty}
+\]
+unabhängig (,,weniger Ereignisse zu teste``). Also sind
+\[
+B_{1},B_{2}\ldots B_{\infty}
+\]
+unabhängig. Nach Satz \ref{s1.2(ii)} (ii) sind damit auch
+\[
+\sigma\left(\bigcup_{n\geq1}B_{n}\right)\text{ und }B_{\infty}
+\]
+unabhängig $\left(J_{1}=\left\{ 1,2,3\ldots\right\} ,J_{2}=\left\{ \infty\right\} \right)$.
+Da $B_{\infty}\subseteq\sigma\left(\bigcup_{n\geq1}B_{n}\right)$
+ist $B_{\infty}$ und $B_{\infty}$ unabhängig. Rest mit folgendem
+Lemma.\end{proof}
+\begin{lem}
+Sei $B\subset\mathcal{A}$ eine $\sigma$-Algebra mit $B$ unabhängig
+von $B$. Dann gilt:
+\[
+P\left(A\right)\in\left\{ 0,1\right\} \ \forall A\in B
+\]
+\end{lem}
+\begin{proof}
+Sei $A\in B$. Dann gilt
+\begin{eqnarray*}
+P\left(A\right) & = & P\left(A\cap A\right)=P\left(A\right)^{2}\\
+ & \Rightarrow & P\left(A\right)\in\left\{ 0,1\right\} 
+\end{eqnarray*}
+ \end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Fred LaTeX der Vorlesung vom 3.6.2013
+\begin{lem}
+(Borel-Cantelli) \marginpar{Vorlesung vom 3.6.2013}
+
+Seien $\left(A_{i}\right)_{i\in\mathbb{N}}$ Ereignisse
+\begin{description}
+\item [{(i)}] $\sum_{i\in\mathbb{N}}P\left(A_{i}\right)<\infty\Rightarrow$$P($unendlich
+viele $A_{i}$ treten ein$)=0$
+\item [{(ii)}] $\sum_{i\in\mathbb{N}}P\left(A_{i}\right)=+\infty$ und
+die $A_{i}$ sind unabhängig $\Rightarrow P\left(\limsup A_{i}\right)=1$
+\end{description}
+\end{lem}
+\begin{proof}
+\textbf{\textit{(i)}}\textit{ hatten wir schon.}
+
+\textbf{(ii)} Da
+\[
+\limsup A_{i}=\bigcap_{n\in\mathbb{N}}\bigcup_{m\geq n}A_{m}
+\]
+genügt es zu zeigen
+\[
+P\left(\bigcup_{m\geq n}A_{m}\right)=1\ \forall n\in\mathbb{N}
+\]
+Das ist äquivalent zu 
+\[
+P\left(\bigcap_{m\geq n}A_{m}^{c}\right)=0\ \forall n\in\mathbb{N}
+\]
+Wegen Unabhuangigkeit gilt
+\begin{eqnarray*}
+P\left(\bigcap_{m=n}^{n+k}A_{m}^{c}\right) & = & \prod_{m=n}^{n+k}P\left(A_{m}^{c}\right)\\
+ & = & \prod_{m=n}^{n+k}\left(\underset{1-\alpha_{n}}{\underbrace{1-P\left(A_{m}\right)}}\right)
+\end{eqnarray*}
+für $\alpha_{n}\leq1$. Es gilt
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=1\columnwidth]{figs/borelcantelli}
+\par\end{centering}
+
+\caption{Skizze zu Borel-Cantelli}
+
+
+\end{figure}
+ Also gilt
+\begin{eqnarray*}
+P\left(\bigcap_{m\geq n}A_{m}^{c}\right) & = & \lim_{k\to\infty}P\left(\bigcap_{m=n}^{n+k}A_{m}^{c}\right)\\
+ & \leq & \lim_{k\to\infty}\prod_{m=n}^{n+k}\exp\left(-P\left(A_{m}\right)\right)\\
+ & = & \lim_{k\to\infty}\exp\left(-\sum_{m=n}^{n+k}P\left(A_{m}\right)\right)\\
+ & = & 0
+\end{eqnarray*}
+da $\sum P\left(A_{m}\right)=+\infty$
+\end{proof}
+
+\section{Unabhängige Zufallsvariablen}
+
+
+\paragraph*{Ziel:}
+
+Wir hatten gezeigt:
+\[
+X_{i}\in\mathcal{L}^{2}
+\]
+unkorreliert mit 
+\[
+\sup_{i}\sigma^{2}\left(X_{i}\right)<\infty
+\]
+Dann gilt
+\[
+\lim_{n\to\infty}\frac{1}{n}\sum_{i=1}^{n}\left(X_{i}-\mathbb{E}\left[X_{i}\right]\right)=0\ P-f.s.
+\]
+Wir zeigen nun: $X_{i}\in\mathcal{L}^{1}$ unabhängig und identisch
+verteilt (iid). Dann gilt
+\[
+\underset{\text{empirisches Mittel}}{\frac{1}{n}\sum_{i=1}^{n}X_{i}}\to\mathbb{E}\left[X_{1}\right]=:m
+\]
+Empirisches Mittel $\to$erwartetes Resultat eines einzelnen Versuches.
+\begin{defn}
+Eine Familie $\left(X_{i}\right)_{i\in I}$ von Zufallvariabeln auf
+$\left(\Omega,\mathcal{A},\mathbb{P}\right)$ heißt unabhängig, falls
+die von den Zufallsvariablen erzeugten Familie von $\sigma$-Algebren
+\[
+\left(\sigma\left(X_{i}\right)\right)_{i\in I}\ \left(\sigma\left(X_{i}\right)=\left\{ \left\{ x\in A|A\in\mathcal{B}\left(\overline{\mathbb{R}}\right)\right\} \right\} \right)
+\]
+unabhängig ist.\end{defn}
+\begin{rem}
+Sei $\left(X_{i}\right)_{i\in I}$ unabhängig
+\[
+h_{i}:\bar{\mathbb{R}}\to\bar{\mathbb{R}}\text{ meßbar}
+\]
+Dann gilt
+\[
+y_{i}=h_{i}\left(X_{i}\right)\ i\in I
+\]
+definiert eine Familie unabhängiger Zufallsvariablen.\end{rem}
+\begin{proof}
+Es gilt
+\[
+y_{i}^{-1}\left(A\right)=\underset{\in\sigma\left(X_{i}\right)}{\underbrace{X_{i}^{-1}\circ\underset{\in\mathcal{B}\left(\bar{\mathbb{R}}\right)}{\underbrace{h_{i}^{-1}\left(A\right)}}}}\ \mathcal{A}\in\mathcal{B}\left(\bar{\mathbb{R}}\right)
+\]
+D.h.
+\[
+\sigma\left(y_{i}\subseteq\sigma\left(X_{I}\right)\right)
+\]
+\end{proof}
+\begin{prop}
+Seien $X_{1},X_{2},\ldots\geq0$ unabhängig. Dann 
+\[
+\mathbb{E}\left[X_{1}\ldots X_{n}\right]=\prod_{i=1}^{n}\mathbb{E}\left[X_{i}\right]
+\]
+\end{prop}
+\begin{proof}
+OBdA $n=2$ (Rest per Induktion). Angenommen $\left(X_{1}=X,X_{2}=Y\right)$
+\[
+X=\sum\alpha_{j}+\1_{A_{j}},\ Y=\sum\beta_{j}\1_{B_{j}}
+\]
+mit $A_{i}$ von $B_{i}$ unabhängig. Dann gilt
+\begin{eqnarray*}
+\mathbb{E}\left[X\ Y\right] & = & \sum_{i,j}\alpha_{j}\beta_{i}\underset{{=P\left(A_{j}\cap B_{i}\right)\atop =P\left(A_{j}\right)\cdot P\left(B_{i}\right)}}{\underbrace{\mathbb{E}\left[\1_{A_{j}}\cdot\1_{B_{i}}\right]}}\\
+ & = & \sum_{i,j}\alpha_{j}\beta_{i}P\left(A_{j}\right)\cdot P\left(B_{i}\right)\\
+ & = & \mathbb{E}\left[X\right]\cdot\mathbb{E}\left[Y\right]
+\end{eqnarray*}
+Für allgemeine Zufallsvariablen, wähle 
+\[
+X_{n}:=\sum_{k=0}^{n\cdot2^{n}-1}k\cdot2^{-n}\1_{\left\{ k\cdot2^{-n}\leq X<\left(k+1\right)2^{-n}\right\} }
+\]
+analog für $Y_{n}$. Dann gilt
+\[
+X_{n}\nearrow X,\ Y_{n}\nearrow Y
+\]
+und $X_{n}$ und $Y_{n}$ sind unabhängig. Mit monotoner Konvergenz
+folgt dann
+\begin{eqnarray*}
+\mathbb{E}\left[X\cdot Y\right] & = & \lim_{n\to\infty}\mathbb{E}\left[X_{n}\cdot Y_{n}\right]\\
+ & = & \lim_{n\to\infty}\left(\mathbb{E}\left[X_{n}\right]\cdot\mathbb{E}\left[Y_{n}\right]\right)\\
+ & \overset{\text{monotone}}{\underset{Konvergenz}{=}} & \mathbb{E}\left[X\right]\cdot\mathbb{E}\left[Y\right]
+\end{eqnarray*}
+\end{proof}
+\begin{rem}
+\textbf{(i)} Da $X,Y\in\mathcal{L}^{2}$
+\[
+\mathbb{E}\left[X\cdot Y\right]=\mathbb{E}\left[X\right]\mathbb{E}\left[Y\right]+2cov\left(X,Y\right)
+\]
+gilt Unabhängigkeit$\Rightarrow$Unkorreliert.\\
+\textbf{(ii)} Die Umkehrung gilt i.d.R. nicht
+\[
+X\sim\mathcal{N}\left(0,1\right)\ y=x^{2}
+\]
+Dann gilt
+\begin{eqnarray*}
+\mathbb{E}\left[X\cdot Y\right] & = & \mathbb{E}\left[X^{3}\right]=0\\
+ & = & \mathbb{E}\left[X\right]\mathbb{E}\left[X^{2}\right]
+\end{eqnarray*}
+Aber $X,Y$ nicht unabhängig!\end{rem}
+\begin{cor}
+Seien $X,Y\in\mathcal{L}^{1}$ unabhängig. Dann gilt
+\[
+X\cdot Y\in\mathcal{L}^{1}
+\]
+und $\mathbb{E}\left[X\cdot Y\right]=\mathbb{E}\left[X\right]\cdot\mathbb{E}\left[Y\right]$.
+\end{cor}
+
+\section{Kolmogorov'sches Gesetz der großen Zahlen}
+\begin{prop}
+(Kolmogorov)
+
+Seien $\left(X_{i}\right)_{i\in\mathbb{N}}$ i.i.d. ZVen in $\mathcal{L}^{1}$
+mit $m:=\mathbb{E}\left[X_{i}\right]$ $i\in\mathbb{N}$. Dann gilt
+\begin{equation}
+\frac{1}{n}\sum_{i=1}^{n}X_{i}\to m\ P-f.s.\label{eq:kolmogorov}
+\end{equation}
+
+\end{prop}
+
+\begin{prop}
+(Etenadi)
+
+Seien $\left(X_{i}\right)_{i\in\mathbb{N}}$ \emph{paarweise }unabhängig
+in $\mathcal{L}^{1}$, identisch verteilt. Dann gilt \ref{eq:kolmogorov}
+\[
+\frac{1}{n}\sum_{i=1}^{n}X_{i}\to m\ P-f.s.
+\]
+\end{prop}
+\begin{proof}
+(Etanadi)
+
+Es seien oBdA $X_{i}\geq0$ (sonst auf $X_{i}^{+}$ und $X_{i}^{-}$
+getrennt anwenden).
+\begin{description}
+\item [{(A)}] Wir zeigen zunächst: wir können die $X_{i}$ abschneiden.
+Sei dazu 
+\begin{eqnarray*}
+\tilde{X}_{i} & = & \1_{\left\{ X_{i}<1\right\} }X_{i}\\
+ & (= & h_{i}\left(X_{i}\right),h\left(x\right)=x\cdot\1_{\left\{ X<i\right\} }
+\end{eqnarray*}
+D.h. die $\tilde{X}_{i}$ sind paarweise unabhängig. Sei $\tilde{S}_{n}:=\sum_{i=1}^{n}\tilde{X}_{i}$.
+Wir wollen zeigen:
+\begin{equation}
+P\left[\lim_{n\to\infty}\frac{1}{n}\left(S_{n}-\tilde{S}_{n}\right)=0\right]=1\label{eq:etanadi}
+\end{equation}
+Wir wenden dazu Borell-Cantelli an. Es gilt
+\begin{eqnarray*}
+\sum_{n\geq1}\mathbb{P}\left[X_{n}\neq\tilde{X}_{n}\right] & = & \sum_{n\geq1}P\left[X_{n}\geq n\right]\\
+ & \overset{\text{gleichmäßig}}{\underset{\text{Verteilt}}{=}} & \sum_{n\geq1}P\left[X_{1}\geq n\right]\\
+ & = & \sum_{n\geq1}\sum_{k=n}^{\infty}P\left[X_{1}\in[k,k+1)\right]\\
+ & = & \sum_{k=1}^{\infty}\underset{\mathbb{E}\left[k\cdot\1_{\left\{ X_{1}\in[k,k+1)\right\} }\right]\leq\mathbb{E}\left[X_{1}\cdot\1_{\left\{ X\in[k,k+1)\right\} }\right]}{\underbrace{k\cdot P\left[X_{1}\in[k,k+1)\right]}}\\
+ & \leq & \mathbb{E}\left[X_{1}\right]<\infty
+\end{eqnarray*}
+Mit Borel-Cantelli gilt dann
+\[
+P\left[X_{n}\neq\tilde{X}_{n}\text{ undendlich oft}\right]=0
+\]
+und somit gilt \ref{eq:etanadi}
+\end{description}
+\end{proof}
+\printindex{}
+
 \end{document}
