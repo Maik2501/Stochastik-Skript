@@ -15,20 +15,18 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Freds usepackages
 \usepackage{color}
-\usepackage{babel}
 \usepackage{verbatim}
 \usepackage{varioref}
 \usepackage{float}
-\usepackage{amsthm}
 \usepackage{amstext}
-\usepackage{amssymb}
 \usepackage[unicode=true,
  bookmarks=true,bookmarksnumbered=false,bookmarksopen=false,
  breaklinks=true,pdfborder={0 0 0},backref=page,colorlinks=true]
  {hyperref}
+\usepackage{bbold}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Definitionen, Saetze und Theoreme
+%% Freds Definitionen, Saetze und Theoreme
 \numberwithin{equation}{section}
 \numberwithin{figure}{section}
 \theoremstyle{plain}
@@ -52,6 +50,8 @@
   \providecommand{\propositionname}{Satz}
   \providecommand{\remarkname}{Bemerkung}
 \providecommand{\theoremname}{Theorem}
+
+\newcommand{\1}{ \mathbb{1} } %% Indikatorfunktion
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Dokument
