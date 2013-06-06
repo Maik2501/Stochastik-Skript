@@ -14,6 +14,8 @@
 \usepackage[left=4cm,right=3cm,top=4cm,bottom=4cm]{geometry}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Freds usepackages
+\makeindex
+\usepackage{graphicx}
 \usepackage{color}
 \usepackage{verbatim}
 \usepackage{varioref}
@@ -24,6 +26,7 @@
  breaklinks=true,pdfborder={0 0 0},backref=page,colorlinks=true]
  {hyperref}
 \usepackage{bbold}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Freds Definitionen, Saetze und Theoreme
@@ -41,15 +44,22 @@
   \newtheorem{rem}[thm]{\protect\remarkname}
   \theoremstyle{plain}
   \newtheorem{lem}[thm]{\protect\lemmaname}
+  \theoremstyle{plain}
+  \newtheorem{cor}[thm]{\protect\corollaryname}
+  \theoremstyle{plain}
+  \newtheorem*{fact*}{\protect\factname}
+
 
 \makeatother
 
+  \providecommand{\corollaryname}{Korollar}
   \providecommand{\definitionname}{Definition}
   \providecommand{\examplename}{Beispiel}
+  \providecommand{\factname}{Fakt}
   \providecommand{\lemmaname}{Lemma}
   \providecommand{\propositionname}{Satz}
   \providecommand{\remarkname}{Bemerkung}
-\providecommand{\theoremname}{Theorem}
+  \providecommand{\theoremname}{Theorem}
 
 \newcommand{\1}{ \mathbb{1} } %% Indikatorfunktion
 
@@ -1604,7 +1614,7 @@ P\left(\bigcap_{m=n}^{n+k}A_{m}^{c}\right) & = & \prod_{m=n}^{n+k}P\left(A_{m}^{
 für $\alpha_{n}\leq1$. Es gilt
 \begin{figure}[H]
 \begin{centering}
-\includegraphics[width=1\columnwidth]{figs/borelcantelli}
+\includegraphics[width=\columnwidth]{figs/borelcantelli}
 \par\end{centering}
 
 \caption{Skizze zu Borel-Cantelli}
@@ -1780,8 +1790,208 @@ Mit Borel-Cantelli gilt dann
 P\left[X_{n}\neq\tilde{X}_{n}\text{ undendlich oft}\right]=0
 \]
 und somit gilt \ref{eq:etanadi}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Vorlesung vom 5.6.2013
+\item [{(B)}] \marginpar{Vorlesung vom 5.6.2013}Wir wissen ,,Schnelle
+Stochastiische Konvergenz``$\Rightarrow$``f.s. Konvergenz``, also
+Konvergenz entlang einer Teilfolge. Sei $\alpha>1$ und 
+\[
+k_{n}:=L\alpha^{n}\lrcorner=\text{größte ganze Zahl}\leq\alpha^{n}
+\]
+d.h.
+\[
+\alpha^{n}-1<k_{n}\leq\alpha^{n}
+\]
+Angenommen, wir können zeigen:
+\begin{equation}
+\frac{\tilde{S}_{k_{n}}-\mathbb{E}\tilde{S}_{k_{n}}}{k_{n}}\to0\ P-f.s.\label{eq:etanadi(B)}
+\end{equation}
+wobei
+\[
+\tilde{S}_{k_{n}}=\sum_{i=1}^{k_{n}}\tilde{X}_{i}
+\]
+(zeigen wir in \textbf{(C)}). Dann folgt die Aussage des Satzes, denn:
+\[
+\frac{1}{k}\mathbb{E}\left[\tilde{S}_{k_{n}}\right]=\frac{1}{k_{n}}\sum_{i=1}^{k_{n}}\underset{\mathbb{E}\left[X_{i}\1_{\left\{ X_{i}<i\right\} }\right]\overset{identisch}{\underset{verteilt}{=}}\underset{i\to\infty\nearrow\mathbb{E}\left[X_{1}\right]=m\text{ mit monotoner Konvergenz}}{\underbrace{\mathbb{E}\left[X_{1}\cdot\1_{\left\{ X_{1}<i\right\} }\right]}}}{\underbrace{\mathbb{E}\left[\tilde{X}_{i}\right]}}
+\]
+Damit also
+\[
+\lim_{n\to\infty}\frac{1}{k_{n}}\mathbb{E}\left[\tilde{S}_{k_{n}}\right]=m
+\]
+Damit folgt dann mit \ref{eq:etanadi(B)}
+\[
+\lim_{n\to\infty}\frac{1}{k_{n}}\tilde{S}_{k_{n}}=m\ P-f.s.
+\]
+D.h. es existiert eine Nullmenge $N_{\alpha}$ mit 
+\[
+\frac{1}{k_{n}}\tilde{S}_{k_{n}}\left(\omega\right)\to m\ \forall\omega\notin N_{\alpha}
+\]
+Wir befreien uns nun von der Teifolge $\left(k_{n}\right)$. Sei $l\in\mathbb{N}$.
+Dann existiert ein eindeutiges $n\in\mathbb{N}$ mit
+\[
+l\in[k_{n},k_{n+1})
+\]
+Damit folgt 
+\[
+\underset{\to\frac{1}{\alpha}}{\underbrace{\frac{k_{n}}{k_{n+1}}}}\cdot\underset{\to m}{\underbrace{\frac{\tilde{S}_{k_{n}}}{k_{n}}}}\leq\frac{\tilde{S}_{l}}{l}\leq\underset{\to\alpha}{\underbrace{\frac{k_{n+1}}{k_{n}}}}\cdot\underset{\to m}{\underbrace{\frac{\tilde{S}_{k_{n+1}}}{k_{n+1}}}}
+\]
+(da $X_{i}\geq0$) D.h. für alle $\omega\notin N_{\alpha}$ gilt
+\[
+\frac{1}{\alpha}\cdot m\leq\liminf_{l\to\infty}\frac{\tilde{S}_{l}\left(\omega\right)}{l}\leq\limsup_{l\to\infty}\frac{\tilde{S}_{l}\left(\omega\right)}{l}\leq\alpha\cdot m
+\]
+Wähln nun $\alpha_{n}\searrow1$ mit entsprechender Nullmenge $N_{\alpha_{n}}$
+und setze
+\[
+N:=\bigcup_{n}N_{\alpha_{n}}\ P\left(N\right)=0
+\]
+Dann gilt für $\omega\notin N$:
+\[
+\underset{\to m}{\underbrace{\frac{1}{\alpha_{n}}m}}\leq\liminf_{l\to\infty}\frac{\tilde{S}_{l}\left(\omega\right)}{l}\leq\limsup_{l\to\infty}\frac{\tilde{S}_{l}\left(\omega\right)}{l}\leq\underset{\to m}{\underbrace{\alpha_{n}\cdot m}}
+\]
+D.h. für alle $\omega\notin N$ gilt
+\[
+\lim_{l\to\infty}\frac{\tilde{S}_{l}\left(\omega\right)}{l}=m
+\]
+
+\item [{(C)}] Wir zeigen nun schnelle stochastische Konvergenz entlang
+$\left(k_{n}\right)$. Dazu reicht es zu zeigen (Korrolar I 1.10)
+\[
+\sum_{n\geq1}P\left[\left|\frac{\tilde{S}_{k_{n}}-\mathbb{E}\left[\tilde{S}_{k_{n}}\right]}{k_{n}}\right|\geq\varepsilon\right]<\infty
+\]
+Dann folgt \ref{eq:etanadi(B)}. Aus ,,paarweise unabhängig`` folgt
+,,paarweise unkorreliert``. Also mit Tschebyscheff: 
+\begin{eqnarray*}
+P\left[\left|\frac{\tilde{S}_{k_{n}}-\mathbb{E}\left[\tilde{S}_{k_{n}}\right]}{k_{n}}\right|\geq\varepsilon\right] & \leq & \frac{1}{\varepsilon^{2}k_{n}^{2}}\sum_{i=1}^{k_{n}}Var\left(\tilde{X}_{i}\right)\\
+ & \leq & \frac{1}{\varepsilon^{2}}\frac{1}{k_{n}}\sum_{i=1}^{k_{n}}\underset{<\infty}{\underbrace{\mathbb{E}\left[\tilde{X}_{i}^{2}\right]}}
+\end{eqnarray*}
+Also müssen wir zeigen:
+\begin{eqnarray*}
+S & = & \sum_{n\geq1}\left(\frac{1}{k_{n}^{2}}\sum_{i=1}^{k_{n}}\mathbb{E}\left[\tilde{X}_{i}^{2}\right]\right)\\
+ & = & \sum_{{\left(i,n\right)\in\mathbb{N}^{2}\atop i\leq k_{n}}}\frac{1}{k_{n}^{2}}\mathbb{E}\left[\tilde{X}_{i}^{2}\right]
+\end{eqnarray*}
+Dazu zeigen wir unten:
+\[
+\sum_{n:k_{n}\geq i}\frac{1}{k_{n}^{2}}\leq\frac{c}{i^{2}}
+\]
+für eine Konstante $c<\infty$. Angenommen, dies gilt. Dann folgt:
+\begin{eqnarray}
+S & = & \sum_{i=1}^{\infty}\left(\sum_{n:k_{n}\geq i}\frac{1}{k_{n}^{2}}\right)\mathbb{E}\left[\tilde{X}_{i}^{2}\right]\nonumber \\
+ & \overset{(*)}{\leq} & \sum_{i=1}^{\infty}\frac{c}{i^{2}}\mathbb{E}\left[\tilde{X}_{i}^{2}\right]\label{eq:etanadi(C)}\\
+ & \overset{identisch}{\underset{verteilt}{=}} & c\cdot\sum_{i=1}^{\infty}\frac{1}{i^{2}}\mathbb{E}\left[\1_{\left\{ X_{1}<i\right\} }\cdot X_{1}^{2}\right]\nonumber \\
+ & \leq & c\cdot\sum_{i=1}^{\infty}\left\{ \frac{1}{i^{2}}\sum_{l=1}^{i}l^{2}P\left[X_{i}\in[l-1,l)\right]\right\} \nonumber \\
+ & = & c\cdot\sum_{l=1}^{\infty}\left(l^{2}\left(\sum_{i=l}^{\infty}\frac{1}{i^{2}}\right)P\left[X_{i}\in[l-1,l)\right]\right)\nonumber 
+\end{eqnarray}
+Erinnerung:
+\begin{eqnarray*}
+\sum_{i=l}^{\infty}\frac{1}{i^{2}} & \leq & \frac{1}{l^{2}}+\sum_{i=l+1}^{\infty}\frac{1}{i\left(i-1\right)}\\
+ & = & \frac{1}{l^{2}}+\sum_{i=l+1}^{\infty}\left(\frac{1}{i-1}-\frac{1}{i}\right)\\
+ & = & \frac{1}{l^{2}}+\frac{1}{l}\leq\frac{2}{l}
+\end{eqnarray*}
+ Also
+\begin{eqnarray*}
+S & \leq & 2\cdot c\sum_{l=1}^{\infty}l\cdot P\left[X_{1}\in[l-1,l)\right]\\
+ & \leq & 2\cdot c\left(\mathbb{E}X_{1}+1\right)\\
+ & < & \infty
+\end{eqnarray*}
+
+\item [{(D)}] Es bleibt \ref{eq:etanadi(C)} ({*}) zu zeigen
+\[
+\sum_{n:k_{n}\geq i}\frac{1}{k_{n}^{2}}\leq\frac{c}{i^{2}}
+\]
+Es gilt
+\[
+k_{n}=\llcorner\alpha^{n}\lrcorner\ k_{n}>\alpha^{n}-1\overset{\alpha>1}{>}\alpha^{n}-\alpha^{n-1}=\alpha^{n}\underset{=:c_{\alpha}}{\underbrace{\left(\frac{\alpha-1}{\alpha}\right)}}
+\]
+Sei $n_{i}$ die kleinste natürliche Zahl mit 
+\begin{equation}
+k_{n_{i}}=\llcorner\alpha^{n_{i}}\lrcorner\geq i\ \left(\alpha^{n_{i}}\geq i\right)\label{eq:etanadi(D)}
+\end{equation}
+Damit gilt
+\[
+\left\{ n|k_{n}\geq i\right\} =\left\{ n|n\geq n_{i}\right\} 
+\]
+und somit
+\begin{eqnarray*}
+\sum_{n:k_{n}\geq i}\frac{1}{k_{n}^{2}} & \leq & c_{\alpha}^{-2}\cdot\sum_{n\geq n_{i}}\frac{1}{\alpha^{2n}}\\
+ & = & c_{\alpha}^{-2}\frac{1}{1-\alpha^{-2}}\alpha^{-2n_{i}}\\
+ & \overset{\ref{eq:etanadi(D)}}{\leq} & \frac{c_{\alpha}^{-2}}{1-\alpha^{-2}}\frac{1}{i^{2}}\\
+ & = & \frac{c}{i^{2}}
+\end{eqnarray*}
+
 \end{description}
 \end{proof}
+\begin{example}
+\begin{comment}
+3.4
+\end{comment}
+{} Seien $Y_{n}$ mit $n\in\mathbb{N}$ i.i.d. ZVen $Y_{n}\geq0$ mit
+$\mathbb{E}Y_{n}=m$. Definiere
+\begin{eqnarray*}
+X_{n+1} & = & Y_{n}\cdot X_{n}\ (+B_{n})\\
+X_{1} & = & x
+\end{eqnarray*}
+ Dann gilt $\left(x=1\right)$
+\[
+x_{n}=\prod_{i=1}^{n}y_{i},\ \mathbb{E}\left[X_{n}\right]=m^{n}
+\]
+ Wie entwickelt sich 
+\[
+X_{n}\left(\omega\right)\text{ für }n\to\infty?
+\]
+ Spiel: $X_{n}\left(\omega\right)$ EUR-Betrag zur Zeit $n\in\mathbb{N}$.
+Wir setzen jeweils $\frac{1}{2}X_{n}$ ein und 
+\begin{itemize}
+\item gewinnen das $c$-fache des Einsatzes mit Wahrscheinlichkeit $\frac{1}{2}$
+\item verlieren den Einsatz
+\end{itemize}
+\[
+X_{n+1}=\frac{1}{2}X_{n}+\begin{cases}
+c\frac{1}{2}X_{n}\\
+0
+\end{cases}=:Y_{n}\cdot X_{n}
+\]
+Angenommen $\ln Y_{1}\in\mathcal{L}^{1}$. Dann gilt
+\begin{eqnarray*}
+\frac{1}{n}\ln X_{n} & = & \frac{1}{n}\sum_{i=1}^{n}\ln Y_{i}\\
+ & \overset{Kolmogorov}{\longrightarrow} & \mathbb{E}\left[\ln Y_{1}\right]=:\alpha
+\end{eqnarray*}
+ Für $\alpha<0:$ dann existiert $\varepsilon>0$ mit $\alpha+\varepsilon<0$
+und
+\begin{eqnarray*}
+X_{n}\left(\omega\right) & \leq & e^{n\left(\alpha+\varepsilon\right)}\text{für }n\geq N\left(\omega\right)\\
+ & \to & 0\text{ exponentiell schnell}
+\end{eqnarray*}
+ Analog für $\alpha>0$
+\[
+X_{n}\left(\omega\right)\geq e^{n\left(\alpha-\varepsilon\right)}\nearrow\infty
+\]
+ \end{example}
+\begin{fact*}
+$X_{n+1}=Y_{n}X_{n}+B_{n}$ mit $\left(Y_{n},B_{n}\right)$ i.i.d.
+gilt dann $\mathbb{E}\left[\ln Y_{1}\right]<0$ so verhält sich $\left(X_{n}\right)$
+asymptotisch vernünftig (,,stabil``).
+\end{fact*}
+zurück zum Spiel: sie $2<c<3$ Durch direkte Berechnung
+\[
+m=\mathbb{E}\left[Y_{1}\right]>1\text{ da }c>2
+\]
+Also
+\[
+\mathbb{E}\left[X_{n}\right]=m^{n}\nearrow\infty
+\]
+Gleichzeitig gilt 
+\[
+\mathbb{E}\left[\ln Y_{1}\right]<0\text{, da }c<3
+\]
+Damit 
+\[
+X_{n}\left(\omega\right)\to0\ P-f.s.
+\]
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Index
 \printindex{}
 
 \end{document}
