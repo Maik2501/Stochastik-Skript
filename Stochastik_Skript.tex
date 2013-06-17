@@ -48,6 +48,10 @@
   \newtheorem{cor}[thm]{\protect\corollaryname}
   \theoremstyle{plain}
   \newtheorem*{fact*}{\protect\factname}
+  \theoremstyle{plain}
+  \newtheorem*{prop*}{\protect\propositionname}
+  \theoremstyle{plain}
+  \newtheorem*{lem*}{\protect\lemmaname}
 
 
 \makeatother
@@ -59,8 +63,8 @@
   \providecommand{\lemmaname}{Lemma}
   \providecommand{\propositionname}{Satz}
   \providecommand{\remarkname}{Bemerkung}
-  \providecommand{\theoremname}{Theorem}
-
+  \providecommand{\theoremname}{Theorem
+}
 \newcommand{\1}{ \mathbb{1} } %% Indikatorfunktion
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1991,6 +1995,654 @@ Damit
 \[
 X_{n}\left(\omega\right)\to0\ P-f.s.
 \]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  Vorlesung vom 10.6.2013
+
+\marginpar{Vorlesung vom 10.6.2013}
+
+\paragraph*{Motivation: }
+
+Seien $X_{1},X_{2},\ldots$ unabhängig und normalverteilt
+\[
+X_{i}\sim\mathcal{N}\left(m,\sigma^{2}\right)
+\]
+mit unbekannten $m\in\mathbb{R}$ und $\sigma^{2}>0$. Nach Komogorov:
+\[
+m_{n}:=\frac{1}{n}\sum_{i=1}^{n}X_{i}\left(\omega\right)\to m\ \mathbb{P}-f.s.
+\]
+Kolmogorov angewendet auf die $X_{i}^{2}$ liefert 
+\[
+\sigma_{n}^{2}:=\frac{1}{n}\sum\left(X_{i}^{2}-m_{n}\right)\overset{P-f.s.}{\longrightarrow}\sigma^{2}
+\]
+Damit gilt für $f\in C_{b}\left(\mathbb{R}\right)$ auch 
+\[
+\int f\left(x\right)\underset{{\text{Dichte der }\atop \mathcal{N}\left(m_{n}\sigma_{n}^{2}\right)\text{-Verteilung}}}{\underbrace{\varphi_{\left(m_{n},\sigma_{n}^{2}\right)}\left(x\right)}}dx=\int f\left(x\right)\varphi_{\left(m,\sigma^{2}\right)}\left(x\right)dx
+\]
+ nach Lebesque, da 
+\[
+\varphi_{\left(m_{n},\sigma_{n}^{2}\right)}\left(x\right)\overset{f.s.}{\longrightarrow}\varphi_{\left(m,\sigma^{2}\right)}\left(x\right)\ \forall x\in\mathbb{R}
+\]
+und 
+\[
+\varphi_{\left(m_{n},\sigma_{n}^{2}\right)}\left(x\right)\in C_{b}\left(\mathbb{R}\right),\ f\in C_{b}\left(x\right)
+\]
+D.h. wir haben
+\[
+\mathcal{N}\left(m_{n}\left(\omega\right),\sigma_{n}^{2}\left(\omega\right)\right)\overset{f.s.}{\longrightarrow}\mathcal{N}\left(m,\sigma^{2}\right)
+\]
+schwach, d.h. die Folge 
+\[
+\left(\mathcal{N}\left(m_{n}\left(\omega\right),\sigma_{n}^{2}\left(\omega\right)\right)\right)_{n\in\mathbb{N}}
+\]
+konvergiert fast-sicher (bzgl. $\omega\in\Omega$) schwach gegen $\mathcal{N}\left(m,\sigma^{2}\right)$. 
+
+
+\paragraph*{Frage:}
+
+Wie kann man die Verteilung $\mu$ der $X_{i}$ schätzen? Wir wissen
+$\mu=\nu$ falls
+\[
+\mu\left(f\right)=\nu\left(f\right)\ \forall f\in C_{b}\left(\mathbb{R}\right)
+\]
+Wir definieren die \index{empirische Verteilung@empirische\emph{ }Verteilung}\emph{empirische}
+\emph{Verteilung}
+\[
+\rho_{n}\left(\omega,\bullet\right)=\frac{1}{n}\sum_{i=1}\delta_{X_{i}\left(\omega\right)}\left(\bullet\right)
+\]
+mit 
+\[
+\delta_{X}\left(A\right)=\begin{cases}
+1 & \text{falls }x\in A\\
+0 & \text{sonst}
+\end{cases}
+\]
+Für $A\in\mathcal{B}\left(\mathbb{R}\right)$ also
+\begin{eqnarray*}
+\rho_{n}\left(\omega,A\right) & = & \frac{1}{n}\sum_{i=1}^{n}\delta_{X_{i}\left(\omega\right)}\left(A\right)\\
+ & = & \text{relative Häufigkeit eines Besuchs in der Menge }A
+\end{eqnarray*}
+$\rho_{n}\left(\omega_{i}\right)$ ist ein zufäliiges Wahrscheinlichkeitsmaß
+auf $\left(\mathbb{R},\mathcal{B}\left(\mathbb{R}\right)\right)$. 
+
+
+\paragraph*{Frage:}
+
+Konvergiert die Folge 
+\[
+\left(\rho_{n}\left(\omega,\bullet\right)\right)_{n\in\mathbb{N}}
+\]
+gegen $\mu$ und wenn ja in welchem Sinn?
+\begin{prop}
+Für P-fast alle $\omega\in\Omega$ gilt (im Rahmen des Gesetzes von
+Kolmogorov)
+\[
+\rho_{n}\left(\omega,\bullet\right)\overset{w}{\longrightarrow}\mu
+\]
+\end{prop}
+\begin{proof}
+Wir definieren zunächst die empirische Verteilungsfunktion
+\[
+F_{n}:\left(\omega,x\right)=\rho_{n}m(\omega,(-\infty,x])
+\]
+und 
+\[
+F\left(X\right):=\mu\left((-\infty,x]\right)
+\]
+Nach Kolmogorov (angewendet auf die ZVen $\1_{(-\infty,x]}\circ X_{i}$)
+gilt 
+\begin{eqnarray*}
+F_{n}\left(\omega,x\right) & \overset{f.s.}{\longrightarrow} & \mathbb{E}\left[\1_{(-\infty,x]}\circ X_{i}\right]\\
+ & = & P\left[X_{1}\leq X\right]=F\left(X\right)
+\end{eqnarray*}
+D.h. $\forall x\in\mathbb{R}\exists N_{x}\in\mathcal{A}$ mit $P\left(N_{x}\right)=0$,
+sodass 
+\[
+F_{n}\left(\omega,x\right)\to F\left(x\right)\forall\omega\notin N_{x}
+\]
+Wir definieren nun 
+\[
+N=\bigcup_{r\in\mathbb{Q}}N_{r},\ P\left(N\right)=0
+\]
+Seien nun $s,r\in\mathbb{Q}$ mit $s\leq x\leq r$ so gilt für $\omega\notin N$:
+\begin{eqnarray*}
+F\left(s\right) & = & \lim_{n\to\infty}F_{n}\left(\omega,s\right)\leq\liminf_{n\to\infty}F_{n}\left(\omega,x\right)\\
+ & \leq & \limsup_{n\to\infty}F_{n}\left(\omega,x\right)\leq\limsup_{n\to\infty}F_{n}\left(\omega,r\right)\\
+ & = & F\left(r\right)
+\end{eqnarray*}
+Sei nun $F$ in $x$ stetig, wähle 
+\[
+s_{n}\nearrow x,\ r_{n}\searrow x,\ s_{n},r_{n}\in\mathbb{Q}
+\]
+und finde 
+\[
+F_{n}\left(\omega,x\right)\to F\left(x\right)\ \forall\omega\notin N
+\]
+(Portemanteau).
+\end{proof}
+
+\section{Gemeinsame Verteilung und Faltung von Zufallsvariablen}
+
+
+\paragraph*{Bisher: }
+
+Summen unabhängiger/unkorrelierter ZVen
+
+
+\paragraph*{Jetzt:}
+
+Summen abhängiger ZVen (Faltung): Wie berechnet man 
+\[
+S_{n}:=\sum_{i=1}^{n}X_{i}
+\]
+wenn die Verteilung der $X_{i}$ bekannt ist?
+\begin{defn}
+Seien $X_{1}\ldots X_{n}$ reelwertige Zufallsvariablen auf $\left(\Omega,\mathcal{A},P\right)$.
+Dann heißt die Verteilung 
+\[
+\bar{\mu}:=P\circ\bar{X}^{-1}
+\]
+von $\bar{X}\left(\omega\right)=\left(X_{1}\left(\omega\right),\ldots,X_{n}\left(\omega\right)\right)$
+die \emph{gemeinsame Verteilung}\index{gemeinsame Verteilung} der
+$X_{1}\ldots X_{n}$.\end{defn}
+\begin{rem}
+ \ 
+\begin{enumerate}
+\item $\bar{\mu}$ ist als Bildmaß von $\bar{X}$ unter $P$ wohldefiniert.
+\item Nach Satz I.11.5 ist $\bar{\mu}$ eindeutig festgelegt durch
+\[
+\bar{\mu}\left(A_{1}\times\ldots\times A_{n}\right)=P\left(\bigcap_{i=1}^{n}\left\{ X_{i}\in A_{i}\right\} \right)
+\]
+für $A_{i}\in\mathcal{B}\left(\mathbb{R}\right)$ $\left(i=1\ldots n\right)$ 
+\end{enumerate}
+\end{rem}
+
+\subsection{Wiederholung zu Produktmaßen}
+
+Seien $\mu_{1}\ldots\mu_{n}$ W'Maßen auf $\left(\mathbb{R},\mathcal{B}\left(\mathbb{R}\right)\right)$
+sowie $A_{1}\ldots A_{n}\in\mathcal{B}\left(\mathbb{R}\right)$. Wir
+definieren 
+\[
+\underset{\bigotimes_{i=1}^{n}\mu_{i}}{\underbrace{\left(\mu_{1}\otimes\ldots\otimes\mu_{n}\right)}}\left(A_{1}\times\ldots\times A_{n}\right)=\prod_{i=1}^{n}\mu_{i}\left(A_{i}\right)
+\]
+Es existiert eine eindeutige Fortsetzung auf $\left(\mathbb{R}^{n},\mathcal{B}\left(\mathbb{R}^{n}\right)\right)$,
+sodass 
+\[
+\bigotimes_{i=1}^{n}\mu_{i}\left(A\right)=\underset{n-\text{fach }}{\underbrace{\int_{\mathbb{R}}\ldots\int_{\mathbb{R}}}}\1_{A}\left(x_{1}\ldots x_{n}\right)\bigotimes_{i=1}^{n}\mu_{i}\left(dx_{i}\right)
+\]
+
+\begin{prop*}
+(Fubini)\\
+Sei $f:\mathbb{R}^{n}\to\mathbb{R}$ nicht-negativ oder $\bar{\mu}:=\bigotimes_{i=1}^{n}\mu_{i}$
+integrierbar so gilt jede Permutation $i_{1},\ldots,i_{n}$ von $\left\{ 1\ldots n\right\} $
+\[
+\int_{\mathbb{R}^{n}}f\left(x_{1},\ldots,x_{n}\right)\bar{\mu}\left(dx_{1},\ldots,dx_{n}\right)=\int_{\mathbb{R}}\left(\ldots\left(\int_{\mathbb{R}}f\left(x_{1},\ldots,x_{n}\right)\mu_{i_{1}}\left(dx_{i_{1}}\right)\right)\ldots\right)\mu_{i_{n}}\left(dx_{i_{n}}\right)
+\]
+\end{prop*}
+\begin{prop}
+Seien $X_{1}\ldots X_{n}$ ZVen auf $\left(\Omega,\mathcal{A},P\right)$
+mit (Rand-)Verteilungen $\mu_{1}\ldots\mu_{n}$ und gemeinsamer Verteilung
+$\bar{\mu}$. Dann gilt $X_{1}\ldots X_{n}$unabhängig $\Leftrightarrow\bar{\mu}=\bigotimes_{i=1}^{n}\mu_{i}$.
+Insbesondere gilt dann
+\begin{description}
+\item [{i)}] $\bar{\mu}$ ist eindeutig festgelegt durch die $\mu$. 
+\item [{ii)}] Sind die $\mu_{i}$ absolut-stetig mit Dichten $f_{i}$,
+so ist auch $\bar{\mu}$ absolut-stetig mit Dichte
+\begin{eqnarray*}
+\bar{f}\left(\bar{x}\right) & = & \prod_{i=1}^{n}f_{i}\left(x_{i}\right)\\
+\bar{x} & = & \left(x_{1},\ldots,x_{n}\right)
+\end{eqnarray*}
+
+\end{description}
+\end{prop}
+Wir kommen zum Begriff der \index{Faltung}\emph{Faltung} von W'Maßen
+\begin{defn}
+Sei $x\in\mathbb{R}$. Dann heißt 
+\begin{eqnarray*}
+T_{x}:\mathbb{R} & \to & \mathbb{R}\\
+y & \mapsto & x+y
+\end{eqnarray*}
+die \index{Translation}\emph{Translation} (um $x$). Für W'Maße $\mu_{1},\mu_{2}$
+aud $\left(\mathbb{R},\mathcal{B}\left(\mathbb{R}\right)\right)$
+heißt 
+\[
+\left(\mu_{1}*\mu_{2}\right)\left(A\right)=\int_{\mathbb{R}}\left(\mu_{2}\circ T_{x}^{-1}\right)\left(A\right)\mu_{1}\left(dx_{1}\right)
+\]
+die \emph{Faltung}\index{Faltung} von $\mu_{1}$ und $\mu_{2}$.
+\end{defn}
+Es gilt
+\begin{eqnarray*}
+\left(\mu_{1}*\mu_{2}\right)\left(A\right) & = & \int\mu_{2}\left(A-x_{1}\right)\mu_{1}\left(dx_{1}\right)\\
+ & = & \int\mu_{1}\left(dx_{1}\right)\underset{\int\1_{A-x_{1}}\left(x_{2}\right)\mu_{2}\left(dx_{2}\right)}{\underbrace{\mu_{2}\left(A-x_{1}\right)}}\\
+ & = & \int\mu_{1}\left(dx_{1}\right)\int\1_{A-x_{1}}\left(x_{2}\right)\mu_{2}\left(dx_{2}\right)\\
+ & = & \int\mu_{1}\left(dx_{1}\right)\int\1_{A}\left(x_{1}+x_{2}\right)\mu_{2}\left(dx_{2}\right)\\
+ & = & \int\int\1_{A}\left(x_{1}+x_{2}\right)\mu_{1}\left(dx_{1}\right)\mu_{2}\left(dx_{2}\right)
+\end{eqnarray*}
+Mit anderen Worten: Sind $X_{1},X_{2}$ unabhängig, mit Verteilung
+$\mu_{1},\mu_{2}$ so ist 
+\[
+\mu_{1}*\mu_{2}
+\]
+gerade die Verteilung von $X_{1}+X_{2}$\@.
+\begin{prop}
+Seien $X_{1},X_{2}$ unabhängige ZVen mit Verteilung $\mu_{1},\mu_{2}$.
+Dann gilt
+\begin{description}
+\item [{i)}] Die Verteilung von $X_{1}+X_{2}$ ist gegeben durch $\mu_{1}*\mu_{2}$
+\item [{ii)}] Hat $\mu_{2}$ ein Dichte $f_{2}$, so ist $\mu_{1}*\mu_{2}$
+absolut stetig mit $f\left(x\right)=\int f_{2}\left(x-x_{1}\right)\mu_{1}\left(dx_{1}\right)$. 
+\end{description}
+\end{prop}
+\begin{proof}
+\textbf{\textit{i)}}\textit{ klar}
+
+\textbf{ii)} 
+\begin{eqnarray*}
+\left(\mu_{1}*\mu_{2}\right)\left(A\right) & = & \int\mu_{1}\left(dx_{1}\right)\mu_{2}\left(A-x_{1}\right)\\
+ & \overset{Dichte}{=} & \int\mu_{1}\left(dx_{1}\right)\int_{A-x_{1}}f\left(x_{2}\right)dx_{2}\\
+ & \overset{x_{2}=x-x_{1}}{=} & \int\mu_{1}\left(dx_{1}\right)\int_{A}f\left(x-x_{1}\right)dx\\
+ & \overset{Fubini}{=} & \int_{A}\underset{f\left(x\right)}{\underbrace{\left(\int\mu_{1}\left(dx_{1}\right)f_{2}\left(x-x_{1}\right)\right)dx}}
+\end{eqnarray*}
+\end{proof}
+\begin{example}
+ \ 
+\begin{description}
+\item [{i)}] Seien $X_{1},X_{2}$ Poisson verteilt mit Parameter $\lambda_{1},\lambda_{2}$.
+Dann gilt
+\[
+X_{1}+X_{2}\sim\prod\left(\lambda_{1}+\lambda_{2}\right)
+\]
+
+\item [{ii)}] $X_{i}\sim\mathcal{N}\left(m_{i},\sigma_{i}^{2}\right)$
+\[
+X_{1}+X_{2}\sim\mathcal{N}\left(m_{1}+m_{2},\sigma_{1}^{2}+\sigma_{2}^{2}\right)
+\]
+ 
+\end{description}
+\end{example}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  Vorlesung vom 12.6.2013
+
+\section{Charakteristische Funktionen und Fourier Transformation}
+
+\marginpar{Vorlesung vom 12.6.2013} Wir hatten gesehen $X_{1},X_{2}$
+unabhängig mit Verteilungen $\mu_{1},\mu_{2}$. Dann hat $X_{1}+X_{2}$
+die Verteilung
+\[
+\mu_{1}*\mu_{2}\left(A\right)=\int\mu_{1}\left(dx_{1}\right)\mu_{2}\left(A-x_{1}\right)
+\]
+Haben $\mu_{1},\mu_{2}$ Dichten $f_{1},f_{2}$ so gilt $\mu_{1}*\mu_{2}$hat
+dichte $f$ mit 
+\[
+f=f_{1}*f_{2},\ f\left(x\right)=\int f_{1}\left(x_{1}\right)f_{2}\left(x-x_{1}\right)dx
+\]
+Unpraktisch für den Zentralen Grenzwertsatz\index{Zentralen Grenzwertsatz}:
+\[
+\sqrt{n}\sum_{i=1}^{n}\left(X_{i}-\mathbb{E}X_{i}\right)\overset{n\to\infty}{\longrightarrow}?
+\]
+Sei $\mu$ ein W'Maß auf $\left(\mathbb{R},\mathcal{B}\left(\mathbb{R}\right)\right)$.
+Dann ist die charakteristische Funktion gegeben durch 
+\[
+\varphi\left(t\right):=\int_{-\infty}^{\infty}e^{itu}\mu\left(du\right)\ \left(t\in\mathbb{R},i=\sqrt{-1}\right)
+\]
+Es gilt 
+\[
+e^{iu}=\cos\left(u\right)+i\sin\left(u\right)
+\]
+dies liegt auf dem Einheitskreis da
+\[
+\left|e^{i\cdot u}\right|=1
+\]
+Hat eine ZV $X$ die Verteiltung $\mu$, so ist die charakteristische
+Funktion\index{charakteristische Funktion}
+\[
+\varphi_{x}\left(t\right)=\varphi\left(t\right)=\mathbb{E}\left[e^{i\cdot t\cdot X}\right]=\int_{-\infty}^{\infty}e^{i\cdot t\cdot X}\mu\left(dx\right)
+\]
+
+
+
+\paragraph*{Wir werden zeigen:}
+\begin{itemize}
+\item die charakteristische Funktion legt die Verteilung fest.
+\item $\mu_{1}*\mu_{2}$ hat charakteristische Funktion $\varphi_{X_{1}}\cdot\varphi_{X_{2}}$
+\item punktweise Konvergenz von charakteristischen Funktionen impiziert
+schwache Konvergenz der Verteilungen.
+\end{itemize}
+
+\subsection{Momente und Ableitungen}
+
+Es gilt
+\[
+\varphi\left(0\right)=e^{0}=1,\ \left|\varphi\left(t\right)\right|\leq1
+\]
+sowie 
+\begin{eqnarray*}
+\left|\varphi\left(t+\varepsilon\right)-\varphi\left(t\right)\right| & \leq & \int_{-\infty}^{\infty}\left|e^{i\left(t+\varepsilon\right)u}-e^{itu}\right|\mu\left(du\right)\\
+ & \leq & \int_{-\infty}^{\infty}\underset{\leq1}{\underbrace{\left|e^{itu}\right|}}\underset{\nearrow0\text{ für }\varepsilon\to0}{\underbrace{\left|\left(e^{i\varepsilon u}-1\right)\right|}}\mu\left(du\right)\\
+ & \to & 0
+\end{eqnarray*}
+für $\varepsilon\to0$ nach Lebesque. D.h. sie ist gleichmäßig stetig.
+Ferner gilt 
+\begin{equation}
+\int_{0}^{x}\underset{u'}{\underbrace{\left(x-s\right)^{n}}}\underset{v}{\underbrace{e^{is}}}ds=\underset{=\frac{1}{n+1}x^{n+1}+\int_{0}^{x}\frac{i}{n+1}\left(x-s\right)^{n+1}e^{is}ds}{\underbrace{-\frac{1}{n+1}\left(x-s\right)^{n+1}e^{is}|_{0}^{x}}}+\int_{0}^{x}\frac{i}{n+1}\left(x-s\right)^{n+1}e^{is}ds\label{eq:5.1*}
+\end{equation}
+Für $n=0$ gilt
+\begin{eqnarray*}
+\frac{1}{i}e^{iX}-\frac{1}{i} & = & x+i\int_{0}^{X}\left(x-s\right)e^{is}ds\\
+e^{iX} & = & 1+ix+i^{2}\int\ldots ds
+\end{eqnarray*}
+Per Induktion über $n$ folgt
+\[
+e^{iX}=\underset{\mbox{Taylorentwicklung mit}}{\underbrace{\sum_{k=0}^{n}\frac{\left(ix\right)^{k}}{k!}}}+\underset{\mbox{Integraldarstellung für den Rest-Term}}{\underbrace{\frac{i^{n+1}}{n!}\int_{0}^{X}\left(x-s\right)^{n}e^{is}ds}}
+\]
+Mit $\left(n-1\right)$ für $n$ in \ref{eq:5.1*} und einsetzen liefert
+\[
+e^{iX}=\sum_{k=0}^{n}\frac{\left(ix\right)^{k}}{k!}+\frac{i^{n}}{\left(n-1\right)!}\int_{0}^{X}\left(x-s\right)^{n-1}\left(e^{is}-1\right)ds
+\]
+Das liefert folgende Abschätzung:
+\[
+\left|e^{iX}-\sum_{k=0}^{n}\frac{\left(ix\right)^{k}}{k!}\right|\leq\min\left\{ \underset{\mbox{kleine }x}{\underbrace{\frac{\left|X\right|^{n+1}}{\left(n+1\right)!}}},\ \underset{\mbox{große }x}{\underbrace{\frac{2\left|X\right|^{n}}{n!}}}\right\} 
+\]
+Falls $X$ eine ZV ist mit 
+\[
+\mathbb{E}\left|X\right|,\mathbb{E}\left|X\right|^{2},\ldots,\mathbb{E}\left|X\right|^{n+1}<\infty
+\]
+d.h. die ersten $\left(n+1\right)$ Momente existieren, so folgt
+\[
+\left|\varphi\left(t\right)-\sum_{k=0}^{n}\frac{\left(it\right)^{k}}{k!}\mathbb{E}\left[X^{k}\right]\right|\leq\mathbb{E}\left[\min\left\{ \frac{\left|tX\right|^{n+1}}{\left(n+1\right)!},\ \frac{2\left|tX\right|^{n}}{n!}\right\} \right]
+\]
+Gilt nun 
+\[
+\lim_{n\to\infty}\frac{\left|t\right|^{n}\mathbb{E}\left[\left|X\right|^{n}\right]}{n!}=0
+\]
+so haben wir folgende Reihendarstellung. 
+\begin{equation}
+\varphi\left(t\right)=\sum_{k=0}^{\infty}\frac{\left(it\right)^{k}}{k!}\mathbb{E}\left[X^{k}\right]\label{eq:5.1**}
+\end{equation}
+Hat die ZVe $t\cdot X$ ein \index{exponentielles Moment}\emph{exponentielles
+Moment}, d.h. 
+\[
+\mathbb{E}\left[e^{\left|t\cdot X\right|}\right]<\infty
+\]
+so gilt wegen 
+\[
+\mathbb{E}\left[e^{\left|t\cdot X\right|}\right]=\sum_{k=0}^{\infty}\frac{\left|t\right|^{k}}{k!}\mathbb{E}\left[\left|X\right|^{k}\right]<\infty
+\]
+d.h. es gilt Formel \ref{eq:5.1**}. 
+\begin{example}
+(Charakteristische Funktion der Normalverteilung)\\
+Sei $X\sim\mathcal{N}\left(0,1\right)$. Dann gilt in der Tat
+\[
+\mathbb{E}\left[e^{\left|t\cdot X\right|}\right]<\infty
+\]
+Dann gilt 
+\begin{eqnarray*}
+\mathbb{E}\left[\left|X\right|^{p}\right] & = & \int_{-\infty}^{\infty}\left|x\right|^{p}f_{0,1}\left(x\right)dx\\
+ & = & 2\int_{0}^{\infty}x^{p}f_{0,1}\left(x\right)dx\\
+ & = & 2\int_{0}^{\infty}x^{p}\frac{1}{\sqrt{2\pi}}e^{-\frac{x^{2}}{2}}dx
+\end{eqnarray*}
+dabei ist $f_{0,1}$ die Dichte der $\mathcal{N}\left(0,1\right)$
+Verteiltung. Wir substituieren $y=\frac{x^{2}}{2}$
+\[
+=\frac{1}{\sqrt{2\pi}}2^{\frac{p}{2}}\underset{\Gamma\left(\frac{p+1}{2}\right)\mbox{; vgl Blatt 7}}{\underbrace{\int_{0}^{\infty}y^{\frac{p+1}{2}}e^{-y}dy}}
+\]
+Also 
+\[
+\mathbb{E}\left[\left|X\right|^{p}\right]=\frac{1}{\sqrt{\pi}}2^{\frac{p}{2}}\Gamma\left(\frac{p+1}{2}\right)
+\]
+zur Erinnerung
+\[
+\Gamma\left(x+1\right)=x\Gamma\left(x\right),\ \Gamma\left(\frac{1}{2}\right)=\sqrt{\pi}
+\]
+Für $p=2k$ $\left(k=1,2,\ldots\right)$ gilt somit 
+\begin{eqnarray*}
+2^{k}\Gamma\left(\frac{2k+1}{2}\right) & = & 2^{k}\Gamma\left(\frac{2k-1}{2}+1\right)\\
+ & = & 2^{k}\left(\frac{2k-1}{2}\right)\Gamma\left(\frac{2k-1}{2}\right)\\
+ & = & 2^{k-1}\Gamma\left(\frac{2k-1}{2}\right)\\
+ & = & \ldots\\
+ & = & \left(2k-1\right)\left(2k-3\right)\ldots3\cdot1\cdot\Gamma\left(\frac{1}{2}\right)
+\end{eqnarray*}
+Also 
+\[
+\mathbb{E}\left[\left|X\right|^{2k}\right]=\left(2k-1\right)\left(2k-3\right)\cdots5\cdot3\cdot1
+\]
+D.h. für $\varphi\left(t\right)$
+\begin{eqnarray*}
+\varphi\left(t\right) & = & \sum_{k=0}^{\infty}\frac{\left(it\right)^{k}}{k!}\mathbb{E}\left[X^{k}\right]\\
+ & = & \sum_{k=0}^{\infty}\frac{\left(it\right)^{2k}}{\left(2k\right)!}\mathbb{E}\left[X^{2k}\right]\\
+ & = & \sum_{k=0}^{\infty}\left(\frac{-t^{2}}{2}\right)^{k}\underset{=\frac{1}{k!}}{\underbrace{\frac{2^{k}}{(2k)!}\left(2k-1\right)\left(2k-3\right)\cdots3\cdot1}}\\
+ & = & \sum_{k=0}^{\infty}\frac{1}{k!}\left(-\frac{t^{2}}{2}\right)^{k}\\
+ & = & \exp\left(-\frac{t^{2}}{2}\right)
+\end{eqnarray*}
+Mit der Reihendarstellung 
+\[
+\varphi\left(t\right)=\sum_{k=0}^{\infty}\frac{\left(it\right)^{k}}{k!}\mathbb{E}\left[X^{k}\right]
+\]
+gilt
+\[
+\varphi^{(k)}\left(0\right)=i^{k}\mathbb{E}\left[X^{k}\right]
+\]
+ \end{example}
+\begin{lem}
+Es gelte $\mathbb{E}\left[\left|X\right|^{k}\right]<\infty$ so folgt
+\[
+\varphi^{\left(k\right)}\left(0\right)=i^{k}\mathbb{E}\left[X^{k}\right]
+\]
+
+\end{lem}
+
+\paragraph*{Ausblick:}
+
+$\varphi_{x_{1}+\ldots+x_{n}}$ für unabhängige ZVen und $\varphi$
+gibt $\mu$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Vorlesung vom 17.6.2013
+\marginpar{Vorlesung vom 17.6.2013}
+
+
+\paragraph*{Wiederholung (Analysis): }
+
+Die Exponentialfunktion im Komplexen ist 
+\[
+\exp\left(z\right)=\sum_{k=0}^{\infty}\frac{z^{k}}{k!}\ \left(z\in\mathbb{C},z=x+iy;x,y\in\mathbb{R}\right)
+\]
+Für $x\in\mathbb{R}$ sei
+\[
+\cos\left(x\right)=\Re\left(e^{ix}\right),\ \sin\left(x\right)=\Im\left(e^{ix}\right)
+\]
+Es gilt $\left|e^{ix}\right|^{2}=e^{ix}\cdot\overline{e^{ix}}=e^{ix}\cdot e^{-ix}=e^{0}=1$.
+Es gilt also insbesondere 
+\[
+e^{ix}=\cos\left(x\right)+i\sin\left(x\right)
+\]
+Euler-Formel 
+\[
+\cos\left(x\right)=\frac{1}{2}\left(e^{ix}+e^{-ix}\right)
+\]
+$\varphi_{X}\left(t\right)=\mathbb{E}\left[e^{it\cdot X}\right]$
+falls alle $X^{k}\in\mathcal{L}^{1}$ so gilt 
+\[
+\varphi_{X}\left(t\right)=\sum_{k=0}^{\infty}\frac{\left(it\right)^{k}}{k!}\mathbb{E}\left[X^{k}\right]
+\]
+Für $Z\sim\mathcal{N}\left(0,1\right)$ gilt
+\[
+\mathbb{E}\left[e^{\left|t\cdot Z\right|}\right]<\infty
+\]
+Denn 
+\begin{eqnarray*}
+\frac{1}{\sqrt{2\pi}}\int_{\mathbb{R}}e^{\left|x\right|}\cdot e^{-\frac{x^{2}}{2}}dx & = & \frac{2}{\sqrt{2\pi}}\int_{0}^{\infty}e^{x}e^{-\frac{x^{2}}{2}}dx\\
+ & = & \frac{2}{\sqrt{2\pi}}\int_{0}^{\infty}\exp\left(-\frac{1}{2}\left(x-1\right)^{2}\right)\exp\left(\frac{1}{2}\right)dx\\
+ & = & \frac{2e^{1/2}}{\sqrt{2\pi}}\underset{\leq1}{\underbrace{\int_{0}^{\infty}\exp\left(-\frac{1}{2}\left(x-1\right)^{2}\right)dx}}\\
+ & = & \infty
+\end{eqnarray*}
+Angenommen, wir wüssten:
+\begin{itemize}
+\item Für $X_{1}\ldots X_{n}$ unabhängig gilt: $\varphi_{X_{1}+\ldots+X_{n}}\left(t\right)=\prod_{i=1}^{n}\varphi_{X_{i}}\left(t\right)$
+\item $\varphi$ legt $\mu$ eindeutig fest
+\item $\varphi_{n}\left(t\right)\to\varphi\left(t\right)$ $\forall t\in\mathbb{R}$
+$\Rightarrow\left[\mu_{n}\overset{w}{\longrightarrow}\mu\right]$
+\end{itemize}
+Dann erhält man sofort, den \emph{Satz von DeMoivre-Laplace}:
+
+Seien $X_{n}\left(n\in\mathbb{N}\right)$ i.i.d. ZVen mit 
+\[
+\mathbb{P}\left[X_{n}=\pm1\right]=\frac{1}{2}
+\]
+Sei $s_{n}=\sum_{i=1}^{n}X_{i}$ dann 
+\[
+\frac{1}{\sqrt{n}}s_{n}\overset{\mathcal{D}}{\longrightarrow}Z\sim\mathcal{N}\left(0,1\right)
+\]
+
+
+\begin{comment}
+$\frac{s}{n}\approx\frac{1}{\sqrt{n}}\mathcal{N}\left(0,1\right)$
+\end{comment}
+
+\begin{proof}
+Die charakteristische Funktion von $X_{n}$ ist 
+\[
+\varphi\left(t\right)=\int e^{it}\mu\left(dt\right)=\frac{1}{2}\left(e^{it}+e^{-it}\right)=\cos\left(t\right)
+\]
+Also hat $\frac{s_{n}}{\sqrt{n}}$ charakteristische Funktion
+\[
+\varphi^{n}\left(\frac{t}{\sqrt{n}}\right)=\cos^{n}\left(\frac{t}{\sqrt{n}}\right)
+\]
+Wir wollen zeigen:
+\begin{eqnarray*}
+\cos^{n}\left(\frac{t}{\sqrt{n}}\right)\overset{n\to\infty}{\longrightarrow}e^{-\frac{1}{2}t^{2}} & \Leftrightarrow & n\log\left(\cos\left(\frac{t}{\sqrt{n}}\right)\right)\to-\frac{1}{2}t^{2}
+\end{eqnarray*}
+\emph{Erinnerung}: Regel von l'Hospital\\
+Es gilt 
+\[
+\lim_{x\to x_{0}}\frac{f\left(x\right)}{g\left(x\right)}=\lim_{x\to x_{0}}\frac{f'\left(x\right)}{g'\left(x\right)}
+\]
+wenn z.B.
+\[
+\lim_{x\to x_{0}}f\left(x\right)=\lim_{x\to x_{0}}g\left(x\right)=0
+\]
+Es gilt 
+\[
+n\log\left(\cos\left(\frac{t}{\sqrt{n}}\right)\right)\overset{x=\frac{t}{\sqrt{n}}}{=}\frac{t^{2}}{x^{2}}\log\left(\cos\left(x\right)\right)
+\]
+$\lim_{x\to0}\frac{t^{2}}{x^{2}}\log\left(\cos\left(x\right)\right)=\lim_{x\to0}-\frac{t^{2}}{2}\frac{\frac{1}{\cos\left(x\right)}\sin\left(x\right)}{x}=-\frac{t^{2}}{2}\underset{=1}{\underbrace{\lim_{x\to0}\frac{1}{\cos x}}}\underset{=1}{\underbrace{\lim_{x\to0}\frac{\cos x}{1}}}=-\frac{t^{2}}{2}$ 
+\end{proof}
+
+\paragraph*{Unabhängigkeit:}
+
+Seien $X_{1},X_{2}$ unabhängig mit charakteristischen Funktionen
+$\varphi_{1},\varphi_{2}$.
+\[
+\varphi_{j}\left(t\right)=\mathbb{E}\left[e^{itX_{j}}\right]=\mathbb{E}\left[\cos\left(t\cdot X_{j}\right)\right]+i\mathbb{E}\left[\sin\left(t\cdot X_{j}\right)\right]=\mathbb{E}\left[Y_{j}\right]+i\mathbb{E}\left[Z_{j}\right]
+\]
+Dann gilt wegen Unabhängigkeit: 
+\begin{eqnarray*}
+\varphi_{1}\left(t\right)\cdot\varphi_{2}\left(t\right) & = & \left(\mathbb{E}\left[Y_{1}\right]+i\mathbb{E}\left[Z_{1}\right]\right)\left(\mathbb{E}\left[Y_{2}\right]+i\mathbb{E}\left[Z_{2}\right]\right)\\
+ & = & \mathbb{E}\left[Y_{1}Y_{2}-Z_{1}Z_{2}+i\left(Y_{1}Z_{2}+Z_{1}Y_{2}\right)\right]\\
+ & = & \mathbb{E}\left[e^{it\left(X_{1}+X_{2}\right)}\right]
+\end{eqnarray*}
+
+\begin{lem}
+Seien $X_{i}$ $\left(i=1\ldots n\right)$ unabhängig mit charakteristischen
+Funktionen $\varphi_{X_{i}}$. Dann gilt
+\[
+\varphi_{X_{i}+\ldots+X_{n}}\left(t\right)=\prod_{i=1}^{n}\varphi_{X_{i}}\left(t\right)
+\]
+
+\end{lem}
+Wir zeigen nun: $\varphi$ liegt $\mu$ eindeutig fest. Genauer: wir
+finden eine Darstellung
+\[
+\mu\left((a,b]\right)=\int f\left(a,b,t\right)\cdot\varphi\left(t\right)dt
+\]
+Wir betrachten zunächst folgendes Integral
+\[
+S\left(T\right)=\int_{0}^{T}\frac{\sin x}{x}dx
+\]
+
+\begin{lem*}
+Es gilt
+\[
+\lim_{T\to\infty}S\left(T\right)=\frac{\pi}{2}
+\]
+\end{lem*}
+\begin{proof}
+Es gilt
+\[
+\frac{1}{x}=\int_{0}^{\infty}e^{-uX}du
+\]
+Einsetzen erigbt
+\begin{eqnarray*}
+\int_{0}^{T}\frac{\sin x}{x}dx & = & \int_{0}^{T}\sin x\cdot\left(\int_{0}^{\infty}e^{-uX}du\right)dx\\
+ & \overset{\mbox{Fubini}}{=} & \int_{0}^{\infty}\underset{=\frac{1}{1+u^{2}}\left(1-e^{-uT}\left(u\cdot\sin T+\cos T\right)\right)}{\underbrace{\left[\int_{0}^{T}e^{-uX}\cdot\sin x\ dx\right]}}du\\
+ & = & \int_{0}^{\infty}\frac{1}{1+u^{2}}du-\underset{\to0\mbox{ für }T\to\infty\mbox{ nach Lebesque}}{\underbrace{\int_{0}^{\infty}\frac{e^{-uT}\left(u\cdot\sin T+\cos T\right)}{1+u^{2}}du}}
+\end{eqnarray*}
+Also bleibt zu zeigen
+\[
+\int_{0}^{\infty}\frac{1}{1+u^{2}}du=\frac{\pi}{2}
+\]
+Wir wenden die Transformationsformel an:
+\[
+\left[a,b\right]\overset{T}{\longrightarrow}\left[u,v\right]\overset{f}{\longrightarrow}\mathbb{R}
+\]
+\[
+\int_{T_{a}}^{T_{b}}f\left(y\right)dy=\int_{a}^{b}f\left(T_{y}\right)T'y\ dy
+\]
+$f\left(y\right)=\frac{1}{1+y^{2}}$, $a=-\frac{\pi}{2}$, $b=\frac{\pi}{2}$,
+$T\left(x\right)=\tan\left(x\right)$. Mit einsetzen oben erhalten
+wir
+\begin{eqnarray*}
+\int_{T\left(a\right)}^{T\left(b\right)}f\left(y\right)dy & = & \int_{-\infty}^{\infty}\frac{1}{1+y^{2}}dy\\
+ & = & \int_{-\frac{\pi}{2}}^{\frac{\pi}{2}}\frac{1}{1+\tan^{2}\left(y\right)}\left(1+\tan^{2}\left(y\right)\right)dy\\
+ & = & \pi
+\end{eqnarray*}
+Also gilt
+\[
+\int_{0}^{\infty}\frac{1}{1+y^{2}}dy=\frac{\pi}{2}
+\]
+
+\end{proof}
+\begin{comment}
+Kein Klausurbeweis
+\end{comment}
+
+\begin{prop}
+(Eindeutigkeitsatz)\\
+Sei $\mu$ ein Wahrscheinlichkeitsmaß mit charakteristischer Funktion
+$\varphi$ (Fourier-Transformierte). Sei $\mu\left(\left\{ a\right\} \right)=\mu\left(\left\{ b\right\} \right)=0$.
+Dann gilt
+\[
+\mu\left((a,b]\right)=\lim_{T\to\infty}\frac{1}{2\pi}\int_{-T}^{T}\frac{e^{-ita}-e^{-itb}}{it}\varphi\left(t\right)dt
+\]
+Insbesondere legt $\varphi$ das Maß $\mu$ eindeutig fest. \end{prop}
+\begin{proof}
+Eindeitigkeit ist klar. Sei 
+\begin{eqnarray*}
+I_{T} & = & \frac{1}{2\pi}\int_{-T}^{T}\frac{e^{-ita}-e^{-itb}}{i\cdot t}\varphi(t)dt\\
+ & \overset{\mbox{Fubini}}{=} & \frac{1}{2\pi}\int_{-\infty}^{\infty}\left[\int_{-T}^{T}\frac{e^{-it\left(a+x\right)}-e^{-it\left(b+x\right)}}{it}dt\right]\mu\left(dx\right)
+\end{eqnarray*}
+Da $e^{iy}=\cos\left(y\right)+i\sin\left(y\right)$ und $\cos\left(x\right)$
+eine gerade Funktion ist, folgt: 
+\[
+I_{T}=\int_{-\infty}^{\infty}\left[\frac{sgn\left(x-a\right)}{\pi}S\left(T\left|x-a\right|\right)-\frac{sgn\left(x-b\right)}{\pi}S\left(T\left|x-b\right|\right)\right]\mu\left(dx\right)
+\]
+Für $T\to\infty$ konvergiert der Integrand gegen: 
+\[
+\Psi_{a,b}\left(x\right)=\begin{cases}
+0 & x<a\\
+\frac{1}{2} & x=a\\
+1 & a<x<b\\
+\frac{1}{2} & x=b\\
+0 & x>b
+\end{cases}
+\]
+Also gilt 
+\[
+\lim_{T\to\infty}I_{T}=\int_{a}^{b}1d\mu=\mu\left((a,b]\right)
+\]
+da $\mu\left(\left\{ a\right\} \right)=\mu\left(\left\{ b\right\} \right)=0$. 
+\end{proof}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
