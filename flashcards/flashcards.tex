@@ -3,15 +3,48 @@
 % Lernkarten fuer Stochastik I 
 % HU-Berlin 2013
 
-\documentclass[avery5388,grid,frame]{flashcards}
+\documentclass[avery5371,grid,frame]{flashcards} %% avery5371, avery5388, 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Usepackeges
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{makeidx}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{verbatim}
+\usepackage{varioref}
+\usepackage{float}
+\usepackage{amstext}
+\usepackage[unicode=true,
+ bookmarks=true,bookmarksnumbered=false,bookmarksopen=false,
+ breaklinks=true,pdfborder={0 0 0},backref=page,colorlinks=true]
+ {hyperref}
+\usepackage{bbold}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% newcommands
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% flashcard
 \cardfrontstyle[\large\slshape]{headings}
 \cardbackstyle{empty}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Document
 \begin{document}
 
-\cardfrontfoot{Stochstik I (2013)}
+\cardfrontfoot{Stochstik I}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Definitionen
 \begin{flashcard}[Definition]{Ereigniss}
   Eine Teilmenge $A \in \Omega$ heißt ein \underline{\textit{Ereignis}}.\\\\
 Wir sagen, ein Ereignis tritt ein, falls für das realisierte Elementarereignis $\omega \in \Omega$ gilt: $\omega \in A$.\\\\
@@ -20,5 +53,120 @@ ii) sicheres Ereignis: $A=\Omega$\\\\
 iii) $A$ tritt nicht ein $\Leftrightarrow$ $A^c=\Omega\setminus A$ tritt ein \\\\
 \end{flashcard}
 
+\begin{flashcard}[Definition]{$\sigma$-Algebra}
+  $\mathcal{A}\subset \mathcal{P}(\Omega)=$Potenzmenge von $\Omega$ heißt $\sigma$-Algebra, falls gilt:\\\\
+i) $\emptyset \in \mathcal{A}$\\\\
+ii) $A\in \mathcal{A} \Rightarrow A^c \in \mathcal{A}$\\\\
+iii) Sind $(A_i)_{i \in \mathbb{N}} \in \mathcal{A}$, so auch $\bigcup\limits_{i=1}^\infty A_i \in \mathcal{A}$\\\\\\
+\end{flashcard}
+
+
+\begin{flashcard}[Definition]{Verteilungsfunktion}
+  Die Funktion $F:\R \rightarrow [0,1]$ heißt \index{Verteilungsfunktion}Verteilungsfunktion zu $X$ bzw. $\mu$ und ist definiert durch : $F(b):=\mu((-\infty,b])=P(X\leq b)$ für $b \in \R$.\\\\
+\end{flashcard}
+
+\begin{flashcard}{unabhängige ZVen}
+  Eine Familie $\left(X_{i}\right)_{i\in I}$ von Zufallvariabeln auf
+$\left(\Omega,\mathcal{A},\mathbb{P}\right)$ heißt unabhängig, falls
+die von den Zufallsvariablen erzeugten Familie von $\sigma$-Algebren
+$\left(\sigma\left(X_{i}\right)\right)_{i\in I}\ \left(\sigma\left(X_{i}\right)=\left\{ \left\{ x\in A|A\in\mathcal{B}\left(\overline{\mathbb{R}}\right)\right\} \right\} \right)
+$
+unabhängig ist.
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Verteilung}
+  Seien $X_{1}\ldots X_{n}$ reelwertige Zufallsvariablen auf $\left(\Omega,\mathcal{A},P\right)$.
+Dann heißt die Verteilung 
+\[
+\bar{\mu}:=P\circ\bar{X}^{-1}
+\]
+von $\bar{X}\left(\omega\right)=\left(X_{1}\left(\omega\right),\ldots,X_{n}\left(\omega\right)\right)$
+die \emph{gemeinsame Verteilung}\index{gemeinsame Verteilung} der
+$X_{1}\ldots X_{n}$.
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Translation und Faltung}
+  Sei $x\in\mathbb{R}$. Dann heißt 
+\begin{eqnarray*}
+T_{x}:\mathbb{R} & \to & \mathbb{R}\\
+y & \mapsto & x+y
+\end{eqnarray*}
+die \index{Translation}\emph{Translation} (um $x$). Für W'Maße $\mu_{1},\mu_{2}$
+aud $\left(\mathbb{R},\mathcal{B}\left(\mathbb{R}\right)\right)$
+heißt 
+\[
+\left(\mu_{1}*\mu_{2}\right)\left(A\right)=\int_{\mathbb{R}}\left(\mu_{2}\circ T_{x}^{-1}\right)\left(A\right)\mu_{1}\left(dx_{1}\right)
+\]
+die \emph{Faltung}\index{Faltung} von $\mu_{1}$ und $\mu_{2}$.
+\end{flashcard}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Saetze und Lemmata
+
+\begin{flashcard}[Satz]{$\cap$-stabil}
+  Seien $\left(B_{i}\right)_{i\in I}$ durchschnitts-stabile unabhängige
+Mengensysteme. Dann gilt
+\begin{description}
+\item [{(i)}] Die $\sigma$-Algebren $\sigma\left(B_{i}\right)$ mit $i\in I$
+sind unabhängig.
+\item [{(ii)}] Sind $J_{k}$ $k\in\mathcal{K}$ disjunkte (nicht notwendig
+endliche) Teilmengen von $I$, so sind
+$\sigma\left(\bigcup_{l\in J_{k}}B_{l}\right)\ \left(k\in\mathcal{K}\right)$
+unabhängig. \label{s1.2(ii)}
+\end{description}
+\end{flashcard}
+
+\begin{flashcard}[Satz]{0-1 Gesetz von Kolmogorov}
+  Für alle $A\in B_{\infty}$ gilt
+\[
+P\left(A\right)\in\left\{ 0,1\right\} 
+\]
+(kein Zufall mehr auf $B_{\infty}$)
+\end{flashcard}
+
+\begin{flashcard}{Erwartungswert unabhängiger ZVen}
+Seien $X_{1},X_{2},\ldots\geq0$ unabhängig. Dann 
+\[
+\mathbb{E}\left[X_{1}\ldots X_{n}\right]=\prod_{i=1}^{n}\mathbb{E}\left[X_{i}\right]
+\]
+\end{flashcard}
+
+\begin{flashcard}[Satz]{Etanadi}
+  Seien $\left(X_{i}\right)_{i\in\mathbb{N}}$ \emph{paarweise }unabhängig
+in $\mathcal{L}^{1}$, identisch verteilt. Dann gilt \ref{eq:kolmogorov}
+\[
+\frac{1}{n}\sum_{i=1}^{n}X_{i}\to m\ P-f.s.
+\]
+
+\end{flashcard}
+
+\begin{flashcard}[Satz]{Kolmogorov schwache Konvergenz}
+Für P-fast alle $\omega\in\Omega$ gilt (im Rahmen des Gesetzes von
+Kolmogorov)
+\[
+\rho_{n}\left(\omega,\bullet\right)\overset{w}{\longrightarrow}\mu
+\]
+\end{flashcard}
+
+\begin{flashcard}[Satz]{Fubini}
+  Sei $f:\mathbb{R}^{n}\to\mathbb{R}$ nicht-negativ oder $\bar{\mu}:=\bigotimes_{i=1}^{n}\mu_{i}$
+integrierbar so gilt jede Permutation $i_{1},\ldots,i_{n}$ von $\left\{ 1\ldots n\right\} $
+$
+\int_{\mathbb{R}^{n}}f\left(x_{1},\ldots,x_{n}\right)\bar{\mu}\left(dx_{1},\ldots,dx_{n}\right)=\int_{\mathbb{R}}\left(\ldots\left(\int_{\mathbb{R}}f\left(x_{1},\ldots,x_{n}\right)\mu_{i_{1}}\left(dx_{i_{1}}\right)\right)\ldots\right)\mu_{i_{n}}\left(dx_{i_{n}}\right)
+$
+\end{flashcard}
+
+\begin{flashcard}[Satz]{Eindeutigkeitssatz}
+  Sei $\mu$ ein Wahrscheinlichkeitsmaß mit charakteristischer Funktion
+$\varphi$ (Fourier-Transformierte). Sei $\mu\left(\left\{ a\right\} \right)=\mu\left(\left\{ b\right\} \right)=0$.
+Dann gilt
+\[
+\mu\left((a,b]\right)=\lim_{T\to\infty}\frac{1}{2\pi}\int_{-T}^{T}\frac{e^{-ita}-e^{-itb}}{it}\varphi\left(t\right)dt
+\]
+Insbesondere legt $\varphi$ das Maß $\mu$ eindeutig fest. 
+\end{flashcard}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% wichite Bemerkungen
 
 \end{document}
