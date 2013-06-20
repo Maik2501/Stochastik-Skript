@@ -35,17 +35,17 @@
 \theoremstyle{plain}
 \newtheorem{thm}{\protect\theoremname}
   \theoremstyle{definition}
-  \newtheorem{defn}[thm]{\protect\definitionname}
+  \newtheorem{defn}{\protect\definitionname}[section]
   \theoremstyle{plain}
-  \newtheorem{prop}[thm]{\protect\propositionname}
+  \newtheorem{prop}{\protect\propositionname}[section]
   \theoremstyle{definition}
-  \newtheorem{example}[thm]{\protect\examplename}
+  \newtheorem{example}{\protect\examplename}[section]
   \theoremstyle{remark}
-  \newtheorem{rem}[thm]{\protect\remarkname}
+  \newtheorem{rem}{\protect\remarkname}[section]
   \theoremstyle{plain}
-  \newtheorem{lem}[thm]{\protect\lemmaname}
+  \newtheorem{lem}{\protect\lemmaname}[section]
   \theoremstyle{plain}
-  \newtheorem{cor}[thm]{\protect\corollaryname}
+  \newtheorem{cor}{\protect\corollaryname}[section]
   \theoremstyle{plain}
   \newtheorem*{fact*}{\protect\factname}
   \theoremstyle{plain}
@@ -94,8 +94,11 @@
 % \textbf{\S 5 \qquad Elementare Begriffe der Statistik}\\\\
 
 \tableofcontents{}
-\chapter*{\S 1 \qquad Grundbegriffe}
-\Large{\textbf{1.1 Wahrscheinlichkeitsräume}}\normalsize
+\chapter{Grundbegriffe}
+
+\section{Wahrscheinlichkeitsräume}
+\label{sec:wraeume}
+%\Large{\textbf{1.1 Wahrscheinlichkeitsräume}}\normalsize
 \begin{itemize}
 \item Was kann passieren: $\Omega$ (Menge der möglichen Ereignisse)
 \item Mit welchen Wahrscheinlichkeiten passiert etwas:
@@ -238,9 +241,9 @@ lies: die Wahrscheinlichkeit, dass bei unendliche vielen Würfen gleich oft 0 un
 \begin{prop}
   Sei $P_\mathcal{A}\to \mathbb{R}_+$ normiert ($P(\Omega)=1$). Dann sind folgende Aussagen äquivalent:\\\\
   \begin{itemize}
-  \item i) $P$ ist W'Maß\\
-  \item ii) $P$ ist additiv und isoton stetig\\
-  \item iii) $P$ ist additiv und antiton stetig\\
+  \item[i)] $P$ ist W'Maß\\
+  \item[ii)] $P$ ist additiv und isoton stetig\\
+  \item[iii)] $P$ ist additiv und antiton stetig\\
   \end{itemize}
 \end{prop}
 \proof $ $\\
@@ -273,7 +276,11 @@ P\left(\bigcup\limits_{i=1}^\infty A_i\right)=P(B)&=&\lim\limits_{n \to \infty}P
 \end{eqnarray*} 
 Offenbar gilt auch wegen $1=P(\Omega)=P(\emptyset^c)=1-P(\emptyset)$, dass $P(\emptyset)=0$.\\\\
 (iii $\Rightarrow$ i) Folgt wiederum analog durch Übergang zum Komplement. \qed\\\\\\
-\Large{\textbf{1.2 Diskrete Modelle}}\normalsize\\\\
+
+\section{Diskrete Modelle}
+\label{sec:diskrete-modelle}
+%\Large{\textbf{1.2 Diskrete Modelle}}\normalsize\\\\
+
 In diesem Abschnitt ist $\Omega$ stets abzählbar. Wir setzen $\mathcal{A}=\mathcal{P}(\Omega)$.\\\\
 %\textbf{Satz 1.2.1}\\\\
 \begin{prop}
@@ -310,7 +317,7 @@ In diesem Abschnitt ist $\Omega$ stets abzählbar. Wir setzen $\mathcal{A}=\math
 %\textbf{Beispiel 1.2.3}\\\\
 \begin{example}
   \begin{itemize}
-  \item i) Sei $M=\{1,2,\dots,n\}$. Sei weiter $\Omega=$Menge aller Permutationen auf $M$. Offenbar ist dann $|\Omega|=n!$. Wir wählen die Gleichverteilung auf $\Omega$ und definieren:\\\\
+  \item[i)] Sei $M=\{1,2,\dots,n\}$. Sei weiter $\Omega=$Menge aller Permutationen auf $M$. Offenbar ist dann $|\Omega|=n!$. Wir wählen die Gleichverteilung auf $\Omega$ und definieren:\\\\
     Sei $\omega \in \Omega$ in der Darstellung $\omega=(\omega)_{i=1}^n$. Ein Fixpunkt ist ein $i_0 \in M$ mit $\omega_{i_0}=i_0$.\\\\
     Wir stellen uns nun folgende Fragen:\\\\
     $P(\text{mindestens ein Fixpunkt})=P\left(\bigcup\limits_{i=1}^n \{\omega|\omega_i=i\}\right)=$?\\\\
@@ -333,7 +340,7 @@ In diesem Abschnitt ist $\Omega$ stets abzählbar. Wir setzen $\mathcal{A}=\math
     $P($genau k Fixpunkte$)=\underbrace{\dfrac{1}{n!}}_\frac{1}{|\Omega|}\cdot \underbrace{\binom{n}{k}}_{\text{k Stellen fest}}\cdot \underbrace{(n-k)!\sum\limits_{j=0}^{n-k}\dfrac{(-1)^j}{j!}}_{\text{n-k Stellen ohne Fixpunkt}}$\\\\\\
     $=\dfrac{1}{k!}\sum\limits_{j=0}^{n-k}\dfrac{(-1)^j}{j!}$ und für $\overset{n \to \infty}{\rightarrow} \dfrac{1}{k!e}$ \\\\
     Dies führt auf die sogenannte Poisson-Verteilung auf $\mathbb{N}$ mit: $\pi_\lambda(\{k\}=\dfrac{\lambda^k}{e^\lambda k!}$\\\\
-    \item ii) Binomialverteilung\\\\
+    \item[ii)] Binomialverteilung\\\\
     Sei $|S|<\infty$ ein Zustandsraum. (z.B. der Münzwurf mit $S=\{0,1\}$ oder der Würfel mit $S=\{1,2,3,4,5,6\}$)\\\\
     Sei $S_0 \subsetneq S$ die Menge der Erfolge. Wir setzen:\\\\
     $p=\dfrac{|S_0|}{|S|}$\\\\
@@ -370,7 +377,11 @@ d.h. also: $\overline{P}$ ist ein Wahrscheinlichkeitsmaß. Das heißt $T$ induzi
 $(\Omega, \mathcal{A}, P) \overset{T}{\to}(\overline{\Omega},\overline{\mathcal{A}},\overline{\mathcal{P}})$
 \end{center}
 Wir betrachten nun den allgemeinen Fall, wenn $\mathcal{A}$ nicht notwendig $\mathcal{P}(\Omega)$ ist.\\\\
-\Large{\textbf{1.3 Transformation von W'Räumen}}\normalsize\\\\
+
+\section{Transformation von Wahrscheinlichkeitsräumen}
+\label{sec:trafo-wraeume}
+%\Large{\textbf{1.3 Transformation von W'Räumen}}\normalsize\\\\
+
 Seien $(\Omega, \mathcal{A})$ und $(\overline{\Omega},\overline{\mathcal{A}})$ messbare Räume und $T: (\Omega, \mathcal{A}) \to (\overline{\Omega},\overline{\mathcal{A}})$.\\\\
 %\textbf{Definition 1.3.1}\\\\
 \begin{defn}
@@ -455,7 +466,11 @@ Seien $(\Omega, \mathcal{A})$ und $(\overline{\Omega},\overline{\mathcal{A}})$ m
   Allgemeiner: $T^{-1}\left(\bigcap\limits_{i=1}^n\{X_i=x_i\}\right)=$ Intervall der Länge $2^{-n}$ d.h.:\\\\
   $P\left(T^{-1}\left(\bigcap\limits_{i=1}^n\{X_i=x_i\}\right)\right)=2^{-n}$\\\\\\\\
 \end{example}
-\Large{\textbf{1.4 Zufallsvariablen}}\normalsize\\\\
+
+\section{Zufallsvariablen}
+\label{sec:zufallsvariablen}
+%\Large{\textbf{1.4 Zufallsvariablen}}\normalsize\\\\
+
 Sei $(\Omega,\mathcal{A},P)$ ein W'Raum.\\\\
 %\textbf{Definition 1.4.1}\\\\
 \begin{defn}
@@ -657,7 +672,7 @@ $\mathbb{E}X=\sum\limits_{\alpha \in \Omega}\alpha P(\{\omega \in \Omega|X(\omeg
 %\textbf{Beispiel}\\\\
 \begin{example}
   \begin{itemize}
-  \item (i) Fairer MW, $\Omega=\{0,1\}^{\mathbb{N}}$\\\\
+  \item[(i)] Fairer MW, $\Omega=\{0,1\}^{\mathbb{N}}$\\\\
     Sei $T=\min\{k\in \mathbb{N}|\omega_k=1\}$ die Wartezeit auf die erste "1".\\\\
     Es gilt $P(T=k)=P(X_1(\omega)=0,\dots,X_{k-1}(\omega)=0,X_k(\omega)=1)$ wobei $X_i:\Omega \to \{0,1\}$ wieder die Projektionsabbildung auf die $i$-te Koordinate bezeichnet. Dann ist offenbar:\\\\
     $P(T=k)=P(T\geq k+1)=2^{-k}$ d.h. $P(T=0)=0$. Also gilt:\\\\
@@ -665,7 +680,7 @@ $\mathbb{E}X=\sum\limits_{\alpha \in \Omega}\alpha P(\{\omega \in \Omega|X(\omeg
     denn: $\dfrac{q}{1-q}=\sum\limits_{k=1}^\infty q^k \Rightarrow \dfrac{d}{dq}\dfrac{q}{1-q}=\dfrac{d}{dq}\sum\limits_{k=1}^\infty q^k=\sum\limits_{k=1}^\infty \dfrac{d}{dq} q^k=\sum\limits_{k=1}^\infty kq^{k-1}$ (*)\\\\
     und $\dfrac{d}{dq}\dfrac{q}{1-q}=\dfrac{1}{(1-q)^2} (=4$ für $q=\dfrac{1}{2})$\\\\
     Durch Multiplikation mit $q$ erhält man in (*) die gesuchte Reihe.\\\\
-    \item (ii) E'Wert für die Anzahl der Erfolge bei $n \in \mathbb{N}$ Wiederholungen. Sei $S_n=\sum\limits_{i=1}^nX_i$.\\\\
+    \item[(ii)] E'Wert für die Anzahl der Erfolge bei $n \in \mathbb{N}$ Wiederholungen. Sei $S_n=\sum\limits_{i=1}^nX_i$.\\\\
     a) $\mathbb{E}S_n=\sum\limits_{k=1}^n\mathbb{E}X_i=\frac{n}{2}$\\\\
     b)\begin{eqnarray*}
       \mathbb{E}S_n&=&\sum\limits_{k=1}^nkP(S_n=k)\\
@@ -735,8 +750,12 @@ Folgt aus Satz 1.4.12 mit $Y_n=\sum\limits_{i=1}^nX_i \nearrow Y= \sum\limits_{i
   D.h. $\mathbb{E}[\liminf\limits_{n \to \infty} X_n]=\mathbb{E}[\lim\limits_{n \to \infty} X_n]=\mathbb{E}[0]=0$.\\\\
   Gleichzeitig ist aber: $\mathbb{E}[X_n]=2^{n-1}P(T>n-1)=1$\\\\
 \end{rem}
-\Large{\textbf{1.5 Ungleichungen}}\normalsize\\\\\\
+
+\section{Ungleichungen}
+\label{sec:ungleichungen}
+%\Large{\textbf{1.5 Ungleichungen}}\normalsize\\\\\\
 %\textbf{Satz 1.5.1}\\\\
+
 \begin{prop}
   Sei $X$ eine ZV, $h$ eine auf $X(\Omega)$ isotone, nicht negative
   Funktion. Dann gilt für alle $c \in X(\Omega)$:
@@ -829,19 +848,24 @@ $\underbrace{(\mathbb{E}|X|^p)^\frac{1}{p}}_{=:\Vert X\Vert_p}\leq\underbrace{(\
 %\textbf{Definition 1.5.5}\\\\
 \begin{defn}
   Für $p>0$ sei $\mathcal{L}^p=\{X:\Omega \to \mathbb{R}$ mit $\Vert X\Vert_p<\infty\}$ und $L^p=\mathcal{L}^p/\sim$.\\\\
-  \Large{\textbf{1.6 (Co-) Varianz}}\normalsize\\\\\\
-  Ausblick: Wiederholte Experimente
-  \begin{itemize}
-  \item Zufall mittelt sich raus (?)
-    \begin{center}
-      $\frac{1}{n}\sum\limits_{i=1}^nX_i\approx m$ für $ n\to \infty
-      \qquad (\mathbb{E}X_i=m)$
-    \end{center}
-    in welchem Sinn?\\
-    $\Rightarrow$ Konvergenz von Zufallsvariablen
-  \item Wie gut ist diese Approximation? (Zentraler Grenzwertsatz)
-  \end{itemize}
 \end{defn}
+
+\section{(Co-) Varianz}
+\label{sec:varianz}
+%\Large{\textbf{1.6 (Co-) Varianz}}\normalsize\\\\\\
+
+Ausblick: Wiederholte Experimente
+\begin{itemize}
+\item Zufall mittelt sich raus (?)
+  \begin{center}
+    $\frac{1}{n}\sum\limits_{i=1}^nX_i\approx m$ für $ n\to \infty
+    \qquad (\mathbb{E}X_i=m)$
+  \end{center}
+  in welchem Sinn?\\
+  $\Rightarrow$ Konvergenz von Zufallsvariablen
+\item Wie gut ist diese Approximation? (Zentraler Grenzwertsatz)
+\end{itemize}
+
 %\textbf{Definition 1.6.1}\\\\
 Sei $X \in \mathcal{L}^1$, dann heißt 
 \begin{center}
@@ -910,7 +934,11 @@ Damit gilt für unkorrelierte ZVn $X,Y$:
 \begin{center}
 $Var(X+Y)=Var(X)+Var(Y)$
 \end{center} 
-\Large{\textbf{1.7 Das Schwache und Starke Gesetz der großen Zahlen}}\normalsize\\\\\\
+\section{Das Schwache und Starke Gesetz der großen Zahlen}
+\label{sec:gesetz-grosser-zahlen}
+%\Large{\textbf{1.7 Das Schwache und Starke Gesetz der großen
+%Zahlen}}\normalsize\\\\\\
+
 %\textbf{Definition 1.7.0}\\\\
 \begin{defn}
   Es seien $X_1,X_2,\ldots$ ZVn auf $(\Sigma,\mathcal{A},P)$. Wir
@@ -1086,7 +1114,10 @@ Sei $n \geq k_0$ und $k\geq k_0$ mit $k^2<n\leq (k+1)^2$. Dann gilt
     \liminf\limits_{n \to\infty}\dfrac{S_n}{\sqrt{n\log\log n}}&=& -1 \qquad \text{P-fs}
   \end{eqnarray*}
 \end{example}
-\Large{\textbf{1.8. Vergleich von Konvergenzbegriffen}}\normalsize\\\\
+
+\section{Vergleich von Konvergenzbegriffen}
+\label{sec:konvergenz}
+%\Large{\textbf{1.8. Vergleich von Konvergenzbegriffen}}\normalsize\\\\
 %\textbf{Definition 1.8.1}\\\\
 \begin{defn}
   Seien $X_1,X_2,\ldots$ ZVn auf $(\Omega,\mathcal{A},P)$. Die Folge
@@ -1271,7 +1302,7 @@ Also gilt für $n \geq n_0$
 \[\E[|X_n|]=\int\limits_{\{|X_n|\leq \frac{\epsilon}{2}\}}|X_n|dP+\int\limits_{\{|X_n|> \frac{\epsilon}{2}\}}|X_n|dP\leq \frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon \]
 \end{center}
 [Zu $X_n \to 0$ sei $Y_n=X_n-X$ GI]\qed
-\chapter*{\S 9 \qquad Verteilung einer ZV}
+\section{Verteilung einer ZV}
 Sei $(\Omega,\mathcal{A},P)$ ein W'Raum, $X:\Omega \to \overline{\R}$ eine ZV. $\mu$ sei die Verteilung von $X$ unter $P: \mu=P\circ X^{-1}$.\\\\
 Annahme: $P(X\in \R)=1$, also $X$ ist f.s. endlich. $\mu$ ist W'Maß auf $(\R,B(\R))$.\\\\
 %\textbf{Definition 9.1}\\\\
@@ -1508,7 +1539,7 @@ Insgesamt also
 \\\\
 Reminder! Einfügen der Beispiele zu Dichtefunktionen!
 \\\\
-\chapter*{\S 10 \qquad Schwache Konvergenz von W'Maßen}
+\section{Schwache Konvergenz von W'Maßen}
 Sei $(\mu_n)_{n \in \N}$ eine Folge von W'Maßen auf $(\Omega,\mathcal{A})$. Die Forderung
 \begin{center}
 $\mu_n(A) \to \mu(A) \qquad \forall A \in \mathcal{A}$ (Wir schreiben $\mu_n \overset{w}{\to} \mu$)
@@ -1715,10 +1746,10 @@ Dann gilt aber
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Freds LaTeX Code Vorlesung vom 29.5.2013
-\part{Unabhängigkeit}
+\chapter{Unabhängigkeit}
 
 
-\chapter{Unabhängige Ereignisse}
+\section{Unabhängige Ereignisse}
 \marginpar{Vorlesung 29.5.2013}
 Es sei mit $\left(\Omega,\mathcal{A},\mathbb{P}\right)$ ein Wahrscheinlichkeitsraum
 gegeben.
@@ -1911,7 +1942,7 @@ P\left(\bigcap_{m\geq n}A_{m}^{c}\right) & = & \lim_{k\to\infty}P\left(\bigcap_{
 da $\sum P\left(A_{m}\right)=+\infty$
 \end{proof}
 
-\chapter{Unabhängige Zufallsvariablen}
+\section{Unabhängige Zufallsvariablen}
 
 
 \paragraph*{Ziel:}
@@ -2019,7 +2050,7 @@ X\cdot Y\in\mathcal{L}^{1}
 und $\mathbb{E}\left[X\cdot Y\right]=\mathbb{E}\left[X\right]\cdot\mathbb{E}\left[Y\right]$.
 \end{cor}
 
-\chapter{Kolmogorov'sches Gesetz der großen Zahlen}
+\section{Kolmogorov'sches Gesetz der großen Zahlen}
 \begin{prop}
 (Kolmogorov)
 
@@ -2394,7 +2425,7 @@ F_{n}\left(\omega,x\right)\to F\left(x\right)\ \forall\omega\notin N
 (Portemanteau).
 \end{proof}
 
-\chapter{Gemeinsame Verteilung und Faltung von Zufallsvariablen}
+\section{Gemeinsame Verteilung und Faltung von Zufallsvariablen}
 
 
 \paragraph*{Bisher: }
@@ -2430,7 +2461,7 @@ für $A_{i}\in\mathcal{B}\left(\mathbb{R}\right)$ $\left(i=1\ldots n\right)$
 \end{enumerate}
 \end{rem}
 
-\section{Wiederholung zu Produktmaßen}
+\section*{Wiederholung zu Produktmaßen}
 
 Seien $\mu_{1}\ldots\mu_{n}$ W'Maßen auf $\left(\mathbb{R},\mathcal{B}\left(\mathbb{R}\right)\right)$
 sowie $A_{1}\ldots A_{n}\in\mathcal{B}\left(\mathbb{R}\right)$. Wir
@@ -2537,7 +2568,7 @@ X_{1}+X_{2}\sim\mathcal{N}\left(m_{1}+m_{2},\sigma_{1}^{2}+\sigma_{2}^{2}\right)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%  Vorlesung vom 12.6.2013
 
-\chapter{Charakteristische Funktionen und Fourier Transformation}
+\subsection*{Charakteristische Funktionen und Fourier Transformation}
 
 \marginpar{Vorlesung vom 12.6.2013} Wir hatten gesehen $X_{1},X_{2}$
 unabhängig mit Verteilungen $\mu_{1},\mu_{2}$. Dann hat $X_{1}+X_{2}$
@@ -2583,7 +2614,7 @@ Funktion\index{charakteristische Funktion}
 schwache Konvergenz der Verteilungen.
 \end{itemize}
 
-\section{Momente und Ableitungen}
+\subsection*{Momente und Ableitungen}
 
 Es gilt
 \[
