@@ -7,24 +7,28 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 # Variablen
 record = FALSE
-texenv  = "prop"
-# Fuer alle Zeilen im Skript
-File.open('../Stochastik_Skript.tex').each do |line|
-# startet mit \begin{defn}
-  if( line =~ /\\begin\{#{texenv}\}/)
-    record = TRUE
-    puts "\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
-    puts "\\begin{flashcard}[#{texenv}]{???}"
-  end
+texenvs  = ["defn", "prop", "prop*", "lem", "lem*"]
 
-  if( record )
-    # alle zeilen in der mitte ausgeben
-    puts line
-  end
+# Fuer alle Umgebungen (texenv)
+for texenv in texenvs
+  # Fuer alle Zeilen im Skript
+  File.open('../Stochastik_Skript.tex').each do |line|
+    # startet mit \begin{defn}
+    if( line =~ /\\begin\{#{texenv}\}/)
+      record = TRUE
+      puts "\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+      puts "\\begin{flashcard}[#{texenv}]{???}"
+    end
 
-  if( line =~ /\\end\{#{texenv}\}/ )
-    # falls zeile gleich \end{defn}
-    puts "\\end{flashcard}"
-    record = FALSE
+    if( record )
+      # alle zeilen in der mitte ausgeben
+      puts line
+    end
+
+    if( line =~ /\\end\{#{texenv}\}/ )
+      # falls zeile gleich \end{defn}
+      puts "\\end{flashcard}"
+      record = FALSE
+    end
   end
 end
