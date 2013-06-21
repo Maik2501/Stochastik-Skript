@@ -4,16 +4,17 @@
 
 # Dieses Programm erstellt 'Flashcards' aus einem LaTeX Skript
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 # Variablen
 record = FALSE
-
+texenv  = "prop"
 # Fuer alle Zeilen im Skript
 File.open('../Stochastik_Skript.tex').each do |line|
 # startet mit \begin{defn}
-  if( line =~ /\\begin\{prop\}/)
+  if( line =~ /\\begin\{#{texenv}\}/)
     record = TRUE
     puts "\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
-    puts "\\begin{flashcard}[Satz]{???}"
+    puts "\\begin{flashcard}[#{texenv}]{???}"
   end
 
   if( record )
@@ -21,7 +22,7 @@ File.open('../Stochastik_Skript.tex').each do |line|
     puts line
   end
 
-  if( line =~ /\\end\{prop\}/ )
+  if( line =~ /\\end\{#{texenv}\}/ )
     # falls zeile gleich \end{defn}
     puts "\\end{flashcard}"
     record = FALSE
