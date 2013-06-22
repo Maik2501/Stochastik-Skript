@@ -70,7 +70,7 @@ breaklinks=true,pdfborder={0 0 0},backref=page,colorlinks=true]
 \makeindex
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 %% Dokument
-\begin{document}
+\begin {document}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 %% Inhaltsverzeichnis
 
@@ -121,7 +121,7 @@ breaklinks=true,pdfborder={0 0 0},backref=page,colorlinks=true]
   \end{itemize}
 \end{example}
 % \textbf{Definition 1.1.2}\\\\
-\begin{defn}
+\begin{defn} % flashcard-name: Ereignis
   Eine Teilmenge $A \in \Omega$ heißt ein \underline{\textit{Ereignis}}. \index{Ereignis}
   Wir sagen, ein Ereignis tritt ein, falls für das realisierte Elementarereignis $\omega \in \Omega$ gilt: $\omega \in A$.
   \begin{itemize}
@@ -151,7 +151,7 @@ breaklinks=true,pdfborder={0 0 0},backref=page,colorlinks=true]
   \end{itemize}
 \end{example}
 % \textbf{Definition 1.1.4}\\\\
-\begin{defn}
+\begin{defn}  % flashcard-name:  $\sigma$-Algebra
   $\mathcal{A}\subset \mathcal{P}(\Omega)=$Potenzmenge von  $\Omega$ heißt \index{$\sigma$-Algebra}$\sigma$-Algebra, falls gilt: 
   \begin{itemize}
   \item[i)] $\emptyset \in \mathcal{A}$
@@ -177,7 +177,7 @@ breaklinks=true,pdfborder={0 0 0},backref=page,colorlinks=true]
 \end{rem}
 Frage: Wieso gilt $\mathcal{A}\neq \emptyset$? Antwort: Offenbar ist $\mathcal{B}=\mathcal{P}(\Omega)$ eine der $\sigma$-Algebren im Schnitt, außerdem gilt für alle $\mathcal{B}$: $\Omega \in \mathcal{B}$.
 % \textbf{Bemerkung 1.1.6}\\\\
-\begin{rem}
+\begin{rem} 
   Sei $\Omega$ ein topologischer Raum, dann gilt:
   $\mathcal{A}_0=$"Menge der offenen Mengen"
   $\Rightarrow \sigma(\mathcal{A}_0)=$ die von $\mathcal{A}_0$ erzeugte $\sigma$-Algebra ist die Borel-$\sigma$-Algebra
@@ -188,7 +188,7 @@ Frage: Wieso gilt $\mathcal{A}\neq \emptyset$? Antwort: Offenbar ist $\mathcal{B
 \label{sec:resumee}
 Bisher haben wir die Eingangs gestellte Frage "Was kann passieren?" behandelt und als Antwort das Tupel $(\Omega,\mathcal{A})$ erhalten. Hierbei ist $\mathcal{A}$ ein Mengensystem in $\mathcal{P}(\Omega)$, dass in gewisser Weise die Ereignisse repräsentiert welche für uns von Interesse sind. Wir wenden uns nun der Frage ''Mit welchen Wahrscheinlichkeiten passiert etwas?'' zu.\\\\
 % \textbf{Definition 1.1.7}\\\\
-\begin{defn}
+\begin{defn}  % flashcard-name: Wahrscheinlichkeits-Maß
   Sei $\Omega \neq \emptyset$ und $\mathcal{A}\subset
   \mathcal{P}(\Omega)$ eine $\sigma$-Algebra. Eine
   Funktion:\begin{center} $P: \mathcal{A} \rightarrow \mathbb{R}_+$
@@ -247,7 +247,7 @@ lies: die Wahrscheinlichkeit, dass bei unendliche vielen Würfen gleich oft 0 un
   d.h. P ist subadditiv.
 \end{rem}
 % \textbf{Definition 1.1.10}\\\\
-\begin{defn}
+\begin{defn}  % flashcard-name: additiv, iso- und antiton stetig
   Sei $P:\mathcal{A} \to \mathbb{R}_+$ mit $P(\Omega)=1$.
   \begin{itemize}
   \item[i)] $P$ heißt \index{additiv}\underline{additiv} falls: $P(A\cup B)=P(A)+P(B) \qquad \forall~ A,B\in\mathcal{A} $ mit $A\cap B =\emptyset$ gilt. 
@@ -266,7 +266,7 @@ lies: die Wahrscheinlichkeit, dass bei unendliche vielen Würfen gleich oft 0 un
   \end{itemize}
 \end{defn}
 % \textbf{Satz 1.1.11}\\\\
-\begin{prop}
+\begin{prop}  % flashcard-name: Wahrscheinlichkeitsmaß und Stetigkeit
   Sei $P_\mathcal{A}\to \mathbb{R}_+$ normiert ($P(\Omega)=1$). Dann sind folgende Aussagen äquivalent:
   \begin{itemize}
   \item[i)] $P$ ist Wahrscheinlichkeitsmaß \index{Wahrscheinlichkeitsmaß}
@@ -326,7 +326,7 @@ lies: die Wahrscheinlichkeit, dass bei unendliche vielen Würfen gleich oft 0 un
 
 In diesem Abschnitt ist $\Omega$ stets abzählbar. Wir setzen $\mathcal{A}=\mathcal{P}(\Omega)$.
 % \textbf{Satz 1.2.1}\\\\
-\begin{prop}
+\begin{prop}  % flashcard-name: Wahrscheinlichkeitsmaß (1.2.1)
   Sei $\Omega$ abzählbar und $p: \Omega \to [0,1]$ mit
   $\sum\limits_{\omega \in \Omega}p(\omega)=1$. Dann definiert:
   \begin{center}
@@ -442,7 +442,7 @@ Es gilt:
 
 Seien $(\Omega, \mathcal{A})$ und $(\overline{\Omega},\overline{\mathcal{A}})$ messbare Räume und $T: (\Omega, \mathcal{A}) \to (\overline{\Omega},\overline{\mathcal{A}})$.\\\\
 % \textbf{Definition 1.3.1}\\\\
-\begin{defn}
+\begin{defn}  % flashcard-name: messbar
   Die Abbildung $T$ heißt messbar \index{messbar} (oder
   $\mathcal{A}/\overline{\mathcal{A}}$-messbar) wenn gilt:
   \begin{center}
@@ -472,7 +472,7 @@ Seien $(\Omega, \mathcal{A})$ und $(\overline{\Omega},\overline{\mathcal{A}})$ m
   \end{itemize}
 \end{rem}
 % \textbf{Satz 1.3.3}\\\\
-\begin{prop}
+\begin{prop} % flashcard-name: induziertes Wahrscheinlichkeitsmaß
   Sei $T:(\Omega, \mathcal{A})\to(\overline{\Omega},\overline{\mathcal{A}})$ messbar und $P$ ein Wahrscheinlichkeitsmaß auf $(\Omega, \mathcal{A})$. Dann definiert $\overline{P}=T(P)$ ein Wahrscheinlichkeitsmaß auf $(\overline{\Omega},\overline{\mathcal{A}})$.\\
   1.3.4 - 1.3.5 siehe Online-Skript. \url{http://horst.qfl-berlin.de/files/StochastikI_2.pdf}
 \end{prop}
@@ -534,7 +534,7 @@ Seien $(\Omega, \mathcal{A})$ und $(\overline{\Omega},\overline{\mathcal{A}})$ m
 
 Sei $(\Omega,\mathcal{A},P)$ ein Wahrscheinlichkeitsraum.
 % \textbf{Definition 1.4.1}\\\\
-\begin{defn}
+\begin{defn} % flashcard-name: messbare Abbildung
   Eine messbare Abbildung\index{messbare Abbildung}
   \begin{eqnarray*}
     X:(\Omega,\mathcal{A}) \to (\mathbb{R},\mathcal{B}(\mathbb{R}))\\
@@ -579,7 +579,7 @@ Sei $(\Omega,\mathcal{A},P)$ ein Wahrscheinlichkeitsraum.
   \end{center}
 \end{itemize}
 % \textbf{Satz 1.4.3}\\\\
-\begin{prop}
+\begin{prop} % flashcard-name: Zufallsvariable und isotone Folgen 
   Sei $X$ eine Zufallsvariable \index{Zufallsvariable}
   \begin{itemize}
   \item[i)] $X$ ist von der Form $X=X^+-X^-$ wobei $X^+=\max\{X,0\}$ und $X^-=\max\{-X,0\}$
@@ -604,7 +604,7 @@ Ziel ist nun den Erwartungswert von $X$ zu definieren:
 Klar für $X=\1_A$ gilt $\mathbb{E}[\1_A]=P(A)$.
 
 % \textbf{Definition 1.4.4}\\\\
-\begin{defn} \index{Normaldarstellung}
+\begin{defn} \index{Normaldarstellung} % flashcard-name: Normaldarstellung
   Sei $X$ eine reelwertige Zufallsvariable mit
   \begin{center}
     $X=\sum\limits_{i=1}^n\alpha_i\1_{A_i}$ (*) mit $\bigcup_i^\cdot
@@ -613,7 +613,7 @@ Klar für $X=\1_A$ gilt $\mathbb{E}[\1_A]=P(A)$.
   so heißt (*) eine Normaldarstellung. Normaldarstellungen sind nicht eindeutig, es gilt jedoch:
 \end{defn}
 % \textbf{Lemma 1.4.5}\\\\
-\begin{lem}
+\begin{lem}  % flashcard-name: Summen und Grenzwerte von Normaldarstellungen
   Seien $\sum\limits_{i=1}^n \alpha_i \1_{A_i}$ und
   $\sum\limits_{j=1}^m\beta_j\1_{B_j}$ Normaldarstellungen von
   $X$. Dann gilt:
@@ -644,7 +644,7 @@ Klar für $X=\1_A$ gilt $\mathbb{E}[\1_A]=P(A)$.
   \end{eqnarray*}
 \end{proof}
 % \textbf{Definition 1.4.6}\\\\
-\begin{defn} \index{Noramldarstellung} \index{Erwartungswert}
+\begin{defn} \index{Noramldarstellung} \index{Erwartungswert}  % flashcard-name: Erwartungswert
   Ist $X$ eine Zufallsvariable mit Normaldarstellung
   \begin{center}
     $X=\sum\limits_{i=1}^n\alpha_i\1_{A_i}$
@@ -674,7 +674,7 @@ Klar für $X=\1_A$ gilt $\mathbb{E}[\1_A]=P(A)$.
 \end{prop}
 Ziel: Definiere $\mathbb{E}X$ für $X\geq 0$ via Approximation durch elementare Zufallsvariablen $X_n\nearrow X$ und $\mathbb{E}X:=\sup\limits_{n\in \mathbb{N}}\mathbb{E}X_n=\lim\limits_{n\to \infty} \mathbb{E}X_n$
 % \textbf{Lemma 1.4.8}\\\\
-\begin{lem}\label{lem:erwartungswertabschaetzung} \index{Erwartungswertabschätzung}
+\begin{lem}\label{lem:erwartungswertabschaetzung} \index{Erwartungswertabschätzung}  % flashcard-name: Was muss gelten für $\mathbb{E}X\leq \mathbb{E}X_n$
   Seien $(X_n)_{n\in \mathbb{N}}$ und $X$ nichtnegative elementare Zufallsvariablen
   $X_n\nearrow$ und $X\leq \sup\limits_{n\in \mathbb{N}} X_n$. Dann
   gilt:
@@ -683,7 +683,7 @@ Ziel: Definiere $\mathbb{E}X$ für $X\geq 0$ via Approximation durch elementare 
   \end{center}
 \end{lem}
 % \textbf{Korollar 1.4.9}\\\\
-\begin{cor}
+\begin{cor}  % flashcard-name: Was muss gelten, damit  $\sup\limits_{n\in \mathbb{N}}\mathbb{E} X_n=\sup\limits_{n\in \mathbb{N}}\mathbb{E} Y_n$ gilt?
   Seien $(X_n)(Y_n)$ isotone Folgen elementarer Zufallsvariablen mit
   \begin{center}
     $\sup\limits_{n\in \mathbb{N}} X_n=\sup\limits_{n\in \mathbb{N}}
@@ -750,7 +750,7 @@ Ziel: Definiere $\mathbb{E}X$ für $X\geq 0$ via Approximation durch elementare 
 \end{proof}
 Nach Korollar 1.4.9 ergibt folgende Definition Sinn:
 % \textbf{Definition 1.4.10}\\\\
-\begin{defn} \index{Erwartungswert}
+\begin{defn} \index{Erwartungswert} % flashcard-name: Erwartungswert von $X$
   Sei $X\geq 0$ Zufallsvariable auf $(\Omega,\mathcal{A},P)$ und $X_n$ eine Folge
   elementarer Zufallsvariablen mit $X_n\nearrow X$. Dann heißt:
   \begin{center}
@@ -801,7 +801,7 @@ Der Erwartungswert ist ein lineares monotones Funktional. Ist $\Omega<\infty$ so
   \end{center}
 \end{prop}
 % \textbf{Korollar 1.4.13}\\\\
-\begin{cor}
+\begin{cor} % flashcard-name: Vertauschbarkeit von Summen über Erwartungswerte
   Seien $X_n \geq 0$ Zufallsvariablen. Dann gilt:
   \begin{center}
     $\mathbb{E}[\sum\limits_{i=1}^\infty
@@ -813,7 +813,7 @@ Der Erwartungswert ist ein lineares monotones Funktional. Ist $\Omega<\infty$ so
   Folgt aus Satz 1.4.12 mit $Y_n=\sum\limits_{i=1}^nX_i \nearrow Y= \sum\limits_{i=1}^\infty X_i$ 
 \end{proof}
 % \textbf{Definition 1.4.14}\\\\
-\begin{defn} \index{integrierbar}
+\begin{defn} \index{integrierbar} % flashcard-name: Erwartungswert
   Für eine Zufallsvariable $X:\Omega \to \mathbb{R}$ definieren wir den
   Erwartungswert durch:
   \begin{center}
@@ -825,7 +825,7 @@ Der Erwartungswert ist ein lineares monotones Funktional. Ist $\Omega<\infty$ so
   und $\Vert X\Vert_1:=\mathbb{E}[|X|]$. Dann heißt $X$ integrierbar, falls $\Vert X \Vert_1 < \infty$.
   Man beachte, dass aus $\Vert X \Vert_1=0$ nicht $X=0$ folgt. Sei daher:
   $L^1=\mathcal{L}/\sim$ wobei $X\sim Y \Leftrightarrow P(X=Y)=1$
-\end{defn}
+\end{defn} % flashcard-name: Was muss gelten damit ein Vektorraum und eine Halbnorm ein Banachraum ist?
 % \textbf{Satz 1.4.15}\\\\
 \begin{prop}
   $\mathcal{L}^1$ ist ein Vektorraum, $\Vert \cdot \Vert_1$ ist eine Halbnorm und $L^1$ ist ein Banachraum mit der Norm $\Vert \cdot \Vert_1$.
@@ -840,7 +840,7 @@ Der Erwartungswert ist ein lineares monotones Funktional. Ist $\Omega<\infty$ so
   \end{center}
 \end{prop}
 % \textbf{Bemerkung 1.4.17}
-\begin{rem}
+\begin{rem} 
   Es ist möglich, dass $\mathbb{E}[\liminf\limits_{n \to \infty} X_n] < \liminf\limits_{n \to \infty} \mathbb{E}[X_n]$ selbst wenn alle Grenzwerte existieren.\\
   Fairer MW: Verdoppeln des Einsatzes, bis die erste ,,1''
   fällt. Einsatz in Runde $n$:
@@ -860,7 +860,7 @@ Der Erwartungswert ist ein lineares monotones Funktional. Ist $\Omega<\infty$ so
 % \Large{\textbf{1.5 Ungleichungen}}\normalsize\\\\\\
 % \textbf{Satz 1.5.1}\\\\
 
-\begin{prop} \index{Zufallsvariable}
+\begin{prop} \index{Zufallsvariable} % flashcard-name: Wie kann man ein Wahrscheinlichkeitsmaß abschätzen?
   Sei $X$ eine Zufallsvariable, $h$ eine auf $X(\Omega)$ isotone, nicht negative
   Funktion. Dann gilt für alle $c \in X(\Omega)$:
   \begin{center}
@@ -973,7 +973,7 @@ Der Erwartungswert ist ein lineares monotones Funktional. Ist $\Omega<\infty$ so
   \end{center}
 \end{itemize}
 % \textbf{Definition 1.5.5}\\\\
-\begin{defn} \index{$L^p=\mathcal{L}^p/\sim$}
+\begin{defn} \index{$L^p=\mathcal{L}^p/\sim$} % flashcard-name: $L^p=\mathcal{L}^p/\sim$
   Für $p>0$ sei $\mathcal{L}^p=\{X:\Omega \to \mathbb{R}$ mit $\Vert X\Vert_p<\infty\}$ und $L^p=\mathcal{L}^p/\sim$.
 \end{defn}
 
@@ -1038,7 +1038,7 @@ Sei $X \in \mathcal{L}^1$, dann heißt
   Mit Cebysev gilt also: $P\left(\left|\frac{1}{n}S_n-p\right|\geq \varepsilon\right)\leq \frac{1}{\varepsilon^2}\frac{1}{n}p(1-p)$
 \end{example}
 % \textbf{Definition 1.6.4}
-\begin{defn} \index{Ko-Varianz} \index{Varianz}
+\begin{defn} \index{Ko-Varianz} \index{Varianz} % flashcard-name: Varianz und Kovarianz
   \begin{itemize}
   \item Für $X,Y \in \mathcal{L}^2$ ist
     $cov(X,Y)=\mathbb{E}([X-\mathbb{E}X][y-\mathbb{E}Y])$ die
@@ -1067,7 +1067,7 @@ Damit gilt für unkorrelierte Zufallsvariablen $X,Y$:
 % Zahlen}}\normalsize\\\\\\
 
 % \textbf{Definition 1.7.0}\\\\
-\begin{defn} \index{stochastische Konvergenz} \index{p-fast-sicher} \index{Konvergenz im $p$-ten Mittel}
+\begin{defn} \index{stochastische Konvergenz} \index{p-fast-sicher} \index{Konvergenz im $p$-ten Mittel} % flashcard-name: Konvergenz: stoachstische, p-fast-sicher p-ten Mittel
   Es seien $X_1,X_2,\ldots$ Zufallsvariablen auf $(\Sigma,\mathcal{A},P)$. Wir
   sagen:
   \begin{itemize}
@@ -1102,7 +1102,7 @@ Damit gilt für unkorrelierte Zufallsvariablen $X,Y$:
   \end{center}
 \end{defn}
 % \textbf{Satz 1.7.1}\\\\
-\begin{prop} \index{Erwartungswert}
+\begin{prop} \index{Erwartungswert} % flashcard-name: wenn $\lim\limits_{n \to \infty} \dfrac{1}{n}\sum\limits_{i=1}^nVar(X_i)<\infty$ gilt was gilt dann?
   Gilt $\lim\limits_{n \to \infty} \dfrac{1}{n}\sum\limits_{i=1}^nVar(X_i)<\infty$ so gilt $\mathbb{E}[(S_n-\mathbb{E}S_n)^2]\to 0$.
 \end{prop}
 % \textit{Beweis} 
@@ -1265,7 +1265,7 @@ Wir folgern das starke Gesetz der großen Zahlen. \index{starke Gesetz der groß
 \label{sec:konvergenz}
 % \Large{\textbf{1.8. Vergleich von Konvergenzbegriffen}}\normalsize\\\\
 % \textbf{Definition 1.8.1}\\\\
-\begin{defn} \index{konvergenz im $p$-ten Mittel} \index{stochastische Konvergenz}
+\begin{defn} \index{konvergenz im $p$-ten Mittel} \index{stochastische Konvergenz} % flashcard-name: Wann konvergiert die Folge $(X_n)_{n \in \N}$ stochstisch, fast-sicher, im p-ten Mittel
   Seien $X_1,X_2,\ldots$ Zufallsvariablen auf $(\Omega,\mathcal{A},P)$. Die Folge
   $(X_n)_{n \in \N}$ konvergiert
   \begin{itemize}
@@ -1287,7 +1287,7 @@ Wir folgern das starke Gesetz der großen Zahlen. \index{starke Gesetz der groß
   \end{itemize}
 \end{defn}
 % \textbf{Satz 1.8.2}\\\\
-\begin{prop}
+\begin{prop} % flashcard-name: Welche Konvergenz folgt aus welcher
   Für i), ii), iii) wie in vorstehender Definition gilt
   \begin{itemize}
   \item i) $\Rightarrow$ ii)
@@ -1356,7 +1356,7 @@ Wir folgern das starke Gesetz der großen Zahlen. \index{starke Gesetz der groß
 \end{proof}
 Ziel: $L^1$-Konvergenz $\Leftrightarrow$ stochastisch + ,,etwas''
 % \textbf{Definition 1.8.3}\\\\
-\begin{defn}
+\begin{defn}  % flashcard-name: gleichmäßig integrierbar
   Sei $I$ eine Indexmenge. Eine Familie $(X_i)_{i \in I}$ von Zufallsvariablen
   heißt gleichmäßig integrierbar (GI) falls gilt
   \begin{center}
@@ -1366,7 +1366,7 @@ Ziel: $L^1$-Konvergenz $\Leftrightarrow$ stochastisch + ,,etwas''
   \end{center}
 \end{defn}
 % \textbf{Satz 1.8.4} 
-\begin{prop} \index{$L^1$ Konvergenz}  \index{Konvergenz im $p$-ten Mittel}
+\begin{prop} \index{$L^1$ Konvergenz}  \index{Konvergenz im $p$-ten Mittel}  % flashcard-name: $X_n \overset{L^1}{\to} X (\in L^1)$ ist äquivalent zu was?
   \label{prop:LkonvergenzUndPkonvergenz}
   Seien $X_n \in L^1$, dann sind äquivalent
   \begin{itemize}
@@ -1375,7 +1375,7 @@ Ziel: $L^1$-Konvergenz $\Leftrightarrow$ stochastisch + ,,etwas''
   \end{itemize}
 \end{prop}
 % \textbf{Korollar 1.8.5}\\\\
-\begin{cor}
+\begin{cor}  % flashcard-name: Aus $(X_n)$ gleichmäßig integrierbar folgt was?
   Seien $X_n \in L^1$ und $X_n \to X$ f.s., ist $(X_n)$ gleichmäßig integrierbar, so gilt
   \begin{center}
     $\E X_n \to \E X$ für $n \to \infty$
@@ -1465,7 +1465,7 @@ Ziel: $L^1$-Konvergenz $\Leftrightarrow$ stochastisch + ,,etwas''
     &\leq & \sup\limits_{n \in \N} \E[|X_n|]\\
     &\overset{1.8.6}{<}&\infty
   \end{eqnarray*}
-  Also $X \in L^1$.\\\\
+  Also $X \in L^1$.\\
   Wir zeigen nun $L^1$-Konvergenz. Sei dazu o.B.d.A. $\E X_n=0$ (vgl. Übungsblatt 5). Sei $\varepsilon >0$, nach Satz 8.6 existiert ein $\delta >0 $ mit $\int\limits_A|X_n|dP<\varepsilon$ für $P(A)<\delta$. Da $X_n \overset{P}{\to} 0$ existiert ein $n_0= \N$ mit
   \begin{center}
     $P[|X_n|\geq\frac{\varepsilon}{2}]< \delta \qquad \forall n \geq n_0$
@@ -1481,11 +1481,11 @@ Sei $(\Omega,\mathcal{A},P)$ ein Wahrscheinlichkeitsraum, $X:\Omega \to \overlin
 
 \paragraph{Annahme:} $P(X\in \R)=1$, also $X$ ist f.s. endlich. $\mu$ ist Wahrscheinlichkeitsmaß auf $(\R,B(\R))$.
 % \textbf{Definition 9.1}\\\\
-\begin{defn}
+\begin{defn}  % flashcard-name: Verteilungsfunktion
   Die Funktion $F:\R \to [0,1]$ heißt \index{Verteilungsfunktion}Verteilungsfunktion zu $X$ bzw. $\mu$ und ist definiert durch : $F(b):=\mu((-\infty,b])=P(X\leq b)$ für $b \in \R$.
 \end{defn}
 % \textbf{Satz 9.2}\\\\
-\begin{prop} \ \index{isoton} \index{rechtsstetig} \index{normiert} \index{messbar}
+\begin{prop} \ \index{isoton} \index{rechtsstetig} \index{normiert} \index{messbar}  % flashcard-name: Was gilt für rechtsstetig und normiert
   \begin{itemize}
   \item[(i)] $F$ ist isoton: Für $a,b \in \R$ mit $a \leq b$ gilt $F(a)\leq F(b)$\\
     $F$ ist rechtsstetig: $F(a)=\lim\limits_{b\searrow a}F(b)$ (also insbesondere messbar)\\
@@ -1566,7 +1566,7 @@ Sei $(\Omega,\mathcal{A},P)$ ein Wahrscheinlichkeitsraum, $X:\Omega \to \overlin
   Ist $\mu~ \sigma$-additiv, dann gibt es abzählbares $S \subset \R$ mit $\mu(\{x\})=0$ für alle $x \in S^c$, da es höchstens $n$ Punkte gibt mit $\mu(\{x_i\})>n^{-1}$. 
 \end{rem}
 % \textbf{Definition 9.4}\\\\
-\begin{defn} \index{diskret} \index{Sprungfunktion} \index{Treppenfunktion}
+\begin{defn} \index{diskret} \index{Sprungfunktion} \index{Treppenfunktion}  % flashcard-name: Diskret und Treppenfunktionen
   $F$ bzw $\mu$ heißen \underline{diskret}, wenn es eine abzählbare
   Menge $S \subset \R$ mit $\mu(S)=1$ gibt. In diesem Fall gilt: $\mu$
   ist eindeutig bestimmt über $\mu(\{x\})$ für $x \in S$ und $F$ ist
@@ -1582,7 +1582,7 @@ Sei $(\Omega,\mathcal{A},P)$ ein Wahrscheinlichkeitsraum, $X:\Omega \to \overlin
   Dann ist $\mu=\sum\limits_{x \in \mathbb{Q} }dx\delta_x$ und $F(b)=\sum\limits_{\substack{x \in \mathbb{Q}\\ x \leq b}} dx$
 \end{example}
 % \textbf{Definition 9.5}\\\\
-\begin{defn} \index{Dichtefunktion}
+\begin{defn} \index{Dichtefunktion}  % flashcard-name: absolut stetig
   $F$ bzw. $\mu$ heißen \underline{absolut stetig} wenn es eine
   messbare Funktion $f\geq 0$ (genannt \underline{Dichtefunktion})
   gibt, so dass gilt:
@@ -1660,7 +1660,7 @@ Sei $(\Omega,\mathcal{A},P)$ ein Wahrscheinlichkeitsraum, $X:\Omega \to \overlin
 \end{example}
 Berechnung des Erwartungswertes von $h(x)$ für $h \geq 0$ messbar.
 % \textbf{Satz 9.8}\\\\
-\begin{prop}
+\begin{prop}  % flashcard-name: Was ist $\E[h(x)]$
   Sei $h\geq 0$ eine messbare Funktion auf $\R$ und $X$ eine Zufallsvariable. Dann
   gilt
   \begin{eqnarray*}
@@ -1705,7 +1705,7 @@ Berechnung des Erwartungswertes von $h(x)$ für $h \geq 0$ messbar.
 \end{proof}
 
 % \textbf{Proposition 8.10}\\\\
-\begin{prop}
+\begin{prop}  % flashcard-name: $X_n \in \mathcal{L}^1 \forall n\in \mathbb{N}$  und $X_n \overset{f.s.}{\to} X$ . Seien $X_n \geq 0$ dann gilt?
   Seien $X_n \in \mathcal{L}^1$ für alle $n \in \N$ und $X_n
   \overset{f.s.}{\to} X$. Seien $X_n\geq 0$, dann gilt
   \begin{center}
@@ -1744,7 +1744,7 @@ Sei $(\mu_n)_{n \in \N}$ eine Folge von Wahrscheinlichkeitsmaßen auf $(\Omega,\
 \end{center}
 ist häufig zu stark.
 % \textbf{Definition 1.0.1}\\\\
-\begin{defn}
+\begin{defn}  % flashcard-name: Was muss gelten für $\mu_n(f) = \mu(f)$?
   Eine Folge $(\mu_n)_{n \in \N}$ von Wahrscheinlichkeitsmaßen konvergiert schwach
   gegen ein Maß $\mu$ auf $S(,B(S))$ wobei $(S,d)$ ein metrischer Raum
   ist, falls
@@ -1806,7 +1806,7 @@ also
 Falls gilt: $F(b)-F(b_-)=\mu(\{b\})=0$ ist $F$ an der Stelle $b$ stetig und $\mu(\{b\})=\mu(\underbrace{\partial}_{Rand}(-\infty,b])$.\\
 Schlußfolgerung: Unstetigkeitsstellen von $F$ und das Maß von Rändern von Mengen sind wichtig!
 % \textbf{Definition 10.2.1}\\\\
-\begin{defn}
+\begin{defn}  % flashcard-name: Was bedeutet $\mu$-randlos
   Eine Menge $A \in B(S)$ heißt $\mu$-randlos falls
   \begin{center}
     $\mu(\partial A)=0$ 
@@ -1968,7 +1968,7 @@ Schlußfolgerung: Unstetigkeitsstellen von $F$ und das Maß von Rändern von Men
 \marginpar{Vorlesung 29.5.2013}
 Es sei mit $\left(\Omega,\mathcal{A},\mathbb{P}\right)$ ein Wahrscheinlichkeitsraum
 gegeben.
-\begin{defn} \index{unabhängig}
+\begin{defn} \index{unabhängig}  % flashcard-name:  Was bedeutet Unabhängigkeit?
   Eine Familie $\left(A_{i}\right)_{i\in I}$ von Ereignissen heißt
   \emph{unabhängig}, falls gilt
   \begin{equation}
@@ -1978,7 +1978,7 @@ gegeben.
   $\sigma$-Algebren) heißt \emph{unabhängig}, falls \nameref{eq:def1.1}für
   alle $A_{j}\in B_{j}$ gilt.
 \end{defn}
-\begin{prop}
+\begin{prop}  % flashcard-name: Was gilt für durchschnittsstabile Mengensysteme?
   Seien $\left(B_{i}\right)_{i\in I}$ durchschnitts-stabile unabhängige
   Mengensysteme. Dann gilt
   \begin{itemize}
@@ -2058,8 +2058,7 @@ gegeben.
     oft vor) 
   \end{itemize}
 \end{rem}
-\begin{prop}
-  (0-1-Gesetz von Kolmogorov) %
+\begin{prop}[0-1-Gesetz von Kolmogorov]
   \begin{comment}
     Eigentlich Satz 1.6
   \end{comment}
@@ -2094,7 +2093,7 @@ gegeben.
   ist $B_{\infty}$ und $B_{\infty}$ unabhängig. Rest mit folgendem
   Lemma.
 \end{proof}
-\begin{lem}
+\begin{lem}  % flashcard-name:   Sei $B\subset\mathcal{A}$ eine $\sigma$-Algebra mit $B$ unabhängig von $B$. Dann gilt?
   Sei $B\subset\mathcal{A}$ eine $\sigma$-Algebra mit $B$ unabhängig
   von $B$. Dann gilt:
   \[
@@ -2183,7 +2182,7 @@ verteilt (iid). Dann gilt
 \underset{\text{empirisches Mittel}}{\frac{1}{n}\sum_{i=1}^{n}X_{i}}\to\mathbb{E}\left[X_{1}\right]=:m
 \]
 Empirisches Mittel $\to$erwartetes Resultat eines einzelnen Versuches.
-\begin{defn}
+\begin{defn}  % flashcard-name: Wie ist Unabhängigkeit definiert?
   Eine Familie $\left(X_{i}\right)_{i\in I}$ von Zufallvariabeln auf
   $\left(\Omega,\mathcal{A},\mathbb{P}\right)$ heißt unabhängig, falls
   die von den Zufallsvariablen erzeugten Familie von $\sigma$-Algebren
@@ -2213,7 +2212,7 @@ Empirisches Mittel $\to$erwartetes Resultat eines einzelnen Versuches.
   \sigma\left(y_{i}\subseteq\sigma\left(X_{I}\right)\right)
   \]
 \end{proof}
-\begin{prop}
+\begin{prop}  % flashcard-name:   Seien $X_{1},X_{2},\ldots\geq0$ unabhängig. Dann?
   Seien $X_{1},X_{2},\ldots\geq0$ unabhängig. Dann 
   \[
   \mathbb{E}\left[X_{1}\ldots X_{n}\right]=\prod_{i=1}^{n}\mathbb{E}\left[X_{i}\right]
@@ -2266,7 +2265,7 @@ Empirisches Mittel $\to$erwartetes Resultat eines einzelnen Versuches.
     Aber $X,Y$ nicht unabhängig!
   \end{itemize}
 \end{rem}
-\begin{cor}
+\begin{cor} % flashcard-name:   Seien $X,Y\in\mathcal{L}^{1}$ unabhängig. Dann gilt?
   Seien $X,Y\in\mathcal{L}^{1}$ unabhängig. Dann gilt
   \[
   X\cdot Y\in\mathcal{L}^{1}
@@ -2275,8 +2274,7 @@ Empirisches Mittel $\to$erwartetes Resultat eines einzelnen Versuches.
 \end{cor}
 
 \section{Kolmogorov'sches Gesetz der großen Zahlen}
-\begin{prop}[Kolmogorov] \index{Kolmogorov}
-
+\begin{prop}[Kolmogorov] \index{Kolmogorov} % flashcard-name: Für $(X_i)_{i\in\mathbb{N}}\in\mathbb{L}^1$. Dann gilt?
   Seien $\left(X_{i}\right)_{i\in\mathbb{N}}$ i.i.d. Zufallsvariablen in $\mathcal{L}^{1}$
   mit $m:=\mathbb{E}\left[X_{i}\right]$ $i\in\mathbb{N}$. Dann gilt
   \begin{equation}
@@ -2598,7 +2596,7 @@ Konvergiert die Folge
 \left(\rho_{n}\left(\omega,\bullet\right)\right)_{n\in\mathbb{N}}
 \]
 gegen $\mu$ und wenn ja in welchem Sinn?
-\begin{prop}
+\begin{prop}  % flashcard-name: P-fast alle $\omega \in \Omega$ sind im Rahmen des Gesetzes von Klomogorov?
   Für P-fast alle $\omega\in\Omega$ gilt (im Rahmen des Gesetzes von
   Kolmogorov)
   \[
@@ -2661,7 +2659,7 @@ Summen abhängiger Zufallsvariablen (Faltung): Wie berechnet man
 S_{n}:=\sum_{i=1}^{n}X_{i}
 \]
 wenn die Verteilung der $X_{i}$ bekannt ist?
-\begin{defn}
+\begin{defn}   % flashcard-name: Wie ist Verteilung definiert?
   Seien $X_{1}\ldots X_{n}$ reelwertige Zufallsvariablen auf $\left(\Omega,\mathcal{A},P\right)$.
   Dann heißt die Verteilung 
   \[
@@ -2704,7 +2702,7 @@ sodass
   \int_{\mathbb{R}^{n}}f\left(x_{1},\ldots,x_{n}\right)\bar{\mu}\left(dx_{1},\ldots,dx_{n}\right)=\int_{\mathbb{R}}\left(\ldots\left(\int_{\mathbb{R}}f\left(x_{1},\ldots,x_{n}\right)\mu_{i_{1}}\left(dx_{i_{1}}\right)\right)\ldots\right)\mu_{i_{n}}\left(dx_{i_{n}}\right)
   \]
 \end{prop*}
-\begin{prop}
+\begin{prop} % flashcard-name: Was gilt für ZVen mit gemeinsamer Verteilung?
   Seien $X_{1}\ldots X_{n}$ Zufallsvariablen auf $\left(\Omega,\mathcal{A},P\right)$
   mit (Rand-)Verteilungen $\mu_{1}\ldots\mu_{n}$ und gemeinsamer Verteilung
   $\bar{\mu}$. Dann gilt $X_{1}\ldots X_{n}$unabhängig $\Leftrightarrow\bar{\mu}=\bigotimes_{i=1}^{n}\mu_{i}$.
@@ -2721,7 +2719,7 @@ sodass
   \end{itemize}
 \end{prop}
 Wir kommen zum Begriff der \index{Faltung}\emph{Faltung} von Wahrscheinlichkeitsmaßen
-\begin{defn}
+\begin{defn} % flashcard-name: Wie ist Translation definiert?
   Sei $x\in\mathbb{R}$. Dann heißt 
   \begin{eqnarray*}
     T_{x}:\mathbb{R} & \to & \mathbb{R}\\
@@ -2749,7 +2747,7 @@ $\mu_{1},\mu_{2}$ so ist
 \mu_{1}*\mu_{2}
 \]
 gerade die Verteilung von $X_{1}+X_{2}$\@.
-\begin{prop}
+\begin{prop} % Name: Verteilungen und Dichten
   Seien $X_{1},X_{2}$ unabhängige Zufallsvariablen mit Verteilung $\mu_{1},\mu_{2}$.
   Dann gilt
   \begin{itemize}
@@ -2948,7 +2946,7 @@ d.h. es gilt Formel \ref{eq:5.1**}.
   \varphi^{(k)}\left(0\right)=i^{k}\mathbb{E}\left[X^{k}\right]
   \]
 \end{example}
-\begin{lem}
+\begin{lem} % flashcard-name: gilt $\mathbb{E}\left[\left|X\right|^{k}\right]<\infty$ folgt was?
   Es gelte $\mathbb{E}\left[\left|X\right|^{k}\right]<\infty$ so folgt
   \[
   \varphi^{\left(k\right)}\left(0\right)=i^{k}\mathbb{E}\left[X^{k}\right]
@@ -3067,7 +3065,7 @@ Dann gilt wegen Unabhängigkeit:
   & = & \mathbb{E}\left[e^{it\left(X_{1}+X_{2}\right)}\right]
 \end{eqnarray*}
 
-\begin{lem}
+\begin{lem} % flashcard-name: Was gilt für unabhängige ZVen $(X_i)$ mit charakteristischen Funktionen $\phi_X_i$
   Seien $X_{i}$ $\left(i=1\ldots n\right)$ unabhängig mit charakteristischen
   Funktionen $\varphi_{X_{i}}$. Dann gilt
   \[
@@ -3085,7 +3083,7 @@ Wir betrachten zunächst folgendes Integral
 S\left(T\right)=\int_{0}^{T}\frac{\sin x}{x}dx
 \]
 
-\begin{lem*}
+\begin{lem*} % flashcard-name:  Was gilt für den Grenzwert \[\lim_{T\to\infty}\int_{0}^{T}\frac{\sin x}{x}dx\left(T\right)=\frac{\pi}{2}\]
   Es gilt
   \[
   \lim_{T\to\infty}S\left(T\right)=\frac{\pi}{2}
