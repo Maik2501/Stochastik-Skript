@@ -547,8 +547,8 @@ Sei $(\Omega,\mathcal{A},P)$ ein Wahrscheinlichkeitsraum.
 \begin{rem}
   \begin{itemize}
   \item[i)] $X: \Omega \to \overline{\mathbb{R}}$ ist eine ZV (=Zufallsvariable) falls $\{X\leq c\} \in \mathcal{A}$ für alle $c \in \mathbb{Q}$
-  \item[ii)] Ist $X$ eine ZV und $h:\overline{\mathbb{R}} \to \overline{\mathbb{R}}$ messbar, so auch $h\circ X$. Bsp.:$h(x)=|x|, h(x)=x^2, h(x)=e^x$
-  \item[iii)] Sind $X_1,X_2,\dots$ ZVen, so auch:
+  \item[ii)] Ist $X$ eine Zufallsvariable und $h:\overline{\mathbb{R}} \to \overline{\mathbb{R}}$ messbar, so auch $h\circ X$. Bsp.:$h(x)=|x|, h(x)=x^2, h(x)=e^x$
+  \item[iii)] Sind $X_1,X_2,\dots$ Zufallsvariablen, so auch:
     \begin{itemize}
     \item $\sum\limits_{i=1}^\infty \alpha_i X_i$, insofern dies Sinn
       macht, da $\infty-\infty$ unbestimmt ist.
@@ -572,7 +572,7 @@ Sei $(\Omega,\mathcal{A},P)$ ein Wahrscheinlichkeitsraum.
       0 \text{ für } \omega \notin A
     \end{cases}$
   \end{center}
-  \item[ii)] Elementare ZVen\index{elementare Zufallsvariable}
+  \item[ii)] Elementare Zufallsvariablen\index{elementare Zufallsvariable}
   \begin{center}
     $X=\sum\limits_{i=1}^n \alpha_i \1_{A_i}$ für $A_i \in \mathcal{A},
     \alpha_i \in \mathbb{R}$
@@ -580,10 +580,10 @@ Sei $(\Omega,\mathcal{A},P)$ ein Wahrscheinlichkeitsraum.
 \end{itemize}
 %\textbf{Satz 1.4.3}\\\\
 \begin{prop}
-  Sei $X$ eine ZV \index{Zufallsvariable}
+  Sei $X$ eine Zufallsvariable \index{Zufallsvariable}
   \begin{itemize}
     \item[i)] $X$ ist von der Form $X=X^+-X^-$ wobei $X^+=\max\{X,0\}$ und $X^-=\max\{-X,0\}$
-    \item[ii)] Für jede ZV $X\geq0$ existiert eine isotone $X_n \nearrow X$ von elementaren ZV.
+    \item[ii)] Für jede Zufallsvariable $X\geq0$ existiert eine isotone $X_n \nearrow X$ von elementaren Zufallsvariable.
   \end{itemize}
 \end{prop}
 %\textit{Beweis}\\\\
@@ -605,7 +605,7 @@ Sei $(\Omega,\mathcal{A},P)$ ein Wahrscheinlichkeitsraum.
 
 %\textbf{Definition 1.4.4}\\\\
 \begin{defn} \index{Normaldarstellung}
-  Sei $X$ eine reelwertige ZV mit
+  Sei $X$ eine reelwertige Zufallsvariable mit
   \begin{center}
     $X=\sum\limits_{i=1}^n\alpha_i\1_{A_i}$ (*) mit $\bigcup_i^\cdot
     A_i=\Omega$
@@ -645,7 +645,7 @@ Es gilt:
 \end{proof}
 %\textbf{Definition 1.4.6}\\\\
 \begin{defn} \index{Noramldarstellung} \index{Erwartungswert}
-  Ist $X$ eine ZV mit Normaldarstellung
+  Ist $X$ eine Zufallsvariable mit Normaldarstellung
   \begin{center}
     $X=\sum\limits_{i=1}^n\alpha_i\1_{A_i}$
   \end{center}
@@ -672,10 +672,10 @@ Es gilt:
       0} \Rightarrow \mathbb{E}[Y]\geq \mathbb{E}[X]\]
   \end{itemize}
 \end{prop}
-Ziel: Definiere $\mathbb{E}X$ für $X\geq 0$ via Approximation durch elementare ZVn $X_n\nearrow X$ und $\mathbb{E}X:=\sup\limits_{n\in \mathbb{N}}\mathbb{E}X_n=\lim\limits_{n\to \infty} \mathbb{E}X_n$
+Ziel: Definiere $\mathbb{E}X$ für $X\geq 0$ via Approximation durch elementare Zufallsvariablen $X_n\nearrow X$ und $\mathbb{E}X:=\sup\limits_{n\in \mathbb{N}}\mathbb{E}X_n=\lim\limits_{n\to \infty} \mathbb{E}X_n$
 %\textbf{Lemma 1.4.8}\\\\
 \begin{lem}\label{lem:erwartungswertabschaetzung} \index{Erwartungswertabschätzung}
-  Seien $(X_n)_{n\in \mathbb{N}}$ und $X$ nichtnegative elementare ZVn
+  Seien $(X_n)_{n\in \mathbb{N}}$ und $X$ nichtnegative elementare Zufallsvariablen
   $X_n\nearrow$ und $X\leq \sup\limits_{n\in \mathbb{N}} X_n$. Dann
   gilt:
   \begin{center}
@@ -684,7 +684,7 @@ Ziel: Definiere $\mathbb{E}X$ für $X\geq 0$ via Approximation durch elementare 
 \end{lem}
 %\textbf{Korollar 1.4.9}\\\\
 \begin{cor}
-  Seien $(X_n)(Y_n)$ isotone Folgen elementarer ZVn mit
+  Seien $(X_n)(Y_n)$ isotone Folgen elementarer Zufallsvariablen mit
   \begin{center}
     $\sup\limits_{n\in \mathbb{N}} X_n=\sup\limits_{n\in \mathbb{N}}
     Y_n$
@@ -751,8 +751,8 @@ Ziel: Definiere $\mathbb{E}X$ für $X\geq 0$ via Approximation durch elementare 
 Nach Korollar 1.4.9 ergibt folgende Definition Sinn:
 %\textbf{Definition 1.4.10}\\\\
 \begin{defn} \index{Erwartungswert}
-  Sei $X\geq 0$ ZV auf $(\Omega,\mathcal{A},P)$ und $X_n$ eine Folge
-  elementarer ZVn mit $X_n\nearrow X$. Dann heißt:
+  Sei $X\geq 0$ Zufallsvariable auf $(\Omega,\mathcal{A},P)$ und $X_n$ eine Folge
+  elementarer Zufallsvariablen mit $X_n\nearrow X$. Dann heißt:
   \begin{center}
     $\mathbb{E}X=\sup\limits_{n\in
       \mathbb{N}}\mathbb{E}X_n=\lim\limits_{n \to
@@ -794,7 +794,7 @@ d.h. $P(T=0)=0$. Also gilt:
 \end{example}
 %\textbf{Satz 1.4.12} \textit{Satz von der monotonen Konvergenz}\\\\
 \begin{prop}[Satz von der monotonen Konvergenz]
-  Seien $X_n\geq 0$ ZVn $(n \in \mathbb{N})$ mit $X_n \nearrow X$,
+  Seien $X_n\geq 0$ Zufallsvariablen $(n \in \mathbb{N})$ mit $X_n \nearrow X$,
   dann gilt:
   \begin{center}
     $\mathbb{E}X_n \nearrow \mathbb{E}X$
@@ -802,7 +802,7 @@ d.h. $P(T=0)=0$. Also gilt:
 \end{prop}
 %\textbf{Korollar 1.4.13}\\\\
 \begin{cor}
-  Seien $X_n \geq 0$ ZVn. Dann gilt:
+  Seien $X_n \geq 0$ Zufallsvariablen. Dann gilt:
   \begin{center}
     $\mathbb{E}[\sum\limits_{i=1}^\infty
     X_i]=\sum\limits_{i=1}^\infty\mathbb{E}[X_i]$
@@ -814,14 +814,14 @@ d.h. $P(T=0)=0$. Also gilt:
 \end{proof}
 %\textbf{Definition 1.4.14}\\\\
 \begin{defn} \index{integrierbar}
-  Für eine ZV $X:\Omega \to \mathbb{R}$ definieren wir den
+  Für eine Zufallsvariable $X:\Omega \to \mathbb{R}$ definieren wir den
   Erwartungswert durch:
   \begin{center}
     $\mathbb{E}X=\mathbb{E}X^+-\mathbb{E}X^-$
   \end{center}
   sofern $\min\{\mathbb{E}X^+,\mathbb{E}X^-\}<\infty$.
   Wir setzen
-  \[p\mathcal{L}^1:=\{X:\Omega \to \mathbb{R}\] ZV mit $\mathbb{E}[|X|]< \infty \}$
+  \[p\mathcal{L}^1:=\{X:\Omega \to \mathbb{R}\] Zufallsvariable mit $\mathbb{E}[|X|]< \infty \}$
   und $\Vert X\Vert_1:=\mathbb{E}[|X|]$. Dann heißt $X$ integrierbar, falls $\Vert X \Vert_1 < \infty$.
   Man beachte, dass aus $\Vert X \Vert_1=0$ nicht $X=0$ folgt. Sei daher:
   $L^1=\mathcal{L}/\sim$ wobei $X\sim Y \Leftrightarrow P(X=Y)=1$
@@ -832,7 +832,7 @@ d.h. $P(T=0)=0$. Also gilt:
 \end{prop}
 %\textbf{Satz 1.4.16} \textit{Lemma von Fatou}\\\\
 \begin{prop}[Lemma von Fatou]
-  Seien $X_n\geq 0$ ZVn (Es reicht auch $X_n \geq Y \in L^1$). Dann
+  Seien $X_n\geq 0$ Zufallsvariablen (Es reicht auch $X_n \geq Y \in L^1$). Dann
   gilt:
   \begin{center}
     $\mathbb{E}[\liminf\limits_{n \to \infty} X_n]\leq
@@ -861,7 +861,7 @@ d.h. $P(T=0)=0$. Also gilt:
 %\textbf{Satz 1.5.1}\\\\
 
 \begin{prop} \index{Zufallsvariable}
-  Sei $X$ eine ZV, $h$ eine auf $X(\Omega)$ isotone, nicht negative
+  Sei $X$ eine Zufallsvariable, $h$ eine auf $X(\Omega)$ isotone, nicht negative
   Funktion. Dann gilt für alle $c \in X(\Omega)$:
   \begin{center}
     $h(c)P(X\geq c) \leq \mathbb{E}[h(X)]$
@@ -1057,7 +1057,7 @@ Für alle $a,b \in \mathbb{R}$ gilt:
 \item $Var(aX+b)=a^2Var(X)$
 \item $Var(X+Y)=Var(X)+Var(Y)+2cov(X,y)$
 \end{itemize}
-Damit gilt für unkorrelierte ZVn $X,Y$:
+Damit gilt für unkorrelierte Zufallsvariablen $X,Y$:
 \begin{center}
 $Var(X+Y)=Var(X)+Var(Y)$
 \end{center} 
@@ -1068,11 +1068,11 @@ $Var(X+Y)=Var(X)+Var(Y)$
 
 %\textbf{Definition 1.7.0}\\\\
 \begin{defn} \index{stochastische Konvergenz} \index{p-fast-sicher} \index{Konvergenz im $p$-ten Mittel}
-  Es seien $X_1,X_2,\ldots$ ZVn auf $(\Sigma,\mathcal{A},P)$. Wir
+  Es seien $X_1,X_2,\ldots$ Zufallsvariablen auf $(\Sigma,\mathcal{A},P)$. Wir
   sagen:
   \begin{itemize}
   \item $(X_i)_{i \in \mathbb{N}}$ konvergiert stochastisch (in
-    W'keit) gegen eine ZV $X$ falls $\forall\varepsilon >0$ gilt:
+    W'keit) gegen eine Zufallsvariable $X$ falls $\forall\varepsilon >0$ gilt:
     \begin{center}
       $\lim\limits_{n \to \infty}P(\{|X_n-X|\geq \varepsilon\})=0$
     \end{center}
@@ -1091,7 +1091,7 @@ $Var(X+Y)=Var(X)+Var(Y)$
     wir schreiben in diesem Fall $\Vert X_n-X\Vert_p \to 0$.\\
   \end{itemize}
   Annahme für den Rest des Kapitels:\\
-  Gegeben eine Folge paarweise unkorrelierter ZVn $(X_i)_{i \in
+  Gegeben eine Folge paarweise unkorrelierter Zufallsvariablen $(X_i)_{i \in
     \mathbb{N}}$ d.h.
   \begin{center}
     $cov(X_i,X_j)=0 \qquad \forall i\neq j$
@@ -1136,7 +1136,7 @@ $\sum\limits_{i=1}^\infty P(A_i) < \infty $
 dann treten nur endlich viele $A_i$ ein.
 %\textbf{Lemma 1.7.3} \textit{Schnelle stochastische Konvergenz impliziert fs-Konvergenz}\\\\
 \begin{lem}[Schnelle stochastische Konvergenz impliziert fs-Konvergenz] \index{Schnelle stochastische Konvergenz impliziert fs-Konvergenz}
-  Seien $Z_1, Z_2,\ldots$ ZVn auf $(\Omega,\mathcal{A},P)$, so dass
+  Seien $Z_1, Z_2,\ldots$ Zufallsvariablen auf $(\Omega,\mathcal{A},P)$, so dass
   für alle $\varepsilon >0$ gilt $\sum\limits_{k=0}^\infty P(\{|Z_k|\geq
   \varepsilon\})< \infty $. Dann gilt
   \begin{center}
@@ -1266,14 +1266,14 @@ Wir folgern das starke Gesetz der großen Zahlen. \index{starke Gesetz der groß
 %\Large{\textbf{1.8. Vergleich von Konvergenzbegriffen}}\normalsize\\\\
 %\textbf{Definition 1.8.1}\\\\
 \begin{defn} \index{konvergenz im $p$-ten Mittel} \index{stochastische Konvergenz}
-  Seien $X_1,X_2,\ldots$ ZVn auf $(\Omega,\mathcal{A},P)$. Die Folge
+  Seien $X_1,X_2,\ldots$ Zufallsvariablen auf $(\Omega,\mathcal{A},P)$. Die Folge
   $(X_n)_{n \in \N}$ konvergiert
   \begin{itemize}
   \item[i)] im $p$-ten Mittel gegen $X \in \mathcal{L}^p$ falls
     \begin{center}
       $\E[|X_n-X|^p] \to \infty$ für $n \to \infty$
     \end{center}
-  \item[ii)] stochastisch (in Wahrscheinlichkeit) gegen eine ZV $X$
+  \item[ii)] stochastisch (in Wahrscheinlichkeit) gegen eine Zufallsvariable $X$
     falls
     \begin{center}
       $P[|X_n-X|\geq \varepsilon ] \overset{n \to \infty}{\to} 0\qquad
@@ -1357,7 +1357,7 @@ $|\E[X_n]-\E[X] \leq \E|X_n-X| \to 0$
 Ziel: $L^1$-Konvergenz $\Leftrightarrow$ stochastisch + ,,etwas''
 %\textbf{Definition 1.8.3}\\\\
 \begin{defn}
-  Sei $I$ eine Indexmenge. Eine Familie $(X_i)_{i \in I}$ von ZVn
+  Sei $I$ eine Indexmenge. Eine Familie $(X_i)_{i \in I}$ von Zufallsvariablen
   heißt gleichmäßig integrierbar (GI) falls gilt
   \begin{center}
     $\lim\limits_{c \to \infty} \sup\limits_{i \in I}
@@ -1387,7 +1387,7 @@ Ziel: $L^1$-Konvergenz $\Leftrightarrow$ stochastisch + ,,etwas''
 \end{rem}
 %\textbf{Satz 1.8.6} \textit{$\varepsilon - \delta$ Kriterium für GI}\\\\
 \begin{prop} [$\varepsilon - \delta$ Kriterium für Gleichmäßige Integrierbarkeit]
-  Seien $(X_i)_{i \in I}$ ZVn auf $(\Omega, \mathcal{A},P)$. Dann sind
+  Seien $(X_i)_{i \in I}$ Zufallsvariablen auf $(\Omega, \mathcal{A},P)$. Dann sind
   äquivalent
   \begin{itemize}
   \item[i)] $(X_i)_{i \in I}$ ist gleichmäßig integrierbar
@@ -1476,8 +1476,8 @@ Also gilt für $n \geq n_0$
 \end{center}
 [Zu $X_n \to 0$ sei $Y_n=X_n-X$ gleichmäßig integrierbar]
 \end{proof}
-\section{Verteilung einer ZV}
-Sei $(\Omega,\mathcal{A},P)$ ein Wahrscheinlichkeitsraum, $X:\Omega \to \overline{\R}$ eine ZV. $\mu$ sei die Verteilung von $X$ unter $P: \mu=P\circ X^{-1}$.
+\section{Verteilung einer Zufallsvariable}
+Sei $(\Omega,\mathcal{A},P)$ ein Wahrscheinlichkeitsraum, $X:\Omega \to \overline{\R}$ eine Zufallsvariable. $\mu$ sei die Verteilung von $X$ unter $P: \mu=P\circ X^{-1}$.
 
 \paragraph{Annahme:} $P(X\in \R)=1$, also $X$ ist f.s. endlich. $\mu$ ist Wahrscheinlichkeitsmaß auf $(\R,B(\R))$.
 %\textbf{Definition 9.1}\\\\
@@ -1536,7 +1536,7 @@ Sei $(\Omega,\mathcal{A},P)$ ein Wahrscheinlichkeitsraum, $X:\Omega \to \overlin
 %\textbf{Bemerkungen}\\\\
 \begin{rem}
   \begin{itemize}
-  \item[(i)] Sei $Y$ eine ZV mit Gleichverteilung auf $(0,1)$,
+  \item[(i)] Sei $Y$ eine Zufallsvariable mit Gleichverteilung auf $(0,1)$,
     z.B. $(\Omega,\mathcal{A},P)=((0,1),B((0,1)),\lambda_{|(0,1)})$
     dann hat $G(Y)$ die Verteilung $\mu$.
   \item[(ii)] Manche Autoren definieren die Verteilungsfunktion $F$
@@ -1641,7 +1641,7 @@ Sei $(\Omega,\mathcal{A},P)$ ein Wahrscheinlichkeitsraum, $X:\Omega \to \overlin
       f(x)dx=F(k)-F(k-1)=e^{-\alpha(k-1)}(1-e^{-\alpha}) \qquad (*)\]
 
     setze $p=1-e^{-\alpha} \Rightarrow (*)=(1-p)^{k-1}p=P[X=k]$ für
-    geometrisch verteilte ZV $X$ mit Parameter $p$
+    geometrisch verteilte Zufallsvariable $X$ mit Parameter $p$
   \item[(iii)] Normalverteilung mit Parameter $m \in \R$ und
     $\sigma^2>0$. $N(m,\sigma^2)$:
     \begin{align*}
@@ -1661,7 +1661,7 @@ Sei $(\Omega,\mathcal{A},P)$ ein Wahrscheinlichkeitsraum, $X:\Omega \to \overlin
 Berechnung des Erwartungswertes von $h(x)$ für $h \geq 0$ messbar.
 %\textbf{Satz 9.8}\\\\
 \begin{prop}
-  Sei $h\geq 0$ eine messbare Funktion auf $\R$ und $X$ eine ZV. Dann
+  Sei $h\geq 0$ eine messbare Funktion auf $\R$ und $X$ eine Zufallsvariable. Dann
   gilt
   \begin{eqnarray*}
     \E[h(x)] &=& \int\limits_{-\infty}^{\infty} h(x) \mu(dx)\\
@@ -1814,7 +1814,7 @@ Schlußfolgerung: Unstetigkeitsstellen von $F$ und das Maß von Rändern von Men
   wobei $\partial A$ den Rand von $A$ bezeichnet
 \end{defn}
 %\textbf{Satz 10.3} \textit{Portemanteau-Theorem}\\\\
-\begin{prop}
+\begin{prop}[Portemanteau-Theorem] \index{Portemanteau-Theorem}
   Die folgenden Aussagen sind äquivalent
   \begin{itemize}
   \item[1)] $\mu_n \overset{w}{\to} \mu$
@@ -1981,7 +1981,7 @@ alle $A_{j}\in B_{j}$ gilt.
 \begin{prop}
 Seien $\left(B_{i}\right)_{i\in I}$ durchschnitts-stabile unabhängige
 Mengensysteme. Dann gilt
-\begin{description}
+\begin{itemize}
 \item [{(i)}] Die $\sigma$-Algebren $\sigma\left(B_{i}\right)$ mit $i\in I$
 sind unabhängig.
 \item [{(ii)}] Sind $J_{k}$ $k\in\mathcal{K}$ disjunkte (nicht notwendig
@@ -1990,7 +1990,7 @@ endliche) Teilmengen von $I$, so sind
 \sigma\left(\bigcup_{l\in J_{k}}B_{l}\right)\ \left(k\in\mathcal{K}\right)
 \]
 unabhängig. \label{s1.2(ii)}
-\end{description}
+\end{itemize}
 \end{prop}
 \begin{proof}
 \textbf{\emph{(i)}} Seien $A_{j1}\in\sigma\left(B_{j1}\right),\ldots$
@@ -2110,16 +2110,14 @@ P\left(A\right) & = & P\left(A\cap A\right)=P\left(A\right)^{2}\\
  \end{proof}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Fred LaTeX der Vorlesung vom 3.6.2013
-\begin{lem}
-(Borel-Cantelli) \marginpar{Vorlesung vom 3.6.2013}
-
+\begin{lem}[Borel-Cantelli] \marginpar{Vorlesung vom 3.6.2013}
 Seien $\left(A_{i}\right)_{i\in\mathbb{N}}$ Ereignisse
-\begin{description}
+\begin{itemize}
 \item [{(i)}] $\sum_{i\in\mathbb{N}}P\left(A_{i}\right)<\infty\Rightarrow$$P($unendlich
 viele $A_{i}$ treten ein$)=0$
 \item [{(ii)}] $\sum_{i\in\mathbb{N}}P\left(A_{i}\right)=+\infty$ und
 die $A_{i}$ sind unabhängig $\Rightarrow P\left(\limsup A_{i}\right)=1$
-\end{description}
+\end{itemize}
 \end{lem}
 \begin{proof}
 \textbf{\textit{(i)}}\textit{ hatten wir schon.}
@@ -2248,22 +2246,25 @@ folgt dann
  & \overset{\text{monotone}}{\underset{Konvergenz}{=}} & \mathbb{E}\left[X\right]\cdot\mathbb{E}\left[Y\right]
 \end{eqnarray*}
 \end{proof}
-\begin{rem}
-\textbf{(i)} Da $X,Y\in\mathcal{L}^{2}$
-\[
-\mathbb{E}\left[X\cdot Y\right]=\mathbb{E}\left[X\right]\mathbb{E}\left[Y\right]+2cov\left(X,Y\right)
-\]
-gilt Unabhängigkeit$\Rightarrow$Unkorreliert.\\
-\textbf{(ii)} Die Umkehrung gilt i.d.R. nicht
-\[
-X\sim\mathcal{N}\left(0,1\right)\ y=x^{2}
-\]
-Dann gilt
-\begin{eqnarray*}
-\mathbb{E}\left[X\cdot Y\right] & = & \mathbb{E}\left[X^{3}\right]=0\\
- & = & \mathbb{E}\left[X\right]\mathbb{E}\left[X^{2}\right]
-\end{eqnarray*}
-Aber $X,Y$ nicht unabhängig!
+\begin{rem} \ 
+  \begin{itemize}
+    \item[(i)] Da $X,Y\in\mathcal{L}^{2}$
+    \[
+    \mathbb{E}\left[X\cdot
+      Y\right]=\mathbb{E}\left[X\right]\mathbb{E}\left[Y\right]+2cov\left(X,Y\right)
+    \]
+    gilt Unabhängigkeit$\Rightarrow$Unkorreliert.
+    \item[(ii)] Die Umkehrung gilt i.d.R. nicht
+    \[
+    X\sim\mathcal{N}\left(0,1\right)\ y=x^{2}
+    \]
+    Dann gilt
+    \begin{eqnarray*}
+      \mathbb{E}\left[X\cdot Y\right] & = & \mathbb{E}\left[X^{3}\right]=0\\
+      & = & \mathbb{E}\left[X\right]\mathbb{E}\left[X^{2}\right]
+    \end{eqnarray*}
+    Aber $X,Y$ nicht unabhängig!
+  \end{itemize}
 \end{rem}
 \begin{cor}
 Seien $X,Y\in\mathcal{L}^{1}$ unabhängig. Dann gilt
@@ -2274,10 +2275,9 @@ und $\mathbb{E}\left[X\cdot Y\right]=\mathbb{E}\left[X\right]\cdot\mathbb{E}\lef
 \end{cor}
 
 \section{Kolmogorov'sches Gesetz der großen Zahlen}
-\begin{prop}
-(Kolmogorov)
+\begin{prop}[Kolmogorov] \index{Kolmogorov}
 
-Seien $\left(X_{i}\right)_{i\in\mathbb{N}}$ i.i.d. ZVen in $\mathcal{L}^{1}$
+Seien $\left(X_{i}\right)_{i\in\mathbb{N}}$ i.i.d. Zufallsvariablen in $\mathcal{L}^{1}$
 mit $m:=\mathbb{E}\left[X_{i}\right]$ $i\in\mathbb{N}$. Dann gilt
 \begin{equation}
 \frac{1}{n}\sum_{i=1}^{n}X_{i}\to m\ P-f.s.\label{eq:kolmogorov}
@@ -2285,8 +2285,7 @@ mit $m:=\mathbb{E}\left[X_{i}\right]$ $i\in\mathbb{N}$. Dann gilt
 
 \end{prop}
 
-\begin{prop}
-(Etenadi)
+\begin{prop}[Etemadi] \index{Etemadi}
 
 Seien $\left(X_{i}\right)_{i\in\mathbb{N}}$ \emph{paarweise }unabhängig
 in $\mathcal{L}^{1}$, identisch verteilt. Dann gilt \ref{eq:kolmogorov}
@@ -2294,12 +2293,11 @@ in $\mathcal{L}^{1}$, identisch verteilt. Dann gilt \ref{eq:kolmogorov}
 \frac{1}{n}\sum_{i=1}^{n}X_{i}\to m\ P-f.s.
 \]
 \end{prop}
-\begin{proof}
-(Etanadi)
+\begin{proof}[Etemadi] \index{Etemadi}
 
 Es seien oBdA $X_{i}\geq0$ (sonst auf $X_{i}^{+}$ und $X_{i}^{-}$
 getrennt anwenden).
-\begin{description}
+\begin{itemize}
 \item [{(A)}] Wir zeigen zunächst: wir können die $X_{i}$ abschneiden.
 Sei dazu 
 \begin{eqnarray*}
@@ -2453,13 +2451,13 @@ und somit
  & = & \frac{c}{i^{2}}
 \end{eqnarray*}
 
-\end{description}
+\end{itemize}
 \end{proof}
 \begin{example}
 \begin{comment}
 3.4
 \end{comment}
-{} Seien $Y_{n}$ mit $n\in\mathbb{N}$ i.i.d. ZVen $Y_{n}\geq0$ mit
+{} Seien $Y_{n}$ mit $n\in\mathbb{N}$ i.i.d. Zufallsvariablen $Y_{n}\geq0$ mit
 $\mathbb{E}Y_{n}=m$. Definiere
 \begin{eqnarray*}
 X_{n+1} & = & Y_{n}\cdot X_{n}\ (+B_{n})\\
@@ -2616,7 +2614,7 @@ und
 \[
 F\left(X\right):=\mu\left((-\infty,x]\right)
 \]
-Nach Kolmogorov (angewendet auf die ZVen $\1_{(-\infty,x]}\circ X_{i}$)
+Nach Kolmogorov (angewendet auf die Zufallsvariablen $\1_{(-\infty,x]}\circ X_{i}$)
 gilt 
 \begin{eqnarray*}
 F_{n}\left(\omega,x\right) & \overset{f.s.}{\longrightarrow} & \mathbb{E}\left[\1_{(-\infty,x]}\circ X_{i}\right]\\
@@ -2645,7 +2643,7 @@ und finde
 \[
 F_{n}\left(\omega,x\right)\to F\left(x\right)\ \forall\omega\notin N
 \]
-(Portemanteau).
+(Portemanteau). \index{Portemanteau-Theorem}
 \end{proof}
 
 \section{Gemeinsame Verteilung und Faltung von Zufallsvariablen}
@@ -2653,12 +2651,12 @@ F_{n}\left(\omega,x\right)\to F\left(x\right)\ \forall\omega\notin N
 
 \paragraph*{Bisher: }
 
-Summen unabhängiger/unkorrelierter ZVen
+Summen unabhängiger/unkorrelierter Zufallsvariablen
 
 
 \paragraph*{Jetzt:}
 
-Summen abhängiger ZVen (Faltung): Wie berechnet man 
+Summen abhängiger Zufallsvariablen (Faltung): Wie berechnet man 
 \[
 S_{n}:=\sum_{i=1}^{n}X_{i}
 \]
@@ -2699,8 +2697,7 @@ sodass
 \bigotimes_{i=1}^{n}\mu_{i}\left(A\right)=\underset{n-\text{fach }}{\underbrace{\int_{\mathbb{R}}\ldots\int_{\mathbb{R}}}}\1_{A}\left(x_{1}\ldots x_{n}\right)\bigotimes_{i=1}^{n}\mu_{i}\left(dx_{i}\right)
 \]
 
-\begin{prop*}
-(Fubini)\\
+\begin{prop*}[Fubini] \index{Fubini}
 Sei $f:\mathbb{R}^{n}\to\mathbb{R}$ nicht-negativ oder $\bar{\mu}:=\bigotimes_{i=1}^{n}\mu_{i}$
 integrierbar so gilt jede Permutation $i_{1},\ldots,i_{n}$ von $\left\{ 1\ldots n\right\} $
 \[
@@ -2708,11 +2705,11 @@ integrierbar so gilt jede Permutation $i_{1},\ldots,i_{n}$ von $\left\{ 1\ldots 
 \]
 \end{prop*}
 \begin{prop}
-Seien $X_{1}\ldots X_{n}$ ZVen auf $\left(\Omega,\mathcal{A},P\right)$
+Seien $X_{1}\ldots X_{n}$ Zufallsvariablen auf $\left(\Omega,\mathcal{A},P\right)$
 mit (Rand-)Verteilungen $\mu_{1}\ldots\mu_{n}$ und gemeinsamer Verteilung
 $\bar{\mu}$. Dann gilt $X_{1}\ldots X_{n}$unabhängig $\Leftrightarrow\bar{\mu}=\bigotimes_{i=1}^{n}\mu_{i}$.
 Insbesondere gilt dann
-\begin{description}
+\begin{itemize}
 \item [{i)}] $\bar{\mu}$ ist eindeutig festgelegt durch die $\mu$. 
 \item [{ii)}] Sind die $\mu_{i}$ absolut-stetig mit Dichten $f_{i}$,
 so ist auch $\bar{\mu}$ absolut-stetig mit Dichte
@@ -2721,7 +2718,7 @@ so ist auch $\bar{\mu}$ absolut-stetig mit Dichte
 \bar{x} & = & \left(x_{1},\ldots,x_{n}\right)
 \end{eqnarray*}
 
-\end{description}
+\end{itemize}
 \end{prop}
 Wir kommen zum Begriff der \index{Faltung}\emph{Faltung} von Wahrscheinlichkeitsmaßen
 \begin{defn}
@@ -2753,13 +2750,13 @@ $\mu_{1},\mu_{2}$ so ist
 \]
 gerade die Verteilung von $X_{1}+X_{2}$\@.
 \begin{prop}
-Seien $X_{1},X_{2}$ unabhängige ZVen mit Verteilung $\mu_{1},\mu_{2}$.
+Seien $X_{1},X_{2}$ unabhängige Zufallsvariablen mit Verteilung $\mu_{1},\mu_{2}$.
 Dann gilt
-\begin{description}
+\begin{itemize}
 \item [{i)}] Die Verteilung von $X_{1}+X_{2}$ ist gegeben durch $\mu_{1}*\mu_{2}$
 \item [{ii)}] Hat $\mu_{2}$ ein Dichte $f_{2}$, so ist $\mu_{1}*\mu_{2}$
 absolut stetig mit $f\left(x\right)=\int f_{2}\left(x-x_{1}\right)\mu_{1}\left(dx_{1}\right)$. 
-\end{description}
+\end{itemize}
 \end{prop}
 \begin{proof}
 \textbf{\textit{i)}}\textit{ klar}
@@ -2774,7 +2771,7 @@ absolut stetig mit $f\left(x\right)=\int f_{2}\left(x-x_{1}\right)\mu_{1}\left(d
 \end{proof}
 \begin{example}
  \ 
-\begin{description}
+\begin{itemize}
 \item [{i)}] Seien $X_{1},X_{2}$ Poisson verteilt mit Parameter $\lambda_{1},\lambda_{2}$.
 Dann gilt
 \[
@@ -2786,7 +2783,7 @@ X_{1}+X_{2}\sim\prod\left(\lambda_{1}+\lambda_{2}\right)
 X_{1}+X_{2}\sim\mathcal{N}\left(m_{1}+m_{2},\sigma_{1}^{2}+\sigma_{2}^{2}\right)
 \]
  
-\end{description}
+\end{itemize}
 \end{example}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2822,7 +2819,7 @@ dies liegt auf dem Einheitskreis da
 \[
 \left|e^{i\cdot u}\right|=1
 \]
-Hat eine ZV $X$ die Verteiltung $\mu$, so ist die charakteristische
+Hat eine Zufallsvariable $X$ die Verteiltung $\mu$, so ist die charakteristische
 Funktion\index{charakteristische Funktion}
 \[
 \varphi_{x}\left(t\right)=\varphi\left(t\right)=\mathbb{E}\left[e^{i\cdot t\cdot X}\right]=\int_{-\infty}^{\infty}e^{i\cdot t\cdot X}\mu\left(dx\right)
@@ -2872,7 +2869,7 @@ Das liefert folgende Abschätzung:
 \[
 \left|e^{iX}-\sum_{k=0}^{n}\frac{\left(ix\right)^{k}}{k!}\right|\leq\min\left\{ \underset{\mbox{kleine }x}{\underbrace{\frac{\left|X\right|^{n+1}}{\left(n+1\right)!}}},\ \underset{\mbox{große }x}{\underbrace{\frac{2\left|X\right|^{n}}{n!}}}\right\} 
 \]
-Falls $X$ eine ZV ist mit 
+Falls $X$ eine Zufallsvariable ist mit 
 \[
 \mathbb{E}\left|X\right|,\mathbb{E}\left|X\right|^{2},\ldots,\mathbb{E}\left|X\right|^{n+1}<\infty
 \]
@@ -2888,7 +2885,7 @@ so haben wir folgende Reihendarstellung.
 \begin{equation}
 \varphi\left(t\right)=\sum_{k=0}^{\infty}\frac{\left(it\right)^{k}}{k!}\mathbb{E}\left[X^{k}\right]\label{eq:5.1**}
 \end{equation}
-Hat die ZVe $t\cdot X$ ein \index{exponentielles Moment}\emph{exponentielles
+Hat die Zufallsvariable $t\cdot X$ ein \index{exponentielles Moment}\emph{exponentielles
 Moment}, d.h. 
 \[
 \mathbb{E}\left[e^{\left|t\cdot X\right|}\right]<\infty
@@ -2898,8 +2895,7 @@ so gilt wegen
 \mathbb{E}\left[e^{\left|t\cdot X\right|}\right]=\sum_{k=0}^{\infty}\frac{\left|t\right|^{k}}{k!}\mathbb{E}\left[\left|X\right|^{k}\right]<\infty
 \]
 d.h. es gilt Formel \ref{eq:5.1**}. 
-\begin{example}
-(Charakteristische Funktion der Normalverteilung)\\
+\begin{example}[Charakteristische Funktion der Normalverteilung] \index{Normalverteilung}
 Sei $X\sim\mathcal{N}\left(0,1\right)$. Dann gilt in der Tat
 \[
 \mathbb{E}\left[e^{\left|t\cdot X\right|}\right]<\infty
@@ -2962,7 +2958,7 @@ Es gelte $\mathbb{E}\left[\left|X\right|^{k}\right]<\infty$ so folgt
 
 \paragraph*{Ausblick:}
 
-$\varphi_{x_{1}+\ldots+x_{n}}$ für unabhängige ZVen und $\varphi$
+$\varphi_{x_{1}+\ldots+x_{n}}$ für unabhängige Zufallsvariablen und $\varphi$
 gibt $\mu$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -3014,7 +3010,7 @@ $\Rightarrow\left[\mu_{n}\overset{w}{\longrightarrow}\mu\right]$
 \end{itemize}
 Dann erhält man sofort, den \emph{Satz von DeMoivre-Laplace}:
 
-Seien $X_{n}\left(n\in\mathbb{N}\right)$ i.i.d. ZVen mit 
+Seien $X_{n}\left(n\in\mathbb{N}\right)$ i.i.d. Zufallsvariablen mit 
 \[
 \mathbb{P}\left[X_{n}=\pm1\right]=\frac{1}{2}
 \]
@@ -3135,7 +3131,7 @@ Also gilt
 Kein Klausurbeweis
 \end{comment}
 
-\begin{prop} (Eindeutigkeitsatz)\\
+\begin{prop}[Eindeutigkeitsatz] \index{Eindeutigkeitssatz}
 Sei $\mu$ ein Wahrscheinlichkeitsmaß mit charakteristischer Funktion
 $\varphi$ (Fourier-Transformierte). Sei $\mu\left(\left\{ a\right\} \right)=\mu\left(\left\{ b\right\} \right)=0$.
 Dann gilt
