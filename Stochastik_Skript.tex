@@ -11,6 +11,7 @@
 \newcommand{\E}{\mathbb{E}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\R}{\mathbb{R}}
+\newcommand{\supp}{\text{supp}}
 \usepackage[left=4cm,right=3cm,top=4cm,bottom=4cm]{geometry}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % Freds usepackages
@@ -1038,7 +1039,7 @@ Sei $X \in \mathcal{L}^1$, dann heißt
   Mit Cebysev gilt also: $P\left(\left|\frac{1}{n}S_n-p\right|\geq \varepsilon\right)\leq \frac{1}{\varepsilon^2}\frac{1}{n}p(1-p)$
 \end{example}
 % \textbf{Definition 1.6.4}
-\begin{defn} \index{Ko-Varianz} \index{Varianz} % flashcard-name: Varianz und Kovarianz
+\begin{defn} \ \index{Ko-Varianz} \index{Varianz} % flashcard-name: Varianz und Kovarianz
   \begin{itemize}
   \item Für $X,Y \in \mathcal{L}^2$ ist
     $cov(X,Y)=\mathbb{E}([X-\mathbb{E}X][y-\mathbb{E}Y])$ die
@@ -1956,6 +1957,102 @@ Schlußfolgerung: Unstetigkeitsstellen von $F$ und das Maß von Rändern von Men
       \limsup\limits_{n \to \infty} \mu_n(F)&\overset{F\subseteq F_k}{\leq}& \limsup\limits_{n \to \infty} \mu_n{F_k}\\
       &\overset{5)}{=}&\mu(F_k)\\
       &\overset{k \to \infty}{\to}& \mu(F) \qquad \text{ da } F_k \searrow F 
+    \end{eqnarray*}
+  \end{itemize}
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Vorlesung vom 27.5.2013
+%\textbf{Korollar 10.4}\\\\
+\begin{cor}
+  Sei $(\Sigma,\mathcal{A},P)$ ein W'Raum $X_n$ ($n \in \N$), $X$ ZVn
+  mit Werten in $S$. Seien $\mu_n$ bzw. $\mu$ die entsprechenden
+  Verteilungen. Dann gilt
+  \begin{center}
+    $X_n \overset{P}{\to} X \Rightarrow \mu_n \overset{w}{\to} \mu$
+  \end{center}
+\end{cor}
+%\textit{Beweis}\\\\
+\begin{proof} \ 
+  Sei $f \in C_b(S)$ gleichmäßig stetig, d.h.
+  \begin{center}
+    $\forall \epsilon>0 \exists \delta>0$ so dass $\forall x,y \in S$
+    mit $ d(x,y)<\delta \Rightarrow |f(x)-f(y)|<\epsilon$
+  \end{center}
+  Dann gilt
+  \begin{eqnarray*}
+    \left|\int fd\mu_n-\int fd\mu\right| &=& |\E[f\circ X_n]-\E[f\circ X]|\\
+    &\leq & \int\limits_{\{d(X_n,X)<\delta\}} |f\circ X_n-f\circ X|dP+\int\limits_{\{d(X_n,X)\geq\delta\}} |f\circ X_n-f\circ X|dP\\
+    &\leq & \epsilon + 2\Vert f\Vert_\infty \underbrace{P(d(X_n,X)\geq \delta)}_{\leq \frac{\epsilon}{2\Vert f\Vert_\infty}, n \geq n_0}\\
+    &\leq & 2\epsilon
+  \end{eqnarray*}
+  Für allgemeine $f \in C_b(S)$ nutze das folgende Korollar. \qed\\\\\\
+  Der Träger ("'support"') einer Funktion $f$ ist definiert durch
+  \begin{center}
+    $\supp(f):=\overline{\{x|f(x)\neq 0\}}$
+  \end{center}
+  Es sei
+  \begin{center}
+    $C_0(S)=\{f \in C_b(S)|\supp(f) $ kompakt $\}$
+  \end{center}
+  Jedes $f \in C_0(S)$ kann bzgl. $\Vert \cdot \Vert_\infty$ durch eine Lipschitz-stetige Funktion approximiert werden.\\\\\\
+  Eine Folge $(\mu_n)_{n \in \N}$ von W'Maßen konvergiert vag gegen
+  $\mu$, falls
+  \begin{center}
+    $\mu_n(f) \to \mu(f) \qquad \forall f \in C_0(S)$
+  \end{center}
+\end{proof}
+%\textbf{Korollar 10.5}\\\\
+\begin{cor}
+  Seien $\mu_n,\mu$ W'Maße auf $(\Sigma,\mathcal{A})$ mit
+  Verteilungsfunktion $F_n,F$. Dann sind äquivalent
+  \begin{itemize}
+  \item[1)] $\mu_n \to \mu$ vag
+  \item[2)] $\mu_n \to \mu$ schwach
+  \item[3)] $F_n(x) \to F(x)$ für alle Stetigkeitsstellen $x$ von $F$
+  \item[4)] $\mu_n((-\infty,a])\to \mu((-\infty,a])$ für alle
+    $\mu$-randlosen $(-\infty,a]$
+  \end{itemize}
+\end{cor}
+%\textit{Beweis}\\\\
+\begin{proof} \ 
+  \begin{itemize}
+  \item[1)$\Rightarrow$2)] Übung (Blatt 7)
+  \item[2)$\Rightarrow$3)] Sei $x$ eine Stetigkeitsstelle von $F$
+    \begin{center}
+      $F(x_-)=F(x)$
+    \end{center}
+    d.h.
+    \begin{center}
+      $\mu((-\infty,x))=\mu((-\infty,x]) \Rightarrow \mu(\{x\})=0$
+    \end{center}
+    Also ist $(-\infty,x]~\mu$-randlos. Damit
+    \begin{center}
+      $\mu_n((-\infty,x])\to\mu((-\infty,x])$
+    \end{center}
+    nach dem Portemonteau-Theorem, also
+    \begin{center}
+      $F_n(x) \overset{n \to \infty}{\to} F(x)$
+    \end{center}
+    \item[3)$\Rightarrow$4)] Ist $(a,b]~\mu$-randlos, so gilt $\mu(\{a\})=\mu(\{b\})=0$ d.h. $a$ und $b$ sind Stetigkeitsstellen von $F$. Also wie in 2)$\Rightarrow$3)\\\\
+    \item[4)$\Rightarrow$1)] Sei $D=\{x \in \R $ mit $\mu(\{x\})=0\}$. Wie im
+    Portemonteau-Theorem zeigt man $\R\setminus D$ ist abzählbar. Also
+    liegt $D$ dicht in $\R$. Sei nun $f \in C_0(\R))$ (glm. stetig!)
+    und finde
+    \begin{center}
+      $c_1<\ldots<c_m \in D$
+    \end{center}
+    mit
+    \begin{center}
+      $\Vert f(\cdot)-\underbrace{\sum\limits_{k=1}^m
+        f(c_{k-1})\1_{(c_{k-1},c_k]}(\cdot)}_{=:g}\Vert_\infty <
+      \epsilon$
+    \end{center}
+    dann gilt
+    \begin{eqnarray*}
+      \left|\int fd\mu_n-\int fd\mu\right|&\leq &\underbrace{\left|\int(f-g)d\mu\right|}_{<\epsilon}+\left|\int gd\mu-\int g d\mu_n\right|+\underbrace{\left|\int(-f+g)d\mu_n \right|}_{<\epsilon}\\
+      &\leq & 2\epsilon + \left|\int g d\mu_n-\int gd\mu\right|\\
+      &\leq & 2\epsilon + \sum\limits_{k=1}^m f(c_{k-1})|\mu_n((c_{k-1},c_k])-\mu((c_{k-1},c_k])|
     \end{eqnarray*}
   \end{itemize}
 \end{proof}
