@@ -3442,6 +3442,218 @@ S\left(T\right)=\int_{0}^{T}\frac{\sin x}{x}dx
   da $\mu\left(\left\{ a\right\} \right)=\mu\left(\left\{ b\right\} \right)=0$. 
 \end{proof}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Vorlesung vom 24.6.2013
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Vorlesung vom 24.6.2013
+\paragraph*{Setup:}
+
+\marginpar{Vorlesung 26.6.2013} $X_{1},X_{2},\ldots$ unabhängige
+Zufallsvariablen in $\mathcal{L}^{2}$.
+\begin{description}
+\item [{(A)}] $\lim_{n\to\infty}\frac{\sum_{k=1}^{n}\left(\mathbb{E}\left[\left|X_{k}-\mathbb{E}X_{k}\right|^{3}\right]\right)}{\left(\sum_{i=1}^{n}\sigma_{k}^{2}\right)^{3/2}}=0$
+\item [{(B)}] $X_{1},X_{2},\ldots$ sind i.i.d. 
+\end{description}
+Etwas allgemeiner: Sei 
+\[
+Y_{n,k}=\frac{X_{k}-\mathbb{E}X_{k}}{\sqrt{Var\left(S_{n}\right)}}\quad\left(k=1,\ldots,n\ n\in\mathbb{N}\right)
+\]
+Dann haben wir ein $\varDelta$-Schema 
+\[
+\begin{matrix}Y_{1,1}\\
+Y_{2,1} & Y_{2,2}\\
+\vdots &  & \ddots\\
+Y_{n,1} & Y_{n,2} & \ldots & Y_{n,n}\\
+\vdots &  &  & \vdots & \ddots
+\end{matrix}
+\]
+ 
+\begin{itemize}
+\item $\mathbb{E}Y_{n,k}=0$
+\item für jedes $n$ sind $Y_{n,1},\ldots,Y_{n,n}$ unabhängig 
+\item $S_{n}^{*}=\sum_{k=1}^{n}Y_{n,k}$ hat Varianz $1$
+\end{itemize}
+und \textbf{(A)} ist äquivalent zu 
+\begin{description}
+\item [{(A')}] $\lim_{n\to\infty}\gamma_{n}=0$ wobei $\gamma_{n}:=\sum_{k=1}^{n}\mathbb{E}\left|Y_{n,k}\right|^{3}$ 
+\end{description}
+und \textbf{(B)} impliziert
+\begin{description}
+\item [{(C)}] 
+\[
+\exists Y\in\mathcal{L}^{2}\mbox{ mit }P_{Y_{n,k}}=P_{\frac{y}{\sqrt{n}}}
+\]
+z.B. $y=\frac{X_{1}-\mathbb{E}X_{1}}{\sqrt{Var\left(X_{1}\right)}}$ \end{description}
+\begin{prop}
+\label{prop:5.3}Sei $\left(Y_{n,k}\right)_{k=1}^{n}\ \left(n\in\mathbb{N}\right)$
+ein $\varDelta$-Schema mit obigen Eigenschaften. Und es gelte eine
+der Eigenschaften \textbf{(A')} oder \textbf{(C)}. Dann gilt 
+\[
+P_{S_{n}^{*}}\underset{n\to\infty}{\overset{w}{\longrightarrow}}\mathcal{N}\left(0,1\right)
+\]
+\end{prop}
+\begin{rem}
+ \ 
+\begin{description}
+\item [{(i)}] Zentrale Grenzwert Eigenschaft ist wegen Unabhängigkeit nur
+von der Verteilung der $X_{i}$ abhängig. 
+\item [{(ii)}] Seien $X_{i}\sim\mathcal{N}\left(0,\sigma_{i}^{2}\right)$
+$\left(i=1,\ldots,n\right)$. Dann gilt 
+\[
+\sum_{i=1}^{n}X_{i}\sim\mathcal{N}\left(0,\sum_{i=1}^{n}\sigma_{i}^{2}\right)
+\]
+denn: Es gilt
+\[
+\varphi_{X_{i}}\left(t\right)=e^{-\frac{1}{2}t^{2}\sigma_{i}^{2}}
+\]
+Wegen Unabhängigkeit also
+\[
+\varphi_{X_{1}+\ldots+X_{n}}\left(t\right)=\prod_{i=1}^{n}e^{-\frac{1}{2}t^{2}\sigma_{i}}=e^{-\frac{1}{2}t^{2}\left(\sigma_{1}^{2}+\ldots+\sigma_{n}^{2}\right)}
+\]
+Behauptung folgt aus Eindeutigkeitssatz. \hfill $\Box$
+\end{description}
+\end{rem}
+\begin{proof}
+{[}von Satz \ref{prop:5.3}{]}
+\begin{description}
+\item [{(a)}] Es genügt vage Konvergenz zu beweisen
+\begin{equation}
+\int gd\mu_{n}\to\int gd\mu\quad\forall g\in C_{0}\left(\mathbb{R}\right)\label{eq:5.2*}
+\end{equation}
+wobei $\mu_{n}=\mathbb{P}_{S_{n}^{*}},\mu=\mathcal{N}\left(0,1\right)$\end{description}
+\begin{fact*}
+für jedes $g\in C_{0}\left(\mathbb{R}\right)$ exisitiert $f\in C_{0}^{\infty}$
+mit $\left|\left|f-g\right|\right|_{\infty}<\varepsilon$
+\end{fact*}
+
+D.h. es genügt \ref{eq:5.2*} für Funktionen aus $C_{0}^{\infty}$
+zu beweisen.
+\begin{description}
+\item [{(b)}] Sei $f\in C_{0}^{\infty}$. Taylor-Entwicklung liefert
+\[
+f\left(z+y\right)=f\left(z\right)+f'\left(z\right)\cdot y+\frac{1}{2}f''\left(z\right)\cdot y^{2}+R\left(z,y\right)
+\]
+mit 
+\[
+\left|R\left(z,y\right)\right|=\begin{cases}
+\frac{1}{6}\left|f^{\left(3\right)}\left(\tilde{z}\right)\right|\left|y\right|^{3}\leq c\cdot\left|y\right|^{3} & \mbox{(a) Lagrange Form}\\
+\frac{1}{2}\left|f''\left(\tilde{\tilde{z}}\right)-f''\left(z\right)\right|\cdot y^{2}\le f\left(y\right)\cdot y^{2} & \mbox{(b)}
+\end{cases}
+\]
+wobei $\tilde{z},\tilde{\tilde{z}}$ geeignete Zwischenstellen und
+\[
+\delta\left(y\right)=\inf\left\{ 2\left|\left|f''\right|\right|_{\infty},\left|\left|f^{\left(3\right)}\right|\right|_{\infty}\cdot\left|y\right|\right\} 
+\]
+also insbesondere 
+\[
+\delta\left(y\right)\to0\mbox{ für }y\to0
+\]
+
+\item [{(c)}] Wir können, für jedes $n\in\mathbb{N}$, die Zufallsvariablen
+\[
+Y_{n,1},\ldots,Y_{n,n},\tilde{Y}_{n,1},\ldots,\tilde{Y}_{n,n}
+\]
+auf einem Wahrscheinlichkeitsraum $\left(\Omega_{n},\mathcal{A}_{n},\mathbb{P}_{n}\right)$
+realisieren mit 
+
+\begin{itemize}
+\item $Y_{n,1}\ldots Y_{n,n}$ unabhängig
+\item $\tilde{Y}_{n,k}\sim\mathcal{N}\left(0,Var\left(Y_{n,k}\right)\right)$
+\begin{eqnarray*}
+\Omega_{n} & = & \mathbb{R}^{n}\times\mathbb{R}^{n}\\
+\mathcal{A}_{n} & = & \mathcal{B}\left(\mathbb{R}^{n}\times\mathbb{R}^{n}\right)\\
+\mathbb{P}_{n} & = & \underset{\mbox{Verteilung von }Y_{n,1}}{\underbrace{\nu_{1}\otimes\ldots\otimes\nu_{n}}\otimes\tilde{\nu_{1}}\otimes\ldots\otimes\tilde{\nu}_{n}\leftarrow\mathcal{N}\left(0,Var\left(Y_{n,n}\right)\right)}
+\end{eqnarray*}
+und 
+\[
+\omega=\left(y_{1},\ldots,y_{n},\tilde{y}_{1},\ldots,\tilde{y}_{n}\right)
+\]
+sei 
+\[
+Y_{n,k}\left(\omega\right)=y_{k},\tilde{Y}_{n,k}\left(\omega\right)=\tilde{y}_{k}
+\]
+Dann gilt
+\[
+\tilde{S}_{n}=\tilde{Y}_{n,1}+\ldots+\tilde{Y}_{n,n}\sim\mathcal{N}\left(0,1\right)
+\]
+Wir vergleichen $\tilde{S}_{n}$ mit $S_{n}^{*}$
+\end{itemize}
+\item [{(d)}] Sei dazu 
+\[
+Z_{k}^{n}=\tilde{Y}_{n,1}+\ldots+\tilde{Y}_{n,\underline{k-1}}+Y_{n,\underline{k+1}}+\ldots+Y_{n,n}
+\]
+Dann gilt
+\begin{eqnarray*}
+\left|\int fd\mu_{n}-\int fd\mu\right| & = & \left|\mathbb{E}_{n}\left[f\left(S_{n}^{*}\right)\right]-\mathbb{E}_{n}\left[f\left(\tilde{S}_{n}\right)\right]\right|\\
+ & \leq & \left|\mathbb{E}_{n}\left[f\left(S_{n}^{*}\right)-f\left(\tilde{S}_{n}\right)\right]\right|\\
+ & = & \left|\mathbb{E}_{n}\left[\sum_{k=1}^{n}f\left(\underset{=A_{k}}{\underbrace{Z_{k}^{n}+Y_{n,k}}}\right)-f\left(\underset{=B_{k}}{\underbrace{Z_{k}^{n}+\tilde{y}_{n,k}}}\right)\right]\right|
+\end{eqnarray*}
+wobei $\mathbb{E}_{n}$ den Erwartungswert bzgl. $\mathbb{P}_{n}$
+bezeichnet und 
+\[
+A_{k}=B_{k-1}
+\]
+dies folgt aus 
+\[
+Z_{k}^{n}=\tilde{Y}_{n,1}+\ldots+\underset{A_{k}}{\underbrace{\tilde{Y}_{n,\underline{k-1}}}}+\underset{B_{k}}{\underbrace{Y_{n,k}}}+Y_{n,\underline{k+1}}+\ldots+Y_{n,n}
+\]
+Taylor liefert 
+\begin{eqnarray*}
+f\left(Z_{k}^{n}+Y_{n,k}\right)-f\left(Z_{k}^{n}+\tilde{Y}_{n,k}\right) & = & f'\left(Z_{n}^{k}\right)\left(Y_{n,k}-\tilde{Y}_{n,k}\right)+\frac{1}{2}f''\left(Z_{k}^{n}\right)\left(Y_{n,k}^{2}-\tilde{Y}_{n,k}^{2}\right)\\
+ &  & +R\left(Z_{k}^{n},Y_{n,k}\right)-R\left(Z_{k}^{n},\tilde{Y}_{n,k}\right)
+\end{eqnarray*}
+Nun sind $Z_{k}^{n},Y_{n,k},\tilde{Y}_{n,k}$ unabhängig. Also 
+\[
+\mathbb{E}\left[f'\left(Z_{k}^{n}\right)\left(Y_{n,k}-\tilde{Y}_{n,n}\right)\right]=\underset{<\infty}{\underbrace{\mathbb{E}\left[f'\left(Z_{k}^{n}\right)\right]}}\mathbb{E}\left[Y_{n,k}-\tilde{Y}_{n,k}\right]
+\]
+Analog, da $\tilde{Y}_{n,k}\sim\mathcal{N}\left(0,Var\left(Y_{n,k}\right)\right)$
+auch 
+\[
+\mathbb{E}\left[f''\left(Z_{k}^{n}\right)\left(Y_{n,k}^{2}-\tilde{Y}_{n,k}^{2}\right)\right]=0
+\]
+Also 
+\[
+\left|\int fd\mu_{n}-\int fd\mu\right|\leq\sum_{k=1}^{n}\left(\mathbb{E}_{n}\left|R\left(Z_{k}^{n},Y_{n,k}\right)\right|+\mathbb{E}\left|R_{n}\left(Z_{k}^{n},\tilde{Y}_{n,k}\right)\right|\right)=:R_{n}
+\]
+z.z.: $R_{n}\to0$\\
+Es gelte \textbf{(A')}. Wir verwenden die Darstellung \textbf{(a)}
+für den Restterm. Es gilt , da $\tilde{Y}_{n,k}$ normalverteilt 
+\begin{eqnarray*}
+\mathbb{E}_{n}\left[\left|\tilde{Y}_{n,k}\right|^{3}\right] & = & \sqrt{\frac{8}{\pi}}\mathbb{E}\left[\tilde{Y}_{n,k}\right]^{\frac{3}{2}}\\
+ & = & \sqrt{\frac{8}{\pi}}\mathbb{E}\left[Y_{n,k}^{2}\right]^{\frac{3}{2}}\\
+ & \overset{\mbox{Jensen}}{\leq} & \sqrt{\frac{8}{\pi}}\mathbb{E}\left[Y_{n,k}^{3}\right]
+\end{eqnarray*}
+Es gilt für $X\sim\mathcal{N}\left(0,\sigma^{2}\right)$:
+\[
+\mathbb{E}\left[\left|X\right|^{3}\right]=\sqrt{\frac{8}{\pi}}\sigma^{3}
+\]
+Also mit \textbf{(a)} 
+\[
+R_{n}\leq\sum C\cdot\gamma_{n}\left(1+\sqrt{\frac{8}{\pi}}\right)
+\]
+und 
+\[
+R_{n}\to0
+\]
+nach Voraussetzung. Es gelte \textbf{(C)}. Sei 
+\[
+\tilde{Y}_{n}=\sqrt{n}\tilde{Y}_{n,1}
+\]
+Dann 
+\[
+\tilde{Y}_{n}\sim\mathcal{N}\left(0,n\cdot Var\left(Y_{n,1}\right)\right)=\mathcal{N}\left(0,Var\left(Y\right)\right)
+\]
+ Dann folgt aus \textbf{(b)} 
+\begin{eqnarray*}
+\sum_{k=1}^{n}\left(\mathbb{E}\left[\delta\left(\frac{Y}{\sqrt{n}}\right)\frac{Y^{2}}{n}\right]+\mathbb{E}_{n}\left[\delta\left(\frac{\tilde{Y}_{n}}{\sqrt{n}}\right)\frac{\tilde{Y}_{n}^{2}}{n}\right]\right) & \leq & \mathbb{E}_{n}\left[\underset{\to0}{\underbrace{\delta\left(\frac{Y}{\sqrt{n}}\right)}}\cdot Y^{2}\right]-\int\underset{\to0}{\underbrace{\delta\left(\frac{Y}{\sqrt{n}}\right)}}\cdot Y^{2}d\mathcal{N}\left(0,Var\left(Y\right)\right)\\
+ & \to & 0\mbox{ nach Lebesque.}
+\end{eqnarray*}
+Bemerke für $Y$: $P_{\frac{Y}{\sqrt{n}}}=P_{Y_{n,k}}$
+\end{description}
+\end{proof}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 %% Index
