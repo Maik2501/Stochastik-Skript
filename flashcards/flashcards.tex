@@ -1,0 +1,1164 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Fred Brockstedt
+% Lernkarten fuer Stochastik I 
+% HU-Berlin 2013
+
+\documentclass[avery5371,grid,frame]{flashcards} %% avery5371, avery5388, 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Usepackeges
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{makeidx}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{verbatim}
+\usepackage{varioref}
+\usepackage{float}
+\usepackage{amstext}
+\usepackage[unicode=true,
+ bookmarks=true,bookmarksnumbered=false,bookmarksopen=false,
+ breaklinks=true,pdfborder={0 0 0},backref=page,colorlinks=true]
+ {hyperref}
+\usepackage{bbold}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% newcommands
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\1}{ \mathbb{1} } %% Indikatorfunktion
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% flashcard
+\cardfrontstyle[\large\slshape]{headings}
+\cardbackstyle{empty}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Document
+\begin{document}
+
+\cardfrontfoot{Stochstik I}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Flashcards
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Definition]{Ereignis}
+  Eine Teilmenge $A \in \Omega$ heißt ein \underline{\textit{Ereignis}}. \index{Ereignis}
+  Wir sagen, ein Ereignis tritt ein, falls für das realisierte Elementarereignis $\omega \in \Omega$ gilt: $\omega \in A$.
+  \begin{itemize}
+  \item[i)] unmögliches Ereignis: $A=\emptyset$
+  \item[ii)] sicheres Ereignis: $A=\Omega$
+  \item[iii)] $A$ tritt nicht ein $\Leftrightarrow$ $A^c=\Omega\setminus A$ tritt ein 
+  \end{itemize}
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Definition]{ $\sigma$-Algebra}
+  $\mathcal{A}\subset \mathcal{P}(\Omega)=$Potenzmenge von  $\Omega$ heißt \index{$\sigma$-Algebra}$\sigma$-Algebra, falls gilt: 
+  \begin{itemize}
+  \item[i)] $\emptyset \in \mathcal{A}$
+  \item[ii)] $A\in \mathcal{A} \Rightarrow A^c
+    \in \mathcal{A}$
+  \item[iii)] Sind $(A_i)_{i \in \mathbb{N}} \in \mathcal{A}$,
+    so auch $\bigcup\limits_{i=1}^\infty A_i \in \mathcal{A}$
+  \end{itemize}
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Definition]{Wahrscheinlichkeits-Maß}
+  Sei $\Omega \neq \emptyset$ und $\mathcal{A}\subset
+  \mathcal{P}(\Omega)$ eine $\sigma$-Algebra. Eine
+  Funktion: $P: \mathcal{A} \rightarrow \mathbb{R}_+$
+  heißt ''Maß'' auf $\mathcal{A}$ falls folgendes gilt:
+%  \begin{itemize}
+  i) $P(\emptyset)=0$ 
+  ii) $P\left(\stackrel{\cdot}{\bigcup\limits_{i \in
+        \mathbb{N}}}A_i\right)=\sum\limits_{i=1}^\infty P(A_i)$ 
+    Gilt zusätzlich:
+  iii) $P(\Omega)=1$ 
+%  \end{itemize}
+  So heißt $P$ ein Wahrscheinlichkeitsmaß \index{Wahrscheinlichkeitsmaß}.
+  Das Tripel $(\Omega,\mathcal{A},P)$ heißt Wahrscheinlichkeitsraum (Wahrscheinlichkeitsraum). \index{Wahrscheinlichkeitsraum}
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Definition]{additiv, iso- und antiton stetig}
+  Sei $P:\mathcal{A} \to \mathbb{R}_+$ mit $P(\Omega)=1$.
+  \begin{itemize}
+  \item[i)] $P$ heißt \index{additiv}\underline{additiv} falls: $P(A\cup B)=P(A)+P(B) \qquad \forall~ A,B\in\mathcal{A} $ mit $A\cap B =\emptyset$ gilt. 
+  \item[ii)] $P$ heißt \index{isoton stetig}\underline{isoton stetig}
+    falls für alle (isotonen) Folgen:
+
+      $A_1 \subseteq A_2 \subseteq A_3 \subseteq \dots$
+
+    mit $A_n \nearrow \bigcup\limits_{i=1}^\infty A_i$ gilt $P\left(\bigcup\limits_{i=1}^\infty A_i\right)=\lim\limits_{n \to \infty}P(A_n)$.
+  \end{itemize}
+\end{flashcard}
+
+\begin{flashcard}[antiton stetig]{Antiton Stetig?}
+  \begin{itemize}
+    \item[iii)] $P$ heißt \underline{antiton stetig} \index{antiton stetig}falls für alle
+    (antitonen) Folgen:
+    \begin{center}
+      $\dots A_i \supseteq A_{i+1} \supseteq A_{i+2} \supseteq \dots$
+    \end{center}
+    mit $A_n \searrow \bigcap\limits_{i=1}^\infty A_i$ gilt $P\left(\bigcap\limits_{i=1}^\infty A_i\right)=\lim\limits_{n \to \infty}P(A_n)$.
+  \end{itemize}
+\end{flashcard}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Definition]{messbar}
+  Die Abbildung $T$ heißt messbar \index{messbar} (oder
+  $\mathcal{A}/\overline{\mathcal{A}}$-messbar) wenn gilt:
+  \begin{center}
+    $T^{-1}(\overline{A}) \in \mathcal{A} \qquad \forall \overline{A}
+    \in \overline{\mathcal{A}}$
+  \end{center}
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Definition]{messbare Abbildung}
+  Eine messbare Abbildung\index{messbare Abbildung}
+  \begin{eqnarray*}
+    X:(\Omega,\mathcal{A}) \to (\mathbb{R},\mathcal{B}(\mathbb{R}))\\
+    \text{oder}\\
+    X:(\Omega,\mathcal{A}) \to (\overline{\mathbb{R}},\mathcal{B}(\overline{\mathbb{R}}))\\
+  \end{eqnarray*}
+  wobei $\overline{\mathbb{R}}=\mathbb{R}\cup\{\pm \infty \}$, heißt Zufallsvariable. Das Maß $P^X(\cdot)=P\circ X^{-1}$ heißt Verteilung von $X$ unter $P$.
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Definition]{Normaldarstellung}
+  Sei $X$ eine reelwertige Zufallsvariable mit
+  \begin{center}
+    $X=\sum\limits_{i=1}^n\alpha_i\1_{A_i}$ (*) mit $\bigcup_i^\cdot
+    A_i=\Omega$
+  \end{center}
+  so heißt (*) eine Normaldarstellung. Normaldarstellungen sind nicht eindeutig, es gilt jedoch:
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Definition]{Erwartungswert}
+  Ist $X$ eine Zufallsvariable mit Normaldarstellung
+  \begin{center}
+    $X=\sum\limits_{i=1}^n\alpha_i\1_{A_i}$
+  \end{center}
+  so heißt: $\mathbb{E}[X]:=\sum\limits_{i=1}^n\alpha_iP(A_i)$ der \underline{Erwartungswert}.
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Definition]{Erwartungswert von $X$}
+  Sei $X\geq 0$ Zufallsvariable auf $(\Omega,\mathcal{A},P)$ und $X_n$ eine Folge
+  elementarer Zufallsvariablen mit $X_n\nearrow X$. Dann heißt:
+  \begin{center}
+    $\mathbb{E}X=\sup\limits_{n\in
+      \mathbb{N}}\mathbb{E}X_n=\lim\limits_{n \to
+      \infty}\mathbb{E}X_n$
+  \end{center}
+  Erwartungwert von $X$.
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Definition]{Erwartungswert}
+  Für eine Zufallsvariable $X:\Omega \to \mathbb{R}$ definieren wir den
+  Erwartungswert durch:
+
+    $\mathbb{E}X=\mathbb{E}X^+-\mathbb{E}X^-$
+
+  sofern $\min\{\mathbb{E}X^+,\mathbb{E}X^-\}<\infty$.
+  Wir setzen
+  \[p\mathcal{L}^1:=\{X:\Omega \to \mathbb{R}\] Zufallsvariable mit $\mathbb{E}[|X|]< \infty \}$
+  und $\Vert X\Vert_1:=\mathbb{E}[|X|]$. Dann heißt $X$ integrierbar, falls $\Vert X \Vert_1 < \infty$.
+  Man beachte, dass aus $\Vert X \Vert_1=0$ nicht $X=0$ folgt. Sei daher:
+  $L^1=\mathcal{L}/\sim$ wobei $X\sim Y \Leftrightarrow P(X=Y)=1$
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Definition]{$L^p=\mathcal{L}^p/\sim$}
+  Für $p>0$ sei $\mathcal{L}^p=\{X:\Omega \to \mathbb{R}$ mit $\Vert X\Vert_p<\infty\}$ und $L^p=\mathcal{L}^p/\sim$.
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Definition]{Varianz und Kovarianz}
+  \begin{itemize}
+  \item Für $X,Y \in \mathcal{L}^2$ ist
+    $cov(X,Y)=\mathbb{E}([X-\mathbb{E}X][y-\mathbb{E}Y])$ die
+    Ko-Varianz von $X$ und $Y$.
+  \item Falls $\sigma(X), \sigma(Y)>0$ ist
+    \begin{center}
+      $\varrho(X,Y)=\dfrac{cov(X,Y)}{\sigma(X)\sigma(Y)}$
+    \end{center}
+    der Korrelationskoeffizient.
+  \end{itemize}
+  Gilt $cov(X,Y)=0$ so heißen $X$ und $Y$ unkorreliert.\\\\
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Definition]{Konvergenz: stoachstische, p-fast-sicher}
+  Es seien $X_1,X_2,\ldots$ Zufallsvariablen auf $(\Sigma,\mathcal{A},P)$. Wir sagen:\\
+ $(X_i)_{i \in \mathbb{N}}$ konvergiert stochastisch (in W'keit) gegen eine Zufallsvariable $X$ falls $\forall\varepsilon >0$ gilt:
+      $\lim\limits_{n \to \infty}P(\{|X_n-X|\geq \varepsilon\})=0$
+    wir schreiben in diesem Fall $X_n \overset{P}{\to} X$.\\
+   $(X_i)_{i \in \mathbb{N}}$ konvergiert fast-sicher (P-fs)  gegen $X$, falls
+      $P\left(\lim\limits_{n \to \infty}|X_n-X|=0\right)=1$
+    wir schreiben in diesem Fall $X_n \to X$ P-fs.
+\end{flashcard}
+
+\begin{flashcard}{p-ten Mittel}
+  Es seien $X_1,X_2,\ldots$ Zufallsvariablen auf $(\Sigma,\mathcal{A},P)$. Wir
+  sagen: \\
+    $(X_i)_{i \in \mathbb{N}}$ konvergiert im $p$-ten Mittel
+    $(p\geq 1)$ gegen $X \in \mathcal{L}^p$ falls
+      $\mathbb{E}[(X_n-X)^p] \overset{n \to \infty}{\to}0$
+    wir schreiben in diesem Fall $\Vert X_n-X\Vert_p \to 0$.\\
+\end{flashcard}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Definition]{Wann konvergiert die Folge $(X_n)_{n \in \N}$ stochstisch, fast-sicher, im p-ten Mittel}
+  Seien $X_1,X_2,\ldots$ Zufallsvariablen auf $(\Omega,\mathcal{A},P)$. Die Folge
+  $(X_n)_{n \in \N}$ konvergiert \\
+  i) im $p$-ten Mittel gegen $X \in \mathcal{L}^p$ falls
+      $\E[|X_n-X|^p] \to \infty$ für $n \to \infty$ \\
+  ii) stochastisch (in Wahrscheinlichkeit) gegen eine Zufallsvariable $X$
+    falls
+      $P[|X_n-X|\geq \varepsilon ] \overset{n \to \infty}{\to} 0\qquad
+      \forall \varepsilon >0$ \\
+  iii) fast sicher gegen $X$ falls $P[\lim\limits_{n \to \infty}X_n=X ]=1 \iff P[|X_n-X|\geq \varepsilon \text{ unendlich oft }] \overset{n \to \infty}{\to} 0$
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Definition]{gleichmäßig integrierbar}
+  Sei $I$ eine Indexmenge. Eine Familie $(X_i)_{i \in I}$ von Zufallsvariablen
+  heißt gleichmäßig integrierbar (GI) falls gilt
+  \begin{center}
+    $\lim\limits_{c \to \infty} \sup\limits_{i \in I}
+    \underbrace{\int\limits_{\{|X_i|\geq
+        c\}}|X_i|dP}_{\E[\1_{\{|X_i|\geq c\}}X_i]}=0 $
+  \end{center}
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Definition]{Verteilungsfunktion}
+  Die Funktion $F:\R \to [0,1]$ heißt \index{Verteilungsfunktion}Verteilungsfunktion zu $X$ bzw. $\mu$ und ist definiert durch : $F(b):=\mu((-\infty,b])=P(X\leq b)$ für $b \in \R$.
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Definition]{Diskret und Treppenfunktionen}
+  $F$ bzw $\mu$ heißen \underline{diskret}, wenn es eine abzählbare
+  Menge $S \subset \R$ mit $\mu(S)=1$ gibt. In diesem Fall gilt: $\mu$
+  ist eindeutig bestimmt über $\mu(\{x\})$ für $x \in S$ und $F$ ist
+  \underline{Sprungfunktion} oder \underline{Treppenfunktion} mit der
+  Darstellung.
+  \begin{center}
+    $F(x)=\sum\limits_{y \in S} \mu(\{y\})$
+  \end{center}
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Definition]{absolut stetig}
+  $F$ bzw. $\mu$ heißen \underline{absolut stetig} wenn es eine
+  messbare Funktion $f\geq 0$ (genannt \underline{Dichtefunktion})
+  gibt, so dass gilt:
+    $F(x)=\int\limits_{-\infty}^xf(t)dt$ für alle $x \in \R$
+  bzw. für alle $A \in B(\R)$
+    $\mu(A)=\int\limits_A f(t) dt=\int\limits_{-\infty}^\infty
+    \1_A(t)f(t)dt$
+  Insbesondere gilt für jede Dichtefunktion
+    $\int\limits_{-\infty}^\infty f(t)dt=1$
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Definition]{Was muss gelten für $\mu_n(f) = \mu(f)$?}
+  Eine Folge $(\mu_n)_{n \in \N}$ von Wahrscheinlichkeitsmaßen konvergiert schwach
+  gegen ein Maß $\mu$ auf $S(,B(S))$ wobei $(S,d)$ ein metrischer Raum
+  ist, falls
+  \begin{center}
+    \[\mu_n(f)=\int\limits_S f(x)\mu_n(dx) \to
+    \int\limits_Sf(x)\mu(dx):=\mu(f)\]
+  \end{center}
+  für alle $f \in C_b(S)$. (Wobei $C_b(S)$ der Raum der stetigen, beschränkten Funktionen auf $S$)
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Definition]{Was bedeutet $\mu$-randlos}
+  Eine Menge $A \in B(S)$ heißt $\mu$-randlos falls
+  \begin{center}
+    $\mu(\partial A)=0$ 
+  \end{center}
+  wobei $\partial A$ den Rand von $A$ bezeichnet
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Definition]{ Was bedeutet Unabhängigkeit?}
+  Eine Familie $\left(A_{i}\right)_{i\in I}$ von Ereignissen heißt
+  \emph{unabhängig}, falls gilt
+  \begin{equation}
+    P\left(\bigcap_{j\in J}A_{j}\right)=\prod_{i\in I}P\left(A_{i}\right)\ \forall\underset{\left|J\right|<\infty}{J\subseteq I}\label{eq:def1.1}
+  \end{equation}
+  Eine Familie $\left(B_{i}\right)_{i\in I}$ von Mengensystemen (z.B.
+  $\sigma$-Algebren) heißt \emph{unabhängig}, falls \nameref{eq:def1.1}für
+  alle $A_{j}\in B_{j}$ gilt.
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Definition]{Wie ist Unabhängigkeit definiert?}
+  Eine Familie $\left(X_{i}\right)_{i\in I}$ von Zufallvariabeln auf
+  $\left(\Omega,\mathcal{A},\mathbb{P}\right)$ heißt unabhängig, falls
+  die von den Zufallsvariablen erzeugten Familie von $\sigma$-Algebren
+  \[
+  \left(\sigma\left(X_{i}\right)\right)_{i\in I}\ \left(\sigma\left(X_{i}\right)=\left\{ \left\{ x\in A|A\in\mathcal{B}\left(\overline{\mathbb{R}}\right)\right\} \right\} \right)
+  \]
+  unabhängig ist.
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Definition]{Wie ist Verteilung definiert?}
+  Seien $X_{1}\ldots X_{n}$ reelwertige Zufallsvariablen auf $\left(\Omega,\mathcal{A},P\right)$.
+  Dann heißt die Verteilung 
+  \[
+  \bar{\mu}:=P\circ\bar{X}^{-1}
+  \]
+  von $\bar{X}\left(\omega\right)=\left(X_{1}\left(\omega\right),\ldots,X_{n}\left(\omega\right)\right)$
+  die \emph{gemeinsame Verteilung}\index{gemeinsame Verteilung} der
+  $X_{1}\ldots X_{n}$.
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Definition]{Wie ist Translation definiert?}
+  Sei $x\in\mathbb{R}$. Dann heißt 
+   $ T_{x}:\mathbb{R}  \to  \mathbb{R}$
+   $ y \mapsto x+y$
+  die \index{Translation}\emph{Translation} (um $x$). Für Wahrscheinlichkeitsmaße $\mu_{1},\mu_{2}$
+  aud $\left(\mathbb{R},\mathcal{B}\left(\mathbb{R}\right)\right)$
+  heißt 
+  \[
+  \left(\mu_{1}*\mu_{2}\right)\left(A\right)=\int_{\mathbb{R}}\left(\mu_{2}\circ T_{x}^{-1}\right)\left(A\right)\mu_{1}\left(dx_{1}\right)
+  \]
+  die \emph{Faltung}\index{Faltung} von $\mu_{1}$ und $\mu_{2}$.
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Satz]{Wahrscheinlichkeitsmaß und Stetigkeit}
+  Sei $P_\mathcal{A}\to \mathbb{R}_+$ normiert ($P(\Omega)=1$). Dann sind folgende Aussagen äquivalent:
+  \begin{itemize}
+  \item[i)] $P$ ist Wahrscheinlichkeitsmaß \index{Wahrscheinlichkeitsmaß}
+  \item[ii)] $P$ ist additiv und isoton stetig
+  \item[iii)] $P$ ist additiv und antiton stetig
+  \end{itemize}
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Satz]{Wahrscheinlichkeitsmaß (1.2.1)}
+  Sei $\Omega$ abzählbar und $p: \Omega \to [0,1]$ mit
+  $\sum\limits_{\omega \in \Omega}p(\omega)=1$. Dann definiert:
+  \begin{center}
+    $P(A)=\sum\limits_{\omega \in A} p(\omega)$ für $A\in
+    \mathcal{P}(\Omega)$
+  \end{center}
+  ein Wahrscheinlichkeitsmaß auf $(\Omega,\mathcal{A})$. Tatsächlich ist jedes Maß auf
+  $(\Omega,\mathcal{A})$ von dieser Form.
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Satz]{induziertes Wahrscheinlichkeitsmaß}
+  Sei $T:(\Omega, \mathcal{A})\to(\overline{\Omega},\overline{\mathcal{A}})$ messbar und $P$ ein Wahrscheinlichkeitsmaß auf $(\Omega, \mathcal{A})$. Dann definiert $\overline{P}=T(P)$ ein Wahrscheinlichkeitsmaß auf $(\overline{\Omega},\overline{\mathcal{A}})$.\\
+  1.3.4 - 1.3.5 siehe Online-Skript. \url{http://horst.qfl-berlin.de/files/StochastikI_2.pdf}
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Satz]{Zufallsvariable und isotone Folgen }
+  Sei $X$ eine Zufallsvariable \index{Zufallsvariable}
+  \begin{itemize}
+  \item[i)] $X$ ist von der Form $X=X^+-X^-$ wobei $X^+=\max\{X,0\}$ und $X^-=\max\{-X,0\}$
+  \item[ii)] Für jede Zufallsvariable $X\geq0$ existiert eine isotone $X_n \nearrow X$ von elementaren Zufallsvariable.
+  \end{itemize}
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\begin{flashcard}[Satz]{Eigenschaften des Erwartungswertes}
+%  $\mathbb{E}[\cdot]$ ist ein lineares monotones Funktional:
+%  \begin{itemize}
+%  \item $\mathbb{E}[\alpha X]=\alpha \mathbb{E}[X]$
+%  \item Sei $X=\sum\limits_{i=1}^n\alpha_i \1_{A_i}$ und
+%    $Y=\sum\limits_{j=1}^m\beta_j\1_{B_j}$. Dann gilt ebenso:
+%    $X=\sum\limits_{i,j}\alpha_i\1_{A_i\cap B_j}$ und
+%    $Y=\sum\limits_{i,j}\beta_i\1_{A_i\cap B_j} \Rightarrow
+%    X+Y=\sum\limits_{i,j}(\alpha_i+\beta_j)\1_{A_i\cap
+%      B_j}$. D.h. $\mathbb{E}[X+Y]$ ist definiert und es gilt:
+%    \begin{eqnarray*}
+%      \mathbb{E}[X+Y]&=& \sum\limits_{i,j}(\alpha_i+\beta_j)P(A_i\cap B_j)\\
+%      &=&\sum\limits_{i=1}^n\alpha_i P(A_i)+\sum\limits_{j=1}^m\beta_jP(B_j)\\
+%      &=&\mathbb{E}[X]+\mathbb{E}[Y]
+%    \end{eqnarray*} 
+%  \item Sei $X\leq Y$. Sei weiter: $Z=Y-X\geq 0$. Dann gilt:
+%    \[\mathbb{E}[X+Z]=\mathbb{E}[Y]=\mathbb{E}[X]+\underbrace{\mathbb{E}[Z]}_{\geq
+%      0} \Rightarrow \mathbb{E}[Y]\geq \mathbb{E}[X]\]
+%  \end{itemize}
+%\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Satz]{Satz von der monotonen Konvergenz}
+  Seien $X_n\geq 0$ Zufallsvariablen $(n \in \mathbb{N})$ mit $X_n \nearrow X$,
+  dann gilt:
+  \begin{center}
+    $\mathbb{E}X_n \nearrow \mathbb{E}X$
+  \end{center}
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Satz]{  $\mathcal{L}^1$ ist ein Vektorraum, $\Vert \cdot \Vert_1$ ist eine Halbnorm. Was ist $L^1$? Und mit welcher Norm?}
+  $\mathcal{L}^1$ ist ein Vektorraum, $\Vert \cdot \Vert_1$ ist eine Halbnorm und $L^1$ ist ein Banachraum mit der Norm $\Vert \cdot \Vert_1$.
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Satz]{Lemma von Fatou}
+  Seien $X_n\geq 0$ Zufallsvariablen (Es reicht auch $X_n \geq Y \in L^1$). Dann
+  gilt:
+  \begin{center}
+    $\mathbb{E}[\liminf\limits_{n \to \infty} X_n]\leq
+    \liminf\limits_{n \to \infty} \mathbb{E}[X_n]$
+  \end{center}
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Satz]{Wie kann man ein Wahrscheinlichkeitsmaß abschätzen?}
+  Sei $X$ eine Zufallsvariable, $h$ eine auf $X(\Omega)$ isotone, nicht negative
+  Funktion. Dann gilt für alle $c \in X(\Omega)$:
+  \begin{center}
+    $h(c)P(X\geq c) \leq \mathbb{E}[h(X)]$
+  \end{center}
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Satz]{Jensen-Ungleichung}
+  Sei $I\in \mathbb{R}$ ein offenes Intervall, $X \in \mathcal{L}^1$
+  mit $X(\Omega)\subseteq I$. Sei weiter $h:I\to\mathbb{R}$ konvex,
+  $h\circ X \in \mathcal{L}^1$ und $X$ nicht konstant. Dann gilt:
+  \begin{center}
+    $h(\mathbb{E}X)\leq \mathbb{E}(h(X))$
+  \end{center}
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Satz]{wenn $\lim\limits_{n \to \infty} \dfrac{1}{n}\sum\limits_{i=1}^nVar(X_i)<\infty$ gilt was gilt dann?}
+  Gilt $\lim\limits_{n \to \infty} \dfrac{1}{n}\sum\limits_{i=1}^nVar(X_i)<\infty$ so gilt $\mathbb{E}[(S_n-\mathbb{E}S_n)^2]\to 0$.
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Satz]{Schwaches Gesetz der großen Zahlen}
+  Es gelte
+    $\mathbb{E}X_i=m\qquad \forall i \in \mathbb{N}$
+  sowie \\
+    $\lim\limits_{n \to \infty}
+    \dfrac{1}{n^2}\sum\limits_{i=1}^nVar(X_i) \to 0$
+  dann gilt \\
+    $P\left[\left|\dfrac{1}{n}\sum\limits_{i=1}^n(X_i-m)\right|\geq
+      \varepsilon\right] \overset{n \to \infty}{\to} 0 \qquad \forall
+    \varepsilon >0$
+  \underline{Von Stochastischer zu f.s. Konvergenz}
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Satz]{Starkes Gesetz der Großen Zahlen}
+  Seien $X_1,X_2,\ldots \in \mathcal{L}^2$ paarweise unkorreliert und
+  \begin{center}
+    $c:=\sup\limits_{i \in \mathbb{N}} Var(X_i) < \infty$
+  \end{center}
+  Dann gilt
+  \begin{center}
+    $\left|\frac{1}{n}\sum\limits_{i=1}^nX_i-\dfrac{1}{n}\sum\limits_{i=1}^n\mathbb{E}X_i\right|
+    \to 0$ P-fs
+  \end{center}
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Satz]{Welche Konvergenz folgt aus welcher}
+  Für i), ii), iii) wie in vorstehender Definition gilt
+  \begin{itemize}
+  \item i) $\Rightarrow$ ii)
+  \item iii) $\Rightarrow$ ii)
+  \item ii) $\Rightarrow$ iii) für eine Teilfolge
+  \item iii) $\Rightarrow$ i) falls $\sup|X_n|^p \in L^1$
+  \end{itemize}
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Satz]{$X_n \overset{L^1}{\to} X (\in L^1)$ ist äquivalent zu was?}
+  \label{prop:LkonvergenzUndPkonvergenz}
+  Seien $X_n \in L^1$, dann sind äquivalent
+  \begin{itemize}
+  \item[i)] $X_n \overset{L^1}{\to} X (\in L^1)$
+  \item[ii)] $X_n \overset{P}{\to} X$ und $(X_n)$ ist gleichmäßig integrierbar
+  \end{itemize}
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Satz]{ Gleichmäsige integrierbar und Konvergenz}
+  Seien $(X_i)_{i \in I}$ Zufallsvariablen auf $(\Omega, \mathcal{A},P)$. Dann sind
+  äquivalent
+  \begin{itemize}
+  \item[i)] $(X_i)_{i \in I}$ ist gleichmäßig integrierbar
+  \item[ii)] $\sup \E [|X_i|]< \infty$ und $\forall \varepsilon > 0
+    \exists \delta >0$ so dass für alle $A \in \mathcal{A}$ mit $P(A)<
+    \delta$ gilt $\int\limits_A |X_i|dP<\varepsilon$ für alle $i \in I$
+  \end{itemize}
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Satz]{Was gilt für rechtsstetig und normiert}
+  \begin{itemize}
+  \item[(i)] $F$ ist isoton: Für $a,b \in \R$ mit $a \leq b$ gilt $F(a)\leq F(b)$\\
+    $F$ ist rechtsstetig: $F(a)=\lim\limits_{b\searrow a}F(b)$ (also insbesondere messbar)\\
+    $F$ ist normiert: $\lim\limits_{a\searrow -\infty}F(a)=0$ und
+    $\lim\limits_{a\nearrow \infty}F(a)=1$
+  \item[(ii)] Zu jeder Funktion $F$ mit den Eigenschaften aus (i) gibt
+    es genau ein Wahrscheinlichkeitsmaß $\mu$ auf $(\R,B(\R))$, so dass $F$ durch $\mu$
+    induziert wird.
+  \end{itemize}
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Satz]{Was ist $\E[h(x)]$}
+\small  Sei $h\geq 0$ eine messbare Funktion auf $\R$ und $X$ eine Zufallsvariable. Dann
+  gilt
+  \begin{eqnarray*}
+    \E[h(x)] = \int\limits_{-\infty}^{\infty} h(x) \mu(dx)\\
+    = \begin{cases}
+      \int\limits_{-\infty}^\infty h(x)f(x) dx  \mu \text{ absolut stetig mit Dichte } f\\
+      \sum\limits_{x \in S} h(x)\mu(\{x\})  \mu \text{ diskret, } S \text{ abzählbar } \mu(S)=1
+    \end{cases}
+  \end{eqnarray*}
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Satz]{Was muss gelten, dammit $(X_i)_{i \in I}$ gleichmäßig integrierbar ist?}
+  Sei $g:\R_+ \to \R_+$ mit
+  \begin{center}
+    $\lim\limits_{x\to \infty} \dfrac{g(x)}{x}\nearrow +\infty$
+  \end{center}
+  gilt dann
+  \begin{center}
+    $\sup\limits_{i in I} \E[g(X_i)]<\infty$
+  \end{center}
+  so ist $(X_i)_{i \in I}$ gleichmäßig integrierbar.
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Satz]{$X_n \in \mathcal{L}^1 \forall n\in \mathbb{N}$  und $X_n \overset{f.s.}{\to} X$ . Seien $X_n \geq 0$ dann gilt?}
+  Seien $X_n \in \mathcal{L}^1$ für alle $n \in \N$ und $X_n
+  \overset{f.s.}{\to} X$. Seien $X_n\geq 0$, dann gilt
+  \begin{center}
+    $X_n \overset{\mathcal{L}^1}{\to} X \Leftrightarrow \E X_n \to \E
+    X$
+  \end{center}
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Satz]{Portemanteau-Theorem}
+  Die folgenden Aussagen sind äquivalent
+  \begin{itemize}
+  \item[1)] $\mu_n \overset{w}{\to} \mu$
+  \item[2)] $\mu_n(f) \to \mu(f) \qquad \forall f \in C_b(S)$
+  \item[3)] für alle abgeschlossenen $F \subseteq S$ gilt
+      $\limsup\limits_{n \to \infty} \mu_n(F) \subseteq \mu(F)$
+  \item[4)] Für alle offenen $G \subseteq S$ gilt
+      $\liminf\limits_{n \to \infty}\mu_n(G) \supseteq \mu(G)$
+  \item[5)] Für alle $\mu$-randlosen $A \subseteq S$ gilt
+      $\mu_n(A) \to \mu(A)$
+  \end{itemize}
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Satz]{Was gilt für durchschnittsstabile Mengensysteme?}
+  Seien $\left(B_{i}\right)_{i\in I}$ durchschnitts-stabile unabhängige
+  Mengensysteme. Dann gilt
+  \begin{itemize}
+  \item [{(i)}] Die $\sigma$-Algebren $\sigma\left(B_{i}\right)$ mit $i\in I$
+    sind unabhängig.
+  \item [{(ii)}] Sind $J_{k}$ $k\in\mathcal{K}$ disjunkte (nicht notwendig
+    endliche) Teilmengen von $I$, so sind
+    $\sigma\left(\bigcup_{l\in J_{k}}B_{l}\right)\ \left(k\in\mathcal{K}\right)$
+    unabhängig. \label{s1.2(ii)}
+  \end{itemize}
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Satz]{0-1-Gesetz von Kolmogorov}
+  \begin{comment}
+    Eigentlich Satz 1.6
+  \end{comment}
+
+
+  Für alle $A\in B_{\infty}$ gilt
+  \[
+  P\left(A\right)\in\left\{ 0,1\right\} 
+  \]
+  (kein Zufall mehr auf $B_{\infty}$)
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Satz]{  Seien $X_{1},X_{2},\ldots\geq0$ unabhängig. Dann?}
+  Seien $X_{1},X_{2},\ldots\geq0$ unabhängig. Dann 
+  \[
+  \mathbb{E}\left[X_{1}\ldots X_{n}\right]=\prod_{i=1}^{n}\mathbb{E}\left[X_{i}\right]
+  \]
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Satz]{Kolmogorov}
+  Seien $\left(X_{i}\right)_{i\in\mathbb{N}}$ i.i.d. Zufallsvariablen in $\mathcal{L}^{1}$
+  mit $m:=\mathbb{E}\left[X_{i}\right]$ $i\in\mathbb{N}$. Dann gilt
+  \begin{equation}
+    \frac{1}{n}\sum_{i=1}^{n}X_{i}\to m\ P-f.s.\label{eq:kolmogorov}
+  \end{equation}
+
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Satz]{Etemadi}
+
+  Seien $\left(X_{i}\right)_{i\in\mathbb{N}}$ \emph{paarweise }unabhängig
+  in $\mathcal{L}^{1}$, identisch verteilt. Dann gilt \ref{eq:kolmogorov}
+  \[
+  \frac{1}{n}\sum_{i=1}^{n}X_{i}\to m\ P-f.s.
+  \]
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Satz]{P-fast alle $\omega \in \Omega$ sind im Rahmen des Gesetzes von Klomogorov?}
+  Für P-fast alle $\omega\in\Omega$ gilt (im Rahmen des Gesetzes von
+  Kolmogorov)
+  \[
+  \rho_{n}\left(\omega,\bullet\right)\overset{w}{\longrightarrow}\mu
+  \]
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Satz]{Was gilt für ZVen mit gemeinsamer Verteilung?}
+  Seien $X_{1}\ldots X_{n}$ Zufallsvariablen auf $\left(\Omega,\mathcal{A},P\right)$
+  mit (Rand-)Verteilungen $\mu_{1}\ldots\mu_{n}$ und gemeinsamer Verteilung
+  $\bar{\mu}$. Dann gilt $X_{1}\ldots X_{n}$unabhängig $\Leftrightarrow\bar{\mu}=\bigotimes_{i=1}^{n}\mu_{i}$.
+  Insbesondere gilt dann
+  \begin{itemize}
+  \item [{i)}] $\bar{\mu}$ ist eindeutig festgelegt durch die $\mu$. 
+  \item [{ii)}] Sind die $\mu_{i}$ absolut-stetig mit Dichten $f_{i}$,
+    so ist auch $\bar{\mu}$ absolut-stetig mit Dichte
+      $\bar{f}\left(\bar{x}\right)  =  \prod_{i=1}^{n}f_{i}\left(x_{i}\right)$
+      $\bar{x}  =  \left(x_{1},\ldots,x_{n}\right)$
+  \end{itemize}
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Satz]{Was gilt für unabhängige Zufallsvariablen mit Verteilung $\mu_{1},\mu_{2}$.}
+  Seien $X_{1},X_{2}$ unabhängige Zufallsvariablen mit Verteilung $\mu_{1},\mu_{2}$.
+  Dann gilt
+  \begin{itemize}
+  \item [{i)}] Die Verteilung von $X_{1}+X_{2}$ ist gegeben durch $\mu_{1}*\mu_{2}$
+  \item [{ii)}] Hat $\mu_{2}$ ein Dichte $f_{2}$, so ist $\mu_{1}*\mu_{2}$
+    absolut stetig mit $f\left(x\right)=\int f_{2}\left(x-x_{1}\right)\mu_{1}\left(dx_{1}\right)$. 
+  \end{itemize}
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Satz]{Eindeutigkeitsatz}
+  Sei $\mu$ ein Wahrscheinlichkeitsmaß mit charakteristischer Funktion
+  $\varphi$ (Fourier-Transformierte). Sei $\mu\left(\left\{ a\right\} \right)=\mu\left(\left\{ b\right\} \right)=0$.
+  Dann gilt
+  \[
+  \mu\left((a,b]\right)=\lim_{T\to\infty}\frac{1}{2\pi}\int_{-T}^{T}\frac{e^{-ita}-e^{-itb}}{it}\varphi\left(t\right)dt
+  \]
+  Insbesondere legt $\varphi$ das Maß $\mu$ eindeutig fest. 
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Satz]{Wahrscheinlichkeitsmaß und Stetigkeit}
+  Sei $P_\mathcal{A}\to \mathbb{R}_+$ normiert ($P(\Omega)=1$). Dann sind folgende Aussagen äquivalent:
+  \begin{itemize}
+  \item[i)] $P$ ist Wahrscheinlichkeitsmaß \index{Wahrscheinlichkeitsmaß}
+  \item[ii)] $P$ ist additiv und isoton stetig
+  \item[iii)] $P$ ist additiv und antiton stetig
+  \end{itemize}
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Satz]{Wahrscheinlichkeitsmaß (1.2.1)}
+  Sei $\Omega$ abzählbar und $p: \Omega \to [0,1]$ mit
+  $\sum\limits_{\omega \in \Omega}p(\omega)=1$. Dann definiert:
+  \begin{center}
+    $P(A)=\sum\limits_{\omega \in A} p(\omega)$ für $A\in
+    \mathcal{P}(\Omega)$
+  \end{center}
+  ein Wahrscheinlichkeitsmaß auf $(\Omega,\mathcal{A})$. Tatsächlich ist jedes Maß auf
+  $(\Omega,\mathcal{A})$ von dieser Form.
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Satz]{induziertes Wahrscheinlichkeitsmaß}
+  Sei $T:(\Omega, \mathcal{A})\to(\overline{\Omega},\overline{\mathcal{A}})$ messbar und $P$ ein Wahrscheinlichkeitsmaß auf $(\Omega, \mathcal{A})$. Dann definiert $\overline{P}=T(P)$ ein Wahrscheinlichkeitsmaß auf $(\overline{\Omega},\overline{\mathcal{A}})$.\\
+  1.3.4 - 1.3.5 siehe Online-Skript. \url{http://horst.qfl-berlin.de/files/StochastikI_2.pdf}
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Satz]{Zufallsvariable und isotone Folgen }
+  Sei $X$ eine Zufallsvariable \index{Zufallsvariable}
+  \begin{itemize}
+  \item[i)] $X$ ist von der Form $X=X^+-X^-$ wobei $X^+=\max\{X,0\}$ und $X^-=\max\{-X,0\}$
+  \item[ii)] Für jede Zufallsvariable $X\geq0$ existiert eine isotone $X_n \nearrow X$ von elementaren Zufallsvariable.
+  \end{itemize}
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Satz]{Eigenschaften des Erwartungswertes 1}
+    $\mathbb{E}[\cdot]$ ist ein lineares monotones Funktional: \\
+    $\mathbb{E}[\alpha X]=\alpha \mathbb{E}[X]$
+\end{flashcard}
+
+\begin{flashcard}[Satz]{Eigenschaften des Erwartungswertes 2}
+\tiny  $\mathbb{E}[\cdot]$ ist ein lineares monotones Funktional: \\
+  Sei $X=\sum\limits_{i=1}^n\alpha_i \1_{A_i}$ und
+    $Y=\sum\limits_{j=1}^m\beta_j\1_{B_j}$. Dann gilt ebenso:
+    $X=\sum\limits_{i,j}\alpha_i\1_{A_i\cap B_j}$ und
+    $Y=\sum\limits_{i,j}\beta_i\1_{A_i\cap B_j} \Rightarrow
+    X+Y=\sum\limits_{i,j}(\alpha_i+\beta_j)\1_{A_i\cap
+      B_j}$. D.h. $\mathbb{E}[X+Y]$ ist definiert und es gilt:
+    \begin{eqnarray*}
+      \mathbb{E}[X+Y]&=& \sum\limits_{i,j}(\alpha_i+\beta_j)P(A_i\cap B_j)\\
+      &=&\sum\limits_{i=1}^n\alpha_i P(A_i)+\sum\limits_{j=1}^m\beta_jP(B_j)\\
+      &=&\mathbb{E}[X]+\mathbb{E}[Y]
+    \end{eqnarray*} 
+\end{flashcard}
+
+\begin{flashcard}[Satz]{Eigenschaften des Erwartungswertes 3}
+    $\mathbb{E}[\cdot]$ ist ein lineares monotones Funktional: \\
+  Sei $X\leq Y$. Sei weiter: $Z=Y-X\geq 0$. Dann gilt:
+    \[\mathbb{E}[X+Z]=\mathbb{E}[Y]=\mathbb{E}[X]+\underbrace{\mathbb{E}[Z]}_{\geq
+      0} \Rightarrow \mathbb{E}[Y]\geq \mathbb{E}[X]\]
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Satz]{Satz von der monotonen Konvergenz}
+  Seien $X_n\geq 0$ Zufallsvariablen $(n \in \mathbb{N})$ mit $X_n \nearrow X$,
+  dann gilt:
+  \begin{center}
+    $\mathbb{E}X_n \nearrow \mathbb{E}X$
+  \end{center}
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Satz]{  $\mathcal{L}^1$ ist ein Vektorraum, dann gilt was?}
+  $\mathcal{L}^1$ ist ein Vektorraum, $\Vert \cdot \Vert_1$ ist eine Halbnorm und $L^1$ ist ein Banachraum mit der Norm $\Vert \cdot \Vert_1$.
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Satz]{Lemma von Fatou}
+  Seien $X_n\geq 0$ Zufallsvariablen (Es reicht auch $X_n \geq Y \in L^1$). Dann
+  gilt:
+  \begin{center}
+    $\mathbb{E}[\liminf\limits_{n \to \infty} X_n]\leq
+    \liminf\limits_{n \to \infty} \mathbb{E}[X_n]$
+  \end{center}
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Satz]{Wie kann man ein Wahrscheinlichkeitsmaß abschätzen?}
+  Sei $X$ eine Zufallsvariable, $h$ eine auf $X(\Omega)$ isotone, nicht negative
+  Funktion. Dann gilt für alle $c \in X(\Omega)$:
+  \begin{center}
+    $h(c)P(X\geq c) \leq \mathbb{E}[h(X)]$
+  \end{center}
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Satz]{Jensen-Ungleichung}
+  Sei $I\in \mathbb{R}$ ein offenes Intervall, $X \in \mathcal{L}^1$
+  mit $X(\Omega)\subseteq I$. Sei weiter $h:I\to\mathbb{R}$ konvex,
+  $h\circ X \in \mathcal{L}^1$ und $X$ nicht konstant. Dann gilt:
+  \begin{center}
+    $h(\mathbb{E}X)\leq \mathbb{E}(h(X))$
+  \end{center}
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Satz]{wenn $\lim\limits_{n \to \infty} \dfrac{1}{n}\sum\limits_{i=1}^nVar(X_i)<\infty$ gilt was gilt dann?}
+  Gilt $\lim\limits_{n \to \infty} \dfrac{1}{n}\sum\limits_{i=1}^nVar(X_i)<\infty$ so gilt $\mathbb{E}[(S_n-\mathbb{E}S_n)^2]\to 0$.
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Satz]{Schwaches Gesetz der großen Zahlen}
+  Es gelte
+    $\mathbb{E}X_i=m\qquad \forall i \in \mathbb{N}$
+  sowie
+    $\lim\limits_{n \to \infty}
+    \dfrac{1}{n^2}\sum\limits_{i=1}^nVar(X_i) \to 0$
+  dann gilt
+    $P\left[\left|\dfrac{1}{n}\sum\limits_{i=1}^n(X_i-m)\right|\geq
+      \varepsilon\right] \overset{n \to \infty}{\to} 0 \qquad \forall
+    \varepsilon >0$
+  \underline{Von Stochastischer zu f.s. Konvergenz}
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Satz]{Starkes Gesetz der Großen Zahlen}
+  Seien $X_1,X_2,\ldots \in \mathcal{L}^2$ paarweise unkorreliert und
+  \begin{center}
+    $c:=\sup\limits_{i \in \mathbb{N}} Var(X_i) < \infty$
+  \end{center}
+  Dann gilt
+  \begin{center}
+    $\left|\frac{1}{n}\sum\limits_{i=1}^nX_i-\dfrac{1}{n}\sum\limits_{i=1}^n\mathbb{E}X_i\right|
+    \to 0$ P-fs
+  \end{center}
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Satz]{Welche Konvergenz folgt aus welcher}
+  Für i), ii), iii) wie in vorstehender Definition gilt
+  \begin{itemize}
+  \item i) $\Rightarrow$ ii)
+  \item iii) $\Rightarrow$ ii)
+  \item ii) $\Rightarrow$ iii) für eine Teilfolge
+  \item iii) $\Rightarrow$ i) falls $\sup|X_n|^p \in L^1$
+  \end{itemize}
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Satz]{$X_n \overset{L^1}{\to} X (\in L^1)$ ist äquivalent zu was?}
+  \label{prop:LkonvergenzUndPkonvergenz}
+  Seien $X_n \in L^1$, dann sind äquivalent
+  \begin{itemize}
+  \item[i)] $X_n \overset{L^1}{\to} X (\in L^1)$
+  \item[ii)] $X_n \overset{P}{\to} X$ und $(X_n)$ ist gleichmäßig integrierbar
+  \end{itemize}
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Satz]{  Seien $(X_i)_{i \in I}$ Zufallsvariablen auf
+    $(\Omega, \mathcal{A},P)$. Dann ist was  äquivalent?}
+  Seien $(X_i)_{i \in I}$ Zufallsvariablen auf $(\Omega, \mathcal{A},P)$. Dann sind
+  äquivalent
+  \begin{itemize}
+  \item[i)] $(X_i)_{i \in I}$ ist gleichmäßig integrierbar
+  \item[ii)] $\sup \E [|X_i|]< \infty$ und $\forall \varepsilon > 0
+    \exists \delta >0$ so dass für alle $A \in \mathcal{A}$ mit $P(A)<
+    \delta$ gilt $\int\limits_A |X_i|dP<\varepsilon$ für alle $i \in I$
+  \end{itemize}
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Satz]{Was gilt für rechtsstetig und normiert}
+  \begin{itemize}
+  \item[(i)] $F$ ist isoton: Für $a,b \in \R$ mit $a \leq b$ gilt $F(a)\leq F(b)$\\
+    $F$ ist rechtsstetig: $F(a)=\lim\limits_{b\searrow a}F(b)$ (also insbesondere messbar)\\
+    $F$ ist normiert: $\lim\limits_{a\searrow -\infty}F(a)=0$ und
+    $\lim\limits_{a\nearrow \infty}F(a)=1$
+  \item[(ii)] Zu jeder Funktion $F$ mit den Eigenschaften aus (i) gibt
+    es genau ein Wahrscheinlichkeitsmaß $\mu$ auf $(\R,B(\R))$, so dass $F$ durch $\mu$
+    induziert wird.
+  \end{itemize}
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Satz]{Was ist $\E[h(x)]$}
+ Sei $h\geq 0$ eine messbare Funktion auf $\R$ und $X$ eine Zufallsvariable. Dann
+  gilt
+    $\E[h(x)] = \int\limits_{-\infty}^{\infty} h(x) \mu(dx)
+    = \begin{cases}
+      \int\limits_{-\infty}^\infty h(x)f(x) dx \text{ falls } \mu \text{ absolut stetig mit Dichte } f\\
+      \sum\limits_{x \in S} h(x)\mu(\{x\}) \text{ falls } \mu \text{ diskret, } S \text{ abzählbar } \mu(S)=1
+    \end{cases}$
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Satz]{  Sei $g:\R_+ \to \R_+$ mit  \begin{center}    $\lim\limits_{x\to \infty} \dfrac{g(x)}{x}\nearrow +\infty$  \end{center}dann gilt was?}
+  Sei $g:\R_+ \to \R_+$ mit
+  \begin{center}
+    $\lim\limits_{x\to \infty} \dfrac{g(x)}{x}\nearrow +\infty$
+  \end{center}
+  gilt dann
+  \begin{center}
+    $\sup\limits_{i in I} \E[g(X_i)]<\infty$
+  \end{center}
+  so ist $(X_i)_{i \in I}$ gleichmäßig integrierbar.
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Satz]{$X_n \in \mathcal{L}^1 \forall n\in \mathbb{N}$  und $X_n \overset{f.s.}{\to} X$ . Seien $X_n \geq 0$ dann gilt?}
+  Seien $X_n \in \mathcal{L}^1$ für alle $n \in \N$ und $X_n
+  \overset{f.s.}{\to} X$. Seien $X_n\geq 0$, dann gilt
+  \begin{center}
+    $X_n \overset{\mathcal{L}^1}{\to} X \Leftrightarrow \E X_n \to \E
+    X$
+  \end{center}
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Satz]{Portemanteau-Theorem}
+\small
+  Die folgenden Aussagen sind äquivalent
+  \begin{itemize}
+  \item[1)] $\mu_n \overset{w}{\to} \mu$
+  \item[2)] $\mu_n(f) \to \mu(f) \qquad \forall f \in C_b(S)$
+  \item[3)] für alle abgeschlossenen $F \subseteq S$ gilt
+      $\limsup\limits_{n \to \infty} \mu_n(F) \subseteq \mu(F)$
+  \item[4)] Für alle offenen $G \subseteq S$ gilt
+      $\liminf\limits_{n \to \infty}\mu_n(G) \supseteq \mu(G)$
+  \item[5)] Für alle $\mu$-randlosen $A \subseteq S$ gilt
+      $\mu_n(A) \to \mu(A)$
+  \end{itemize}
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Satz]{Was gilt für durchschnittsstabile Mengensysteme?}
+  Seien $\left(B_{i}\right)_{i\in I}$ durchschnitts-stabile unabhängige
+  Mengensysteme. Dann gilt
+  \begin{itemize}
+  \item [{(i)}] Die $\sigma$-Algebren $\sigma\left(B_{i}\right)$ mit $i\in I$
+    sind unabhängig.
+  \item [{(ii)}] Sind $J_{k}$ $k\in\mathcal{K}$ disjunkte (nicht notwendig
+    endliche) Teilmengen von $I$, so sind
+$    \sigma\left(\bigcup_{l\in J_{k}}B_{l}\right)\ \left(k\in\mathcal{K}\right)$
+     unabhängig. \label{s1.2(ii)}
+  \end{itemize}
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Satz]{0-1-Gesetz von Kolmogorov}
+  \begin{comment}
+    Eigentlich Satz 1.6
+  \end{comment}
+
+
+  Für alle $A\in B_{\infty}$ gilt
+  \[
+  P\left(A\right)\in\left\{ 0,1\right\} 
+  \]
+  (kein Zufall mehr auf $B_{\infty}$)
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Satz]{  Seien $X_{1},X_{2},\ldots\geq0$ unabhängig. Dann?}
+  Seien $X_{1},X_{2},\ldots\geq0$ unabhängig. Dann 
+  \[
+  \mathbb{E}\left[X_{1}\ldots X_{n}\right]=\prod_{i=1}^{n}\mathbb{E}\left[X_{i}\right]
+  \]
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Satz]{Kolmogorov}
+  Seien $\left(X_{i}\right)_{i\in\mathbb{N}}$ i.i.d. Zufallsvariablen in $\mathcal{L}^{1}$
+  mit $m:=\mathbb{E}\left[X_{i}\right]$ $i\in\mathbb{N}$. Dann gilt
+  \begin{equation}
+    \frac{1}{n}\sum_{i=1}^{n}X_{i}\to m\ P-f.s.\label{eq:kolmogorov}
+  \end{equation}
+
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Satz]{Etemadi}
+
+  Seien $\left(X_{i}\right)_{i\in\mathbb{N}}$ \emph{paarweise }unabhängig
+  in $\mathcal{L}^{1}$, identisch verteilt. Dann gilt \ref{eq:kolmogorov}
+  \[
+  \frac{1}{n}\sum_{i=1}^{n}X_{i}\to m\ P-f.s.
+  \]
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Satz]{P-fast alle $\omega \in \Omega$ sind im Rahmen des Gesetzes von Klomogorov?}
+  Für P-fast alle $\omega\in\Omega$ gilt (im Rahmen des Gesetzes von
+  Kolmogorov)
+  \[
+  \rho_{n}\left(\omega,\bullet\right)\overset{w}{\longrightarrow}\mu
+  \]
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Satz]{Was gilt für ZVen mit gemeinsamer Verteilung?}
+  Seien $X_{1}\ldots X_{n}$ Zufallsvariablen auf $\left(\Omega,\mathcal{A},P\right)$
+  mit (Rand-)Verteilungen $\mu_{1}\ldots\mu_{n}$ und gemeinsamer Verteilung
+  $\bar{\mu}$. Dann gilt $X_{1}\ldots X_{n}$unabhängig $\Leftrightarrow\bar{\mu}=\bigotimes_{i=1}^{n}\mu_{i}$.
+  Insbesondere gilt dann
+  \begin{itemize}
+  \item [{i)}] $\bar{\mu}$ ist eindeutig festgelegt durch die $\mu$. 
+  \item [{ii)}] Sind die $\mu_{i}$ absolut-stetig mit Dichten $f_{i}$,
+    so ist auch $\bar{\mu}$ absolut-stetig mit Dichte
+$
+      \bar{f}\left(\bar{x}\right)  =
+      \prod_{i=1}^{n}f_{i}\left(x_{i}\right)
+$ \\
+$
+      \bar{x} = \left(x_{1},\ldots,x_{n}\right)
+$
+  \end{itemize}
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Satz]{  Seien $X_{1},X_{2}$ unabhängige
+    Zufallsvariablen mit Verteilung $\mu_{1},\mu_{2}$. Dann gilt?}
+  Seien $X_{1},X_{2}$ unabhängige Zufallsvariablen mit Verteilung $\mu_{1},\mu_{2}$.
+  Dann gilt
+  \begin{itemize}
+  \item [{i)}] Die Verteilung von $X_{1}+X_{2}$ ist gegeben durch $\mu_{1}*\mu_{2}$
+  \item [{ii)}] Hat $\mu_{2}$ ein Dichte $f_{2}$, so ist $\mu_{1}*\mu_{2}$
+    absolut stetig mit $f\left(x\right)=\int f_{2}\left(x-x_{1}\right)\mu_{1}\left(dx_{1}\right)$. 
+  \end{itemize}
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Satz]{Eindeutigkeitsatz}
+  Sei $\mu$ ein Wahrscheinlichkeitsmaß mit charakteristischer Funktion
+  $\varphi$ (Fourier-Transformierte). Sei $\mu\left(\left\{ a\right\} \right)=\mu\left(\left\{ b\right\} \right)=0$.
+  Dann gilt
+  \[
+  \mu\left((a,b]\right)=\lim_{T\to\infty}\frac{1}{2\pi}\int_{-T}^{T}\frac{e^{-ita}-e^{-itb}}{it}\varphi\left(t\right)dt
+  \]
+  Insbesondere legt $\varphi$ das Maß $\mu$ eindeutig fest. 
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Lemma]{Summen und Grenzwerte von Normaldarstellungen}
+  Seien $\sum\limits_{i=1}^n \alpha_i \1_{A_i}$ und
+  $\sum\limits_{j=1}^m\beta_j\1_{B_j}$ Normaldarstellungen von
+  $X$. Dann gilt:
+  \begin{center}
+    $\sum\limits_{i=1}^n \alpha_i
+    \1_{A_i}=\sum\limits_{j=1}^m\beta_j\1_{B_j}$
+  \end{center}
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Lemma]{Was muss gelten für $\mathbb{E}X\leq \mathbb{E}X_n$}
+  Seien $(X_n)_{n\in \mathbb{N}}$ und $X$ nichtnegative elementare Zufallsvariablen
+  $X_n\nearrow$ und $X\leq \sup\limits_{n\in \mathbb{N}} X_n$. Dann
+  gilt:
+  \begin{center}
+    $\mathbb{E}X\leq \mathbb{E}X_n$
+  \end{center}
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Lemma]{Schnelle stochastische Konvergenz impliziert fs-Konvergenz}
+  Seien $Z_1, Z_2,\ldots$ Zufallsvariablen auf $(\Omega,\mathcal{A},P)$, so dass
+  für alle $\varepsilon >0$ gilt $\sum\limits_{k=0}^\infty P(\{|Z_k|\geq
+  \varepsilon\})< \infty $. Dann gilt
+  \begin{center}
+    $\lim\limits_{k \to \infty} Z_k=0$ P-fs
+  \end{center}
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Lemma]{  Sei $B\subset\mathcal{A}$ eine $\sigma$-Algebra mit $B$ unabhängig von $B$. Dann gilt?}
+  Sei $B\subset\mathcal{A}$ eine $\sigma$-Algebra mit $B$ unabhängig
+  von $B$. Dann gilt:
+  \[
+  P\left(A\right)\in\left\{ 0,1\right\} \ \forall A\in B
+  \]
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Lemma]{Borel-Cantelli}
+  Seien $\left(A_{i}\right)_{i\in\mathbb{N}}$ Ereignisse
+  \begin{itemize}
+  \item [{(i)}] $\sum_{i\in\mathbb{N}}P\left(A_{i}\right)<\infty\Rightarrow$$P($unendlich
+    viele $A_{i}$ treten ein$)=0$
+  \item [{(ii)}] $\sum_{i\in\mathbb{N}}P\left(A_{i}\right)=+\infty$ und
+    die $A_{i}$ sind unabhängig $\Rightarrow P\left(\limsup A_{i}\right)=1$
+  \end{itemize}
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Lemma]{gilt $\mathbb{E}\left[\left|X\right|^{k}\right]<\infty$ folgt was?}
+  Es gelte $\mathbb{E}\left[\left|X\right|^{k}\right]<\infty$ so folgt
+  \[
+  \varphi^{\left(k\right)}\left(0\right)=i^{k}\mathbb{E}\left[X^{k}\right]
+  \]
+
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Lemma]{Was gilt für unabhängige ZVen $(X_i)$ mit
+    charakteristischen Funktionen $\phi_{X_i}$}
+  Seien $X_{i}$ $\left(i=1\ldots n\right)$ unabhängig mit charakteristischen
+  Funktionen $\varphi_{X_{i}}$. Dann gilt
+  \[
+  \varphi_{X_{i}+\ldots+X_{n}}\left(t\right)=\prod_{i=1}^{n}\varphi_{X_{i}}\left(t\right)
+  \]
+
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Lemma]{Summen und Grenzwerte von Normaldarstellungen}
+  Seien $\sum\limits_{i=1}^n \alpha_i \1_{A_i}$ und
+  $\sum\limits_{j=1}^m\beta_j\1_{B_j}$ Normaldarstellungen von
+  $X$. Dann gilt:
+  \begin{center}
+    $\sum\limits_{i=1}^n \alpha_i
+    \1_{A_i}=\sum\limits_{j=1}^m\beta_j\1_{B_j}$
+  \end{center}
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Lemma]{Was muss gelten für $\mathbb{E}X\leq \mathbb{E}X_n$}
+  Seien $(X_n)_{n\in \mathbb{N}}$ und $X$ nichtnegative elementare Zufallsvariablen
+  $X_n\nearrow$ und $X\leq \sup\limits_{n\in \mathbb{N}} X_n$. Dann
+  gilt:
+  \begin{center}
+    $\mathbb{E}X\leq \mathbb{E}X_n$
+  \end{center}
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Lemma]{Schnelle stochastische Konvergenz impliziert fs-Konvergenz}
+  Seien $Z_1, Z_2,\ldots$ Zufallsvariablen auf $(\Omega,\mathcal{A},P)$, so dass
+  für alle $\varepsilon >0$ gilt $\sum\limits_{k=0}^\infty P(\{|Z_k|\geq
+  \varepsilon\})< \infty $. Dann gilt
+  \begin{center}
+    $\lim\limits_{k \to \infty} Z_k=0$ P-fs
+  \end{center}
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Lemma]{  Sei $B\subset\mathcal{A}$ eine $\sigma$-Algebra mit $B$ unabhängig von $B$. Dann gilt?}
+  Sei $B\subset\mathcal{A}$ eine $\sigma$-Algebra mit $B$ unabhängig
+  von $B$. Dann gilt:
+  \[
+  P\left(A\right)\in\left\{ 0,1\right\} \ \forall A\in B
+  \]
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Lemma]{Borel-Cantelli}
+  Seien $\left(A_{i}\right)_{i\in\mathbb{N}}$ Ereignisse
+  \begin{itemize}
+  \item [{(i)}] $\sum_{i\in\mathbb{N}}P\left(A_{i}\right)<\infty\Rightarrow$$P($unendlich
+    viele $A_{i}$ treten ein$)=0$
+  \item [{(ii)}] $\sum_{i\in\mathbb{N}}P\left(A_{i}\right)=+\infty$ und
+    die $A_{i}$ sind unabhängig $\Rightarrow P\left(\limsup A_{i}\right)=1$
+  \end{itemize}
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Lemma]{gilt $\mathbb{E}\left[\left|X\right|^{k}\right]<\infty$ folgt was?}
+  Es gelte $\mathbb{E}\left[\left|X\right|^{k}\right]<\infty$ so folgt
+  \[
+  \varphi^{\left(k\right)}\left(0\right)=i^{k}\mathbb{E}\left[X^{k}\right]
+  \]
+
+\end{flashcard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{flashcard}[Lemma]{Was gilt für unabhängige ZVen $(X_i)$ mit charakteristischen Funktionen $\phi_{X_i}$}
+  Seien $X_{i}$ $\left(i=1\ldots n\right)$ unabhängig mit charakteristischen
+  Funktionen $\varphi_{X_{i}}$. Dann gilt
+  \[
+  \varphi_{X_{i}+\ldots+X_{n}}\left(t\right)=\prod_{i=1}^{n}\varphi_{X_{i}}\left(t\right)
+  \]
+
+\end{flashcard}
+
+\end{document}
