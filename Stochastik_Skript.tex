@@ -788,7 +788,7 @@ Der Erwartungswert ist ein lineares monotones Funktional. Ist $\Omega<\infty$ so
         \mathbb{E}S_n&=&\sum\limits_{k=1}^nkP(S_n=k)\\
         &=& \sum\limits_{k=1}^nk\binom{n}{k}2^{-n}\\
         &=& n 2^{-n} \sum\limits{k=1}^n\dfrac{(n-1)!}{(k-1)!(n-1-(k-1))!}\\
-        &=& n 2^{-n} \sum\limits{k=1}^n \binom{n-1}{k} (*)
+        &=& n 2^{-n} \sum\limits{k=1}^n \binom{n-1}{k}  (*)
       \end{eqnarray*}
       (*) ist dabei die binomische Formel $(x+y)^n=\sum\limits_{k=0}^n\binom{n}{k}x^{n-k}y^k$ für $x=y=1$, also $2^n=\sum\limits_{k=0}^n\binom{n}{k}$. Einsetzen in (*) ergibt: $(*)=n2^{-n}2^{n-1}=\frac{n}{2}$.
     \end{itemize}
@@ -3654,6 +3654,215 @@ Bemerke für $Y$: $P_{\frac{Y}{\sqrt{n}}}=P_{Y_{n,k}}$
 \end{description}
 \end{proof}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Vorlesung 1.7.2013 Ausgelassen
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Vorlesung 3.7.2013
+
+\chapter{Elemente Mathematischer Statistik}
+
+
+\paragraph*{\protect\marginpar{Vorlesung 3.7.2013}Setup: }
+
+Gegeben ist ein Maßraum $\left(\Omega,\mathcal{A}\right)$. Auf $\left(\Omega,\mathcal{A}\right)$
+ist gegeben $\left(\mathbb{P}_{\theta}\right)_{\theta\in\Theta}$
+eine Familie von W'Maßen.Es sei 
+\[
+X^{\left(n\right)}=\left(X_{1}\ldots X_{n}\right)
+\]
+eine \index{Stichprobe}Stichprobe, d.h. $\left(X_{i}\right)$ i.i.d.
+bzgl. $\mathbb{P}_{\theta_{0}}$ wobei $\theta_{0}$ \index{wahrer Parameter}
+wahrer Parameter ist.
+
+
+\paragraph*{Aufgabe:}
+
+Konstruiere einen Schätzer für $\theta_{0}$ basierend auf der Realisierung
+$x^{\left(n\right)}=\left(X_{1}\ldots X_{n}\right)$ der Stichprobe
+\begin{eqnarray*}
+X^{\left(n\right)} & = & \left(X_{1}\ldots X_{n}\right)\\
+X^{\left(n\right)}\left(\omega\right) & < & x^{\left(n\right)}
+\end{eqnarray*}
+
+\begin{defn}
+Seien 
+\[
+g:\Theta\mapsto\mathbb{R}^{m}
+\]
+und
+\[
+\tilde{G}_{n}:\mathbb{R}^{n}\to\mathbb{R}^{m}
+\]
+meßbar. Dann heißt
+\[
+\hat{G}_{n}\left(X^{\left(n\right)}\right)
+\]
+\index{Schätzer}\emph{Schätzer} für $g\left(\theta\right)$.
+\end{defn}
+Typisches Beispiel
+\[
+g\left(\theta\right)=\mathbb{E}_{\mathbb{P}_{\theta}}\left[X\right]=\int X\left(\omega\right)d\mathbb{P}_{\theta}\left(\omega\right)
+\]
+und
+\[
+\hat{G}_{n}\left(X^{\left(n\right)}\right)=\frac{1}{n}\sum_{i=1}^{n}X_{i}
+\]
+Schätzer per Durchschnitt.
+\begin{defn}
+Die Schätzung $\hat{G}_{n}\left(X^{\left(n\right)}\right)$ von $g\left(\theta\right)$
+heißt \index{erwartungstreu}\emph{erwartungstreu}, falls 
+\[
+\mathbb{E}_{\mathbb{P}_{\theta}}\left[\hat{G}_{n}\left(X^{\left(n\right)}\right)\right]=g\left(\theta\right)\quad\forall\theta\in\Theta
+\]
+Die Funktion 
+\[
+\mathbb{E}_{\mathbb{P}_{\theta}}\left[\hat{G}_{n}\left(X^{\left(n\right)}\right)\right]-g\left(\theta\right)
+\]
+heißt \index{systematischer Fehler}\emph{systematischer Fehler} oder
+\index{Bias}Bias.\end{defn}
+\begin{example}
+ \  \label{BSP33}\end{example}
+\begin{description}
+\item [{(a)}] Der Erwartungswert von $X$ sei unbekannt
+\[
+\mu\left(\theta\right)=\mathbb{E}_{\theta}\left[X\right]\quad\left(\mathbb{E}_{\theta}=\mathbb{E}_{\mathbb{P}_{\theta}}\right)
+\]
+Sei $\alpha=\left(\alpha_{1}\ldots\alpha_{n}\right)$ mit $\alpha_{i}>0$,
+$\sum_{i=1}^{n}\alpha_{i}=1$. Dann ist
+\[
+\hat{\mu}_{\left(\alpha\right)}\left(X^{\left(n\right)}\right)=\sum_{i=1}^{n}\alpha_{i}X_{i}
+\]
+erwartungstreuer Schätzer
+\begin{eqnarray*}
+\mathbb{E}_{\theta}\left[\hat{\mu}_{\left(\alpha\right)}\left(X^{\left(n\right)}\right)\right] & = & \sum_{i=1}^{n}\alpha_{i}\underset{\equiv\mathbb{E}_{\theta}X_{i}=\mu\left(\theta\right)}{\underbrace{\mathbb{E}_{\theta}X_{i}}}\\
+ & = & \mu\left(\theta\right)\ \forall\theta\in\Theta
+\end{eqnarray*}
+(Im Mittel spuckt der ,,naive`` Schätzer das richtige aus.)
+\item [{(b)}] Sei $\alpha_{i}\equiv\frac{1}{n}$. Dann ist
+\[
+\hat{\sigma}_{n}^{2}\left(X^{\left(n\right)}\right)=\frac{1}{n}\sum_{k=1}^{n}\left(X_{k}-\hat{\mu}_{n}\right)^{2}
+\]
+ist \emph{kein} erwartungstreuer Schätzer für $\sigma^{2}$. Denn
+\begin{eqnarray*}
+\mathbb{E}_{\theta}\left[\hat{\sigma}_{n}^{2}\right] & = & \frac{1}{n}\sum_{k=1}^{n}\mathbb{E}\left[X_{k}-\hat{\mu}_{n}\right]^{2}\\
+ & = & \frac{1}{n}\sum_{k=1}^{n}\mathbb{E}_{\theta}\left[X_{k}-\mu+\mu-\hat{\mu}_{n}\right]^{2}\\
+ & = & \frac{1}{n}\sum_{k=1}^{n}\mathbb{E}\left[\left(X_{k}-\mu\right)^{2}-2\left(X_{k}-\mu\right)\left(\hat{\mu}_{n}-\mu\right)+\left(\hat{\mu}_{n}-\mu\right)^{2}\right]\\
+ & = & \frac{1}{n}\mathbb{E}_{\theta}\left[\sum_{k=1}^{n}\left(X_{k}-\mu\right)^{2}-2\sum_{k=1}^{n}\left(X_{k}-\mu\right)\left(\hat{\mu}_{n}-\mu\right)+n\left(\hat{\mu}_{n}-\mu\right)^{2}\right]\\
+ & = & \frac{1}{n}\mathbb{E}_{\theta}\left[\sum_{k=1}^{n}\left(X_{k}-\mu\right)^{2}-2n\left(\hat{\mu}_{n}-\mu\right)^{2}+n\left(\hat{\mu}_{n}-\mu\right)^{2}\right]\\
+ & = & \sigma^{2}-Var(\underset{\frac{1}{n}\sum_{i}X_{i}}{\underbrace{\hat{\mu}_{n}}})
+\end{eqnarray*}
+da $\hat{\mu}_{n}$ erwartungstreuer Schätzer
+\begin{eqnarray*}
+ & = & \sigma^{2}-Var\left(\frac{1}{n}\sum_{i=1}^{n}X_{i}\right)\\
+ & = & \sigma^{2}-\frac{1}{n^{2}}\sum_{i=1}^{n}Var\left(X_{i}\right)\\
+ & = & \sigma^{2}-\frac{1}{n}\sigma^{2}
+\end{eqnarray*}
+(erwartungstreuer Schätzer $=\sigma^{2}$). Der Bais ist 
+\[
+\mathbb{E}_{\theta}\left[\hat{\sigma}_{n}^{2}\right]-\sigma^{2}=-\frac{1}{n}\sigma^{2}
+\]
+\end{description}
+\begin{defn}
+Seien $\hat{G}_{n}\left(X^{(n)}\right)$ und $G_{n}^{*}\left(X^{(n)}\right)$
+erwartungstreue Schätzer für $g\left(\theta\right)$. Es heißt $\hat{G}_{n}$
+\emph{besser} als $G_{n}^{*}$, falls 
+\[
+Var\left(\hat{G}_{n}\right)\leq Var\left(G_{n}^{*}\right)
+\]
+\end{defn}
+\begin{example}
+Im Teil \textbf{(a)} aus Beispiel \ref{BSP33} gilt
+\[
+Var\left(\hat{\mu}_{\left(\alpha\right)}\left(X^{\left(n\right)}\right)\right)=\sigma^{2}\left(\theta\right)\sum_{i=1}^{n}\alpha_{i}^{2}
+\]
+ Aufgabe also 
+\[
+\min\sum_{i=1}^{n}\alpha_{i}^{2}\mbox{ bzgl. }\alpha_{i}\geq0,\sum_{i=1}^{n}\alpha_{i}=1
+\]
+Lsg: 
+\[
+\alpha_{i}=\frac{1}{n}\quad\forall i
+\]
+ 
+\end{example}
+
+\paragraph*{Frage: }
+
+Existiert ein bester erwartungstreuer Schätzer?
+
+Sei $X^{(n)}$ ein Stichprobe, $X_{i}\overset{\mathcal{D}}{=}X$ (iid)
+\[
+\mathbb{P}_{X^{(n)},\theta}=\bigotimes_{i=1}^{n}\mathbb{P}_{X,\theta}
+\]
+wir definieren die \emph{\index{Likelihoodfunktion}Likelihoodfunktion:}
+\begin{description}
+\item [{(a)}] $X$ hat eine Dichte 
+\[
+f_{\theta}\mbox{ bzgl. }\mathbb{P}_{\theta}\quad\left(\forall\theta\in\Theta\right)
+\]
+
+\item [{(b)}] $X$ ist diskret mit möglichen Werten 
+\[
+\alpha_{k}\left(k\in\mathbb{N}\right)
+\]
+unabhängig von $\theta$. Im Fall \textbf{(a)} setzen wir 
+\[
+L^{X}\left(\theta,x\right)=f_{\theta}\left(x\right)
+\]
+Im Fall \textbf{(b)} 
+\[
+L^{X}\left(\theta,x\right)=\mathbb{P}_{\theta}\left(X=x\right)
+\]
+\end{description}
+\begin{defn}
+Es leige einer der obigen Fälle vor. Für jedes $x^{\left(n\right)}=\left(x_{1}\ldots x_{n}\right)\in\mathbb{R}^{n}$
+heißt 
+\[
+\theta\mapsto L_{n}\left(\theta,x^{\left(n\right)}\right)=\prod_{i=1}^{n}L^{X}\left(\theta,x_{i}\right)
+\]
+die \emph{Likelihoodfunktion}\index{Likelihoodfunktion} des statistischen
+Modells $\left(\Omega,\mathcal{A},\left(\mathbb{P}_{\theta}\right)_{\theta\in\Theta}\right)$.
+\end{defn}
+
+\section{Cramer-Rao-Ungleichung}
+
+Es gelte 
+\begin{description}
+\item [{(a)}] Die Abbildung $\theta\mapsto L_{n}\left(\theta,x^{\left(n\right)}\right)$
+ist für jedes $x^{(n)}\in\mathbb{R}^{n}$ differenzierbar und 
+\[
+grad(\underset{\log-\mbox{Likelihood}}{\underbrace{\ln L_{n}\left(\theta,X^{\left(n\right)}\right)}})
+\]
+ist ein zentrierter zufälliger Vektor mit endl. zweiten Momenten bzgl.
+aller $\mathbb{P}_{\theta}$. 
+\item [{(b)}] Die Fischer-Informationsmatrix mit $\left(\theta\in\mathbb{R}^{k}\right)$
+\begin{eqnarray*}
+\left(I_{n}\left(\theta\right)\right)_{1\leq i,j\leq k} & := & \left(\mathbb{E}_{\theta}\left[\frac{\partial}{\partial\theta_{i}}\ln L_{n}\left(\theta,X^{\left(n\right)}\right)\cdot\frac{\partial}{\partial\theta_{j}}\ln L_{n}\left(\theta,X^{\left(n\right)}\right)\right]\right)
+\end{eqnarray*}
+ist invertierbar für alle $\theta\in\Theta$. Dann gilt für jede Zufallsvariable
+\[
+Y=h\left(X^{\left(n\right)}\right)
+\]
+folgende Ungleichung:
+\[
+\mathbb{E}_{\theta}\left[Y-\mathbb{E}_{\theta}\left[Y\right]^{2}\right]\geq\left(grad\left(\mathbb{E}_{\theta}\left[Y\right]\right)\right)^{T}\left[I_{n}\left(\theta\right)\right]^{-1}
+\]
+Ist $Y$ ein erwartungstreuer Schätzer für $g\left(\theta\right)$,
+so folgt 
+\[
+\mathbb{E}_{\theta}\left[\left(Y-g\left(\theta\right)\right)^{2}\right]\geq\left(grad\left(g\left(\theta\right)\right)\right)^{T}\left[I_{n}\left(\theta\right)\right]^{-1}
+\]
+Für $k=1$ gilt also 
+\[
+Var_{\theta}\left(Y\right)\geq\frac{\left|g'\left(\theta\right)\right|^{2}}{I_{n}\left(\theta\right)}
+\]
+
+\end{description}
+
+\paragraph*{Frage:}
+
+Können wir einen erwartungstreuen Schätzer mit Gleichheit konstruieren?
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 %% Index
